@@ -20,10 +20,14 @@ const Header: React.FC = () => {
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
       <div className="w-full max-w-7xl glass-nav rounded-full px-6 py-3 flex items-center justify-between shadow-2xl shadow-black/50 transition-all duration-300">
-        
+
         {/* Logo */}
-        <Link to="/" className="text-lg md:text-2xl font-serif font-bold text-white tracking-wider flex items-center gap-2 shrink-0">
-          <span className="text-gold-500">The Glow Up</span> <span className="hidden sm:inline">London</span>
+        <Link to="/" className="flex items-center gap-3 shrink-0 group">
+          <img
+            src="/logo.png"
+            alt="The Glow Up London"
+            className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -32,9 +36,8 @@ const Header: React.FC = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`text-xs xl:text-sm uppercase tracking-widest transition-all duration-300 hover:text-gold-400 ${
-                isActive(link.path) ? 'text-gold-500 font-semibold' : 'text-gray-300'
-              }`}
+              className={`text-xs xl:text-sm uppercase tracking-widest transition-all duration-300 hover:text-gold-400 ${isActive(link.path) ? 'text-gold-500 font-semibold' : 'text-gray-300'
+                }`}
             >
               {link.name}
             </Link>
@@ -43,15 +46,15 @@ const Header: React.FC = () => {
 
         {/* CTA & Mobile Toggle */}
         <div className="flex items-center gap-4">
-          <Link 
-            to="/booking" 
+          <Link
+            to="/booking"
             className="hidden sm:block bg-gold-500 text-black px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors duration-300"
           >
             Book Now
           </Link>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden text-white hover:text-gold-500 transition-colors"
           >
@@ -62,19 +65,18 @@ const Header: React.FC = () => {
         {/* Mobile Nav Dropdown */}
         {isOpen && (
           <div className="absolute top-full left-0 right-0 mt-2 mx-0 p-6 glass-nav rounded-2xl flex flex-col items-center gap-6 lg:hidden animate-fade-in-down bg-neutral-900/95 backdrop-blur-xl border border-gold-500/20">
-             {navLinks.map((link) => (
+            {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`text-lg uppercase tracking-wider ${
-                  isActive(link.path) ? 'text-gold-500' : 'text-white'
-                }`}
+                className={`text-lg uppercase tracking-wider ${isActive(link.path) ? 'text-gold-500' : 'text-white'
+                  }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Link 
+            <Link
               to="/booking"
               onClick={() => setIsOpen(false)}
               className="bg-gold-500 text-black px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white transition-colors w-full text-center"

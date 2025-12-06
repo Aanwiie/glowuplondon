@@ -1,84 +1,226 @@
-import React from 'react';
-import { MapPin, Phone, Instagram, Facebook } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Instagram,
+  Facebook,
+  ArrowRight,
+  Send,
+  MoveRight
+} from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('sending');
+    setTimeout(() => setFormStatus('sent'), 2000);
+  };
+
   return (
-    <div className="pt-32 pb-20 bg-black min-h-screen">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-serif text-white mb-4">Visit Us</h1>
-          <p className="text-gold-500 uppercase tracking-widest text-sm">We'd love to see you</p>
+    <div className="bg-[#050505] min-h-screen pt-28 pb-20 relative overflow-hidden text-white/90 font-sans selection:bg-amber-500/30 selection:text-white">
+
+      {/* --- BACKGROUND FX --- */}
+      {/* 1. Grain Texture Overlay (Simulates high-end print) */}
+      <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-overlay"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E")` }}>
+      </div>
+
+      {/* 2. Ambient Light Orbs */}
+      <div className="absolute top-0 right-[-10%] w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1400px] relative z-10">
+
+        {/* --- HEADER --- */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 lg:mb-24 gap-8 animate-fade-in-up">
+          <div className="max-w-2xl">
+            <span className="inline-block py-1 px-3 border border-amber-500/30 rounded-full bg-amber-900/10 text-amber-500 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-6 backdrop-blur-md">
+              Concierge
+            </span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.9] tracking-tight">
+              Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-500 to-amber-700 italic">Touch.</span>
+            </h1>
+          </div>
+
+          <div className="hidden lg:block pb-2">
+            <p className="text-neutral-400 text-sm max-w-xs leading-relaxed text-right">
+              Start your transformation today.<br />
+              Visit our studio or drop us a line.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-          
-          {/* Contact Details */}
-          <div className="space-y-12">
-            <div className="bg-neutral-900/50 p-8 rounded-xl border border-white/5">
-              <h3 className="text-2xl font-serif text-white mb-6">The Glow Up London</h3>
-              
-              <div className="space-y-6 text-gray-300 font-light">
-                <div className="flex gap-4">
-                  <MapPin className="text-gold-500 shrink-0 mt-1" size={20} />
-                  <div>
-                    <p>Unit 1, Tintern House,</p>
-                    <p>114 High Street, Brentford, TW8 8AF</p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-4">
-                  <Phone className="text-gold-500 shrink-0 mt-1" size={20} />
-                  <a href="tel:07494452332" className="hover:text-gold-500 transition-colors">07494 452332</a>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+
+          {/* --- LEFT: INTERACTIVE FORM --- */}
+          <div className="lg:col-span-7 order-2 lg:order-1">
+            <div className="relative group rounded-3xl bg-neutral-900/40 border border-white/5 p-6 md:p-10 lg:p-14 backdrop-blur-xl overflow-hidden">
+
+              {/* Glossy Border Gradient on Top */}
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+              <h3 className="text-2xl md:text-3xl font-serif mb-2">Send an Enquiry</h3>
+              <p className="text-neutral-500 text-sm mb-10">We usually respond within 24 hours.</p>
+
+              <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10 relative z-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                  <FloatingInput label="Your Name" id="name" type="text" />
+                  <FloatingInput label="Email Address" id="email" type="email" />
                 </div>
 
-                <div className="flex gap-4 pt-4">
-                  <a href="https://instagram.com" className="bg-white/5 p-3 rounded-full hover:bg-gold-500 hover:text-black transition-all">
-                    <Instagram size={20} />
-                  </a>
-                  <a href="https://facebook.com" className="bg-white/5 p-3 rounded-full hover:bg-gold-500 hover:text-black transition-all">
-                    <Facebook size={20} />
-                  </a>
+                <FloatingInput label="Service Interested In" id="service" type="text" />
+
+                <div className="relative">
+                  <textarea
+                    id="message"
+                    rows={4}
+                    className="block w-full bg-transparent border-b border-white/20 py-4 text-white text-lg focus:outline-none focus:border-amber-500 transition-colors peer placeholder-transparent resize-none"
+                    placeholder="Message"
+                  ></textarea>
+                  <label
+                    htmlFor="message"
+                    className="absolute left-0 -top-3.5 text-neutral-500 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-amber-500 peer-focus:text-xs pointer-events-none"
+                  >
+                    How can we help you?
+                  </label>
+                </div>
+
+                <div className="pt-4 flex items-center justify-between">
+                  <button
+                    disabled={formStatus === 'sending' || formStatus === 'sent'}
+                    className={`
+                          group relative overflow-hidden bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-none md:rounded-full font-bold uppercase tracking-[0.2em] text-xs transition-all duration-500 hover:bg-amber-400
+                          ${formStatus === 'sent' ? 'bg-green-500 hover:bg-green-500 text-white' : ''}
+                        `}
+                  >
+                    <span className="relative z-10 flex items-center gap-3">
+                      {formStatus === 'idle' && <>Send Message <ArrowRight size={16} /></>}
+                      {formStatus === 'sending' && <>Sending...</>}
+                      {formStatus === 'sent' && <>Sent Successfully</>}
+                    </span>
+                  </button>
+
+                  {/* Decorative arrow for desktop aesthetic */}
+                  <span className="hidden md:flex text-neutral-600">
+                    <MoveRight className="w-16 h-4 opacity-20" />
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+
+
+          {/* --- RIGHT: CONTACT DETAILS (Sticky) --- */}
+          <div className="lg:col-span-5 order-1 lg:order-2 space-y-12">
+
+            {/* Quick Contact */}
+            <div className="space-y-8">
+              <ContactItem
+                icon={<Phone size={24} />}
+                label="Call Us"
+                value="07494 452332"
+                href="tel:07494452332"
+              />
+              <ContactItem
+                icon={<Mail size={24} />}
+                label="Email Us"
+                value="hello@glowup.com"
+                href="mailto:hello@glowup.com"
+              />
+              <ContactItem
+                icon={<MapPin size={24} />}
+                label="Visit Studio"
+                value="Brentford, London TW8 8AF"
+                href="#"
+                subValue="Unit 1, Tintern House"
+              />
+            </div>
+
+            {/* Hours Card */}
+            <div className="p-8 border border-white/10 rounded-2xl bg-gradient-to-br from-neutral-900/80 to-neutral-900/20 backdrop-blur-md">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-amber-500/10 rounded-full text-amber-500">
+                  <Clock size={18} />
+                </div>
+                <span className="text-white font-serif text-lg">Opening Hours</span>
+              </div>
+
+              <div className="space-y-4 text-sm font-light">
+                <div className="flex justify-between border-b border-white/5 pb-3 text-neutral-300">
+                  <span className="tracking-widest uppercase text-xs text-neutral-500">Mon - Fri</span>
+                  <span>09:00 - 20:00</span>
+                </div>
+                <div className="flex justify-between border-b border-white/5 pb-3 text-neutral-300">
+                  <span className="tracking-widest uppercase text-xs text-neutral-500">Saturday</span>
+                  <span>09:00 - 19:00</span>
+                </div>
+                <div className="flex justify-between text-neutral-300">
+                  <span className="tracking-widest uppercase text-xs text-neutral-500">Sunday</span>
+                  <span>10:00 - 17:00</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-neutral-900/50 p-8 rounded-xl border border-white/5">
-               <h3 className="text-xl font-serif text-white mb-4">Opening Hours</h3>
-               <ul className="space-y-3 text-sm text-gray-400">
-                 <li className="flex justify-between border-b border-white/5 pb-2">
-                   <span>Monday - Friday</span>
-                   <span className="text-white">09:00 - 20:00</span>
-                 </li>
-                 <li className="flex justify-between border-b border-white/5 pb-2">
-                   <span>Saturday</span>
-                   <span className="text-white">09:00 - 19:00</span>
-                 </li>
-                 <li className="flex justify-between">
-                   <span>Sunday</span>
-                   <span className="text-white">10:00 - 17:00</span>
-                 </li>
-               </ul>
+            {/* Socials */}
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-600 mb-6">Connect With Us</p>
+              <div className="flex gap-4">
+                <SocialButton icon={<Instagram size={20} />} label="Instagram" />
+                <SocialButton icon={<Facebook size={20} />} label="Facebook" />
+              </div>
             </div>
+
           </div>
 
-          {/* Minimal Form */}
-          <div className="bg-white/5 p-8 md:p-12 rounded-xl">
-            <h3 className="text-2xl font-serif text-white mb-2">Enquiries</h3>
-            <p className="text-gray-500 text-sm mb-8">For bookings, please use the Book Now button.</p>
-            
-            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-              <input type="text" className="w-full bg-black border border-white/20 rounded-none px-4 py-3 text-white focus:border-gold-500 focus:outline-none placeholder:text-gray-700" placeholder="Name" />
-              <input type="email" className="w-full bg-black border border-white/20 rounded-none px-4 py-3 text-white focus:border-gold-500 focus:outline-none placeholder:text-gray-700" placeholder="Email" />
-              <textarea rows={4} className="w-full bg-black border border-white/20 rounded-none px-4 py-3 text-white focus:border-gold-500 focus:outline-none placeholder:text-gray-700" placeholder="Message"></textarea>
-              <button className="w-full bg-gold-500 text-black font-bold uppercase tracking-widest py-4 hover:bg-white transition-all duration-300 mt-4">
-                Send
-              </button>
-            </form>
-          </div>
         </div>
       </div>
     </div>
   );
 };
+
+// -- REUSABLE COMPONENTS FOR CLEANER CODE --
+
+const FloatingInput = ({ label, id, type }: { label: string, id: string, type: string }) => (
+  <div className="relative">
+    <input
+      type={type}
+      id={id}
+      className="block w-full bg-transparent border-b border-white/20 py-4 text-white text-lg focus:outline-none focus:border-amber-500 transition-colors peer placeholder-transparent"
+      placeholder={label}
+      required
+    />
+    <label
+      htmlFor={id}
+      className="absolute left-0 -top-3.5 text-neutral-500 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-amber-500 peer-focus:text-xs pointer-events-none"
+    >
+      {label}
+    </label>
+  </div>
+);
+
+const ContactItem = ({ icon, label, value, subValue, href }: { icon: any, label: string, value: string, subValue?: string, href: string }) => (
+  <a href={href} className="flex items-start gap-6 group hover:translate-x-2 transition-transform duration-300">
+    <div className="shrink-0 p-4 rounded-full border border-white/5 bg-white/5 text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-colors">
+      {icon}
+    </div>
+    <div className="pt-1">
+      <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1 group-hover:text-amber-500 transition-colors">{label}</p>
+      <p className="text-xl md:text-2xl font-serif text-white">{value}</p>
+      {subValue && <p className="text-neutral-400 text-sm mt-1 font-light">{subValue}</p>}
+    </div>
+  </a>
+);
+
+const SocialButton = ({ icon, label }: { icon: any, label: string }) => (
+  <button className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-500 transition-all group">
+    {icon}
+    <span className="text-xs uppercase tracking-widest hidden sm:block">{label}</span>
+  </button>
+);
 
 export default Contact;
