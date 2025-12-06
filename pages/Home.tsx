@@ -11,10 +11,11 @@ const services = [
 // Reusable Ticker Text Component
 const TickerText = () => (
   <>
-    <span>Signature Styling</span> <span className="text-white text-2xl">✦</span>
-    <span>Bespoke Treatments</span> <span className="text-white text-2xl">✦</span>
-    <span>Luxury Care</span> <span className="text-white text-2xl">✦</span>
+    <span>THE   GLOW   UP</span> <span className="text-white text-2xl">✦</span>
+    <span>HAIR CARE</span> <span className="text-white text-2xl">✦</span>
+    <span>SKIN THERAPY</span> <span className="text-white text-2xl">✦</span>
     <span>London Studio</span> <span className="text-white text-2xl">✦</span>
+    <span>Artsy Nails</span> <span className="text-white text-2xl">✦</span>
   </>
 );
 
@@ -22,9 +23,10 @@ const Home: React.FC = () => {
   const [activeService, setActiveService] = useState(0);
 
   return (
-    <div className="w-full bg-[#0a0a0a] text-[#e5e5e5] font-sans selection:bg-amber-500/30 overflow-x-hidden">
+    // Updated selection color to a solid amber that matches the gradient (gradients don't work in selection)
+    <div className="w-full bg-[#0a0a0a] text-[#e5e5e5] font-sans selection:bg-amber-400/30 overflow-x-hidden">
 
-      {/* --- INJECT CSS ANIMATION DIRECTLY (NO TAILWIND CONFIG NEEDED) --- */}
+      {/* --- INJECT CSS ANIMATION DIRECTLY --- */}
       <style>{`
         @keyframes scrollLeft {
           0% { transform: translateX(0); }
@@ -37,57 +39,57 @@ const Home: React.FC = () => {
 
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-screen pt-24 pb-12 px-4 md:px-8 lg:px-12 flex flex-col justify-between">
-        <div className="flex flex-col lg:flex-row h-full gap-8 lg:gap-16">
+        <div className="flex flex-col lg:flex-row h-full gap-8 lg:gap-16 px-12">
 
           {/* Left: Typography & CTA */}
-          <div className="lg:w-1/2 flex flex-col justify-center relative z-10 pt-10 lg:pt-0">
-            <div className="mb-8 flex items-center gap-4 animate-fade-in">
-              <span className="h-[1px] w-12 bg-amber-500"></span>
-              <span className="text-amber-500 uppercase tracking-[0.3em] text-xs font-bold">Est. London 2024</span>
-            </div>
-
-            <h1 className="font-serif text-6xl md:text-8xl xl:text-9xl leading-[0.9] tracking-tighter mb-8">
+          <div className="lg:w-1/2 flex flex-col justify-center relative z-10 pt-10 lg:pt-0 ">
+            <h1 className="font-serif text-8xl md:text-8xl xl:text-9xl leading-[0.9] tracking-tighter mb-8">
               Beauty <br />
               <span className="italic text-neutral-500 ml-4 lg:ml-12">Beyond</span> <br />
               The Grid.
             </h1>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mt-4">
-              <Link to="/booking" className="group relative px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-xs hover:bg-amber-500 transition-all duration-300">
-                Book Experience
-                <ArrowRight className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Link to="/booking" className="group relative px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-xs hover:text-black transition-all duration-300 overflow-hidden">
+                {/* Gradient Hover Background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-amber-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+                <span className="relative z-10 flex items-center">
+                  Book Experience
+                  <ArrowRight className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
               </Link>
-              <div className="text-neutral-500 text-sm max-w-xs leading-relaxed">
-                Experience the fusion of technical precision and artistic vision at London's premier styling house.
-              </div>
             </div>
           </div>
 
-          {/* Right: Woman Image */}
-          <div className="lg:w-1/2 relative h-[50vh] lg:h-auto mt-8 lg:mt-0 flex items-center justify-center">
-            {/* Background gradient for the backgroundless image */}
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-900/20 via-neutral-800/30 to-neutral-900/40 rounded-[3rem] blur-3xl"></div>
-
-            {/* Large translucent "90" typography in background */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-              <span className="font-serif text-[280px] lg:text-[400px] font-bold leading-none opacity-[0.06] text-white">
-                BEAUTY
-              </span>
-            </div>
-
-            <div className="relative w-full h-full flex items-center justify-center">
+          {/* Right: The "Arch" Image */}
+          <div className="lg:w-1/2 relative h-[50vh] lg:h-auto mt-8 lg:mt-12">
+            <div className="w-full h-full rounded-t-[10rem] lg:rounded-t-[20rem] overflow-hidden relative border border-white/5">
               <img
-                src="/hero-woman.png"
-                alt="Beautiful woman with curly hair"
-                className="w-full h-full object-contain scale-95 hover:scale-100 transition-transform duration-[2s] ease-in-out relative z-10"
+                src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?q=80&w=1200&auto=format&fit=crop"
+                alt="Hero"
+                className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-[2s] ease-in-out"
               />
+              <div className="absolute bottom-8 right-8 bg-black/30 backdrop-blur-xl border border-white/10 p-6 rounded-full w-32 h-32 flex items-center justify-center animate-spin-slow">
+                <div className="relative w-full h-full">
+                  <svg viewBox="0 0 100 100" className="w-full h-full absolute inset-0">
+                    <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+                    <text className="fill-white text-[11px] uppercase tracking-[0.15em] font-bold">
+                      <textPath href="#circlePath" startOffset="0%">
+                        • The Glow Up • London • Studio
+                      </textPath>
+                    </text>
+                  </svg>
+                  {/* Icon color changed to match lighter part of gradient */}
+                  <ArrowDown className="absolute inset-0 m-auto text-amber-400 w-6 h-6" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- SCROLLING TICKER (Pure CSS Animation) --- */}
-      <div className="py-8 bg-amber-500 -rotate-1 scale-110 origin-left border-y-4 border-black relative z-20 shadow-xl overflow-hidden flex">
+      {/* --- SCROLLING TICKER (Gradient Background) --- */}
+      <div className="py-8 bg-gradient-to-r from-amber-200 to-amber-600 -rotate-1 scale-110 origin-left border-y-4 border-black relative z-20 shadow-xl overflow-hidden flex">
         {/* Set 1 */}
         <div className="ticker-slide flex-shrink-0 flex gap-12 items-center text-black font-black text-4xl md:text-6xl uppercase italic tracking-tighter pr-12">
           <TickerText />
@@ -98,39 +100,15 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* --- ABOUT SECTION --- */}
-      <section className="py-32 container mx-auto px-6 relative">
-        <div className="flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 relative">
-            <div className="w-[85%] aspect-[3/4] rounded-2xl overflow-hidden relative z-10">
-              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200&auto=format&fit=crop" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Interior" />
-            </div>
-            <div className="absolute -bottom-12 -right-4 lg:-right-12 w-2/3 aspect-square rounded-tl-[80px] rounded-br-[80px] overflow-hidden border-8 border-[#0a0a0a] z-20 shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059e98b?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Detail" />
-            </div>
-          </div>
-
-          <div className="lg:w-1/2 lg:pl-24 mt-20 lg:mt-0 z-30">
-            <h2 className="text-5xl md:text-7xl font-serif leading-[1] mb-8">
-              We craft <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-600">Confidence.</span>
-            </h2>
-            <div className="flex gap-4 mb-8">
-              <div className="w-px h-24 bg-neutral-800"></div>
-              <p className="text-lg text-neutral-400 leading-relaxed font-light">
-                Located in the heart of Brentford, The Glow Up is an antidote to the ordinary. We combine architectural precision with organic textures to create looks that are uniquely yours.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* --- SERVICES --- */}
       <section className="py-24 bg-neutral-900 rounded-[3rem] mx-2 md:mx-6 overflow-hidden">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex justify-between items-end mb-16">
             <h2 className="font-serif text-4xl md:text-6xl text-white">The Menu</h2>
-            <span className="text-amber-500 font-mono text-sm">(03) Categories</span>
+            {/* Gradient Text Clip */}
+            <span className="bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent font-mono text-sm font-bold">
+              (03) Categories
+            </span>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-12">
@@ -142,7 +120,7 @@ const Home: React.FC = () => {
                   className={`
                         group cursor-pointer p-8 rounded-2xl border transition-all duration-300 relative overflow-hidden
                         ${activeService === index
-                      ? 'bg-amber-500 border-amber-500 text-black'
+                      ? 'bg-gradient-to-r from-amber-200 to-amber-600 border-transparent text-black'
                       : 'bg-white/5 border-white/5 hover:border-white/20 text-white'}
                       `}
                 >
@@ -195,8 +173,10 @@ const Home: React.FC = () => {
               alt="Texture"
             />
             <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-              <button className="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-full border border-white/30 flex items-center justify-center group/btn hover:bg-amber-500 hover:border-amber-500 hover:text-black transition-all duration-300">
-                <Play className="fill-current w-8 h-8 ml-1" />
+              <button className="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-full border border-white/30 flex items-center justify-center group/btn hover:border-transparent relative overflow-hidden transition-all duration-300">
+                {/* Gradient Hover Overlay for Button */}
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Play className="fill-current w-8 h-8 ml-1 relative z-10 group-hover:text-black transition-colors" />
               </button>
             </div>
           </div>
@@ -206,7 +186,8 @@ const Home: React.FC = () => {
       {/* --- TESTIMONIAL --- */}
       <section className="py-20 border-b border-neutral-900">
         <div className="container mx-auto px-6 text-center">
-          <Star className="w-8 h-8 text-amber-500 mx-auto mb-8 fill-current" />
+          {/* Gradient doesn't apply to SVG fill easily without defs, used the lighter amber to match */}
+          <Star className="w-8 h-8 text-amber-400 mx-auto mb-8 fill-current" />
           <p className="text-2xl md:text-4xl lg:text-5xl font-serif leading-tight max-w-4xl mx-auto text-neutral-300">
             "The Glow Up has mastered the balance between ultra-modern styling and warm, personalized care."
           </p>
@@ -216,8 +197,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* --- CTA FOOTER --- */}
-      <section className="relative py-32 bg-amber-500 text-black overflow-hidden rounded-t-[3rem] mt-12 mx-2">
+      {/* --- CTA FOOTER (Gradient Background) --- */}
+      <section className="relative py-32 bg-gradient-to-r from-amber-200 to-amber-600 text-black overflow-hidden rounded-t-[3rem] mt-12 mx-2">
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/noise.png')]"></div>
         <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
           <div>
