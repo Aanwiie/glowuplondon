@@ -38,53 +38,61 @@ const Home: React.FC = () => {
       `}</style>
 
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-screen pt-24 pb-12 px-4 md:px-8 lg:px-12 flex flex-col justify-between">
-        <div className="flex flex-col lg:flex-row h-full gap-8 lg:gap-16 px-12">
+      {/* --- HERO SECTION --- */}
+      <section className="relative h-screen w-full overflow-hidden flex flex-col lg:flex-row items-center border-b border-white/5">
 
-          {/* Left: Typography & CTA */}
-          <div className="lg:w-1/2 flex flex-col justify-center relative z-10 pt-10 lg:pt-0 ">
-            <h1 className="font-serif text-8xl md:text-8xl xl:text-9xl leading-[0.9] tracking-tighter mb-8">
-              Beauty <br />
-              <span className="italic text-neutral-500 ml-4 lg:ml-12">Beyond</span> <br />
-              The Grid.
-            </h1>
+        {/* Background Grid Pattern (Subtle Texture) */}
+        <div className="absolute inset-0 z-0 opacity-[0.03]"
+          style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+        </div>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mt-4">
-              <Link to="/booking" className="group relative px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-xs hover:text-black transition-all duration-300 overflow-hidden">
-                {/* Gradient Hover Background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-amber-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
-                <span className="relative z-10 flex items-center">
-                  Book Experience
-                  <ArrowRight className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-            </div>
+        {/* --- LEFT: TYPOGRAPHY --- */}
+        <div className="lg:w-[55%] h-full flex flex-col justify-center px-6 md:px-12 lg:pl-20 relative z-10 border-r border-white/5">
+
+          {/* Small Tagline */}
+
+
+          {/* Main Headline */}
+          <h1 className="font-serif text-[13vw] lg:text-[9vw] leading-[0.85] tracking-tighter text-white mix-blend-difference">
+            Beauty <br />
+            <span className="block pl-12 lg:pl-24 italic font-light text-white/50">
+              Beyond
+            </span>
+            The Grid<span className="text-amber-500">.</span>
+          </h1>
+
+          {/* CTA Area */}
+          <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-8 pl-2">
+            <Link to="/booking" className="group relative px-10 py-5 bg-white text-black rounded-full font-bold uppercase tracking-widest text-xs hover:text-black transition-all duration-300 overflow-hidden">
+              {/* Gradient Hover Background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-amber-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+              <span className="relative z-10 flex items-center">
+                Book Experience
+                <ArrowRight className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
+
+
           </div>
+        </div>
 
-          {/* Right: The "Arch" Image */}
-          <div className="lg:w-1/2 relative h-[50vh] lg:h-auto mt-8 lg:mt-12">
-            <div className="w-full h-full rounded-t-[10rem] lg:rounded-t-[20rem] overflow-hidden relative border border-white/5">
-              <img
-                src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?q=80&w=1200&auto=format&fit=crop"
-                alt="Hero"
-                className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-[2s] ease-in-out"
-              />
-              <div className="absolute bottom-8 right-8 bg-black/30 backdrop-blur-xl border border-white/10 p-6 rounded-full w-32 h-32 flex items-center justify-center animate-spin-slow">
-                <div className="relative w-full h-full">
-                  <svg viewBox="0 0 100 100" className="w-full h-full absolute inset-0">
-                    <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
-                    <text className="fill-white text-[11px] uppercase tracking-[0.15em] font-bold">
-                      <textPath href="#circlePath" startOffset="0%">
-                        • The Glow Up • London • Studio
-                      </textPath>
-                    </text>
-                  </svg>
-                  {/* Icon color changed to match lighter part of gradient */}
-                  <ArrowDown className="absolute inset-0 m-auto text-amber-400 w-6 h-6" />
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* --- RIGHT: AESTHETIC VISUAL --- */}
+        <div className="lg:w-[45%] h-full relative flex items-end justify-center overflow-hidden">
+
+          {/* 2. Ambient Gradient Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-gradient-to-tr from-amber-200/20 to-amber-600/10 rounded-full blur-[90px] -z-10"></div>
+
+          {/* 3. The Model */}
+          <img
+            src="/hero-women.png"
+            alt="Editorial Beauty"
+            className="relative z-10 h-[85%] lg:h-[90%] w-auto object-contain drop-shadow-2xl grayscale contrast-125 hover:grayscale-0 transition-all duration-1000 ease-out"
+            style={{
+              maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
+            }}
+          />
+
         </div>
       </section>
 
