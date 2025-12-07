@@ -37,65 +37,75 @@ const Home: React.FC = () => {
         }
       `}</style>
 
-      {/* --- HERO SECTION --- */}
-      {/* --- HERO SECTION --- */}
-      <section className="relative h-screen w-full overflow-hidden flex flex-col lg:flex-row items-center border-b border-white/5">
+<section className="relative h-screen w-full overflow-hidden flex flex-col lg:flex-row items-center border-b border-white/5 mt-12">
 
-        {/* Background Grid Pattern (Subtle Texture) */}
-        <div className="absolute inset-0 z-0 opacity-[0.03]"
-          style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
-        </div>
+  {/* Background Grid Pattern */}
+  <div className="absolute inset-0 z-0 opacity-[0.03]"
+    style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+  </div>
 
-        {/* --- LEFT: TYPOGRAPHY --- */}
-        <div className="lg:w-[55%] h-full flex flex-col justify-center px-6 md:px-12 lg:pl-20 relative z-10 border-r border-white/5">
+  {/* --- LEFT: TYPOGRAPHY --- */}
+  <div className="lg:w-[55%] h-full flex flex-col justify-center px-6 md:px-12 lg:pl-24 relative z-10 border-r border-white/5">
 
-          {/* Small Tagline */}
+    {/* --- NEW LOGO (Mobile Only) --- */}
+    <div className="lg:hidden w-full flex justify-center mb-8">
+      <img
+        src="/logo2.png"
+        alt="Brand Logo"
+        className="w-36 h-auto object-contain"
+      />
+    </div>
 
+    {/* Main Headline */}
+    <h1 className="font-serif italic text-[13vw] lg:text-[9vw] leading-[0.85] tracking-tighter text-white mix-blend-difference text-center lg:text-left">
+      True <br />
+      <span className="block  pl-12 lg:pl-24 font-light bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent text-left">
+        Unfiltered
+      </span>
+      Glow Up<span className="text-amber-500 italic">.</span>
+    </h1>
 
-          {/* Main Headline */}
-          <h1 className="font-serif text-[13vw] lg:text-[9vw] leading-[0.85] tracking-tighter text-white mix-blend-difference">
-            Beauty <br />
-            <span className="block pl-12 lg:pl-24 italic font-light text-white/50">
-              Beyond
-            </span>
-            The Grid<span className="text-amber-500">.</span>
-          </h1>
+    {/* CTA Area (Button) */}
+    {/* UPDATED: 
+        1. Added 'lg:justify-start' to align left on desktop.
+        2. Added 'lg:pl-24' to match the indentation of the "Unfiltered" text above. 
+    */}
+    <div className="mt-12 w-full flex justify-center lg:justify-start lg:pl-24">
+      
+      <Link to="/booking" className="group relative px-8 py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden">
+        
+        {/* Animated Gradient Background - Fades in on hover */}
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
+        
+        {/* Button Content */}
+        <span className="relative z-10 flex items-center gap-3 font-medium tracking-widest text-xs uppercase text-white group-hover:text-black transition-colors duration-300">
+          Book Experience
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+        </span>
+      
+      </Link>
+    </div>
+  </div>
 
-          {/* CTA Area */}
-          <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-8 pl-2">
-            <Link to="/booking" className="group relative px-10 py-5 bg-white text-black rounded-full font-bold uppercase tracking-widest text-xs hover:text-black transition-all duration-300 overflow-hidden">
-              {/* Gradient Hover Background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-amber-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
-              <span className="relative z-10 flex items-center">
-                Book Experience
-                <ArrowRight className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
+  {/* --- RIGHT: AESTHETIC VISUAL --- */}
+  <div className="lg:w-[45%] h-full relative flex items-end justify-center pr-12 overflow-hidden">
 
+    {/* Ambient Gradient Glow */}
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-gradient-to-tr from-amber-200/20 to-amber-600/10 rounded-full blur-[90px] -z-10"></div>
 
-          </div>
-        </div>
+    {/* The Model */}
+    <img
+      src="/woman-new2.png"
+      alt="Editorial Beauty"
+      className="relative z-10 h-[85%] lg:h-[90%] w-auto object-contain drop-shadow-2xl grayscale contrast-125 hover:grayscale-0 transition-all duration-1000 ease-out"
+      style={{
+        maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
+      }}
+    />
 
-        {/* --- RIGHT: AESTHETIC VISUAL --- */}
-        <div className="lg:w-[45%] h-full relative flex items-end justify-center overflow-hidden">
-
-          {/* 2. Ambient Gradient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-gradient-to-tr from-amber-200/20 to-amber-600/10 rounded-full blur-[90px] -z-10"></div>
-
-          {/* 3. The Model */}
-          <img
-            src="/hero-women.png"
-            alt="Editorial Beauty"
-            className="relative z-10 h-[85%] lg:h-[90%] w-auto object-contain drop-shadow-2xl grayscale contrast-125 hover:grayscale-0 transition-all duration-1000 ease-out"
-            style={{
-              maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
-            }}
-          />
-
-        </div>
-      </section>
-
+  </div>
+</section>
       {/* --- SCROLLING TICKER (Gradient Background) --- */}
       <div className="py-8 bg-gradient-to-r from-amber-200 to-amber-600 -rotate-1 scale-110 origin-left border-y-4 border-black relative z-20 shadow-xl overflow-hidden flex">
         {/* Set 1 */}
