@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, ArrowDown, Scissors, Play } from 'lucide-react';
+import { ArrowRight, Star, ArrowDown, Scissors, Play, ArrowUpRight } from 'lucide-react';
 
 const services = [
   { id: 1, name: "Hair Artistry", description: "Precision Cutting & Balayage", image: "https://images.unsplash.com/photo-1560869713-7d0a29430803?q=80&w=800&auto=format&fit=crop" },
   { id: 2, name: "Skin Therapy", description: "Hydrafacials & Peels", image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format&fit=crop" },
-  { id: 3, name: "Nail Architecture", description: "Biab & Gel Sculpting", image: "https://images.unsplash.com/photo-1632922267756-9b71242b1592?q=80&w=800&auto=format&fit=crop" }
+  { id: 3, name: "Nail Architecture", description: "Biab & Gel Sculpting", image: "/nail.jpeg" }
 ];
 
 // Reusable Ticker Text Component
@@ -118,68 +118,147 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* --- SERVICES --- */}
-      <section className="py-24 bg-neutral-900 rounded-[3rem] mx-2 md:mx-6 overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex justify-between items-end mb-16">
-            <h2 className="font-serif text-4xl md:text-6xl text-white">The Menu</h2>
-            {/* Gradient Text Clip */}
-            <span className="bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent font-mono text-sm font-bold">
-              (03) Categories
-            </span>
+    <section className="py-12 md:py-24 px-2 md:px-6">
+      
+      {/* Main Container */}
+      <div className="bg-[#0a0a0a] rounded-[2rem] md:rounded-[4rem] overflow-hidden border border-white/5 shadow-2xl">
+        <div className="container mx-auto px-6 md:px-16 py-12 md:py-24">
+          
+          {/* Header */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+            <div>
+
+              {/* UPDATED TYPOGRAPHY */}
+              <h2 className="text-white leading-[0.8]">
+
+                <span className="font-serif italic text-6xl md:text-8xl bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent">
+                  The Menu
+                </span>
+              </h2>
+            </div>
+            
+
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-12">
-            <div className="lg:w-1/2 space-y-6">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
+            
+            {/* --- LEFT: SERVICE LIST --- */}
+            <div className="lg:w-1/2 flex flex-col">
               {services.map((service, index) => (
                 <div
                   key={index}
                   onMouseEnter={() => setActiveService(index)}
-                  className={`
-                        group cursor-pointer p-8 rounded-2xl border transition-all duration-300 relative overflow-hidden
-                        ${activeService === index
-                      ? 'bg-gradient-to-r from-amber-200 to-amber-600 border-transparent text-black'
-                      : 'bg-white/5 border-white/5 hover:border-white/20 text-white'}
-                      `}
+                  onClick={() => setActiveService(index)}
+                  className="group relative border-b border-white/10 last:border-0"
                 >
-                  <div className="flex justify-between items-center relative z-10">
-                    <div>
-                      <span className="block text-xs font-bold uppercase tracking-widest mb-2 opacity-60">0{service.id}</span>
-                      <h3 className="text-3xl font-serif">{service.name}</h3>
+                  <div className={`
+                    cursor-pointer py-8 md:py-10 transition-all duration-500 ease-out flex flex-col
+                    ${activeService === index ? 'lg:pl-8 opacity-100' : 'opacity-60 hover:opacity-100'}
+                  `}>
+                    
+                    {/* Top Row: ID + Title + Arrow */}
+                    <div className="flex justify-between items-center w-full">
+                      <div className="flex items-baseline gap-4 md:gap-8">
+                        <span className="font-mono text-xs text-white/40">0{service.id}</span>
+                        
+                        <h3 className={`
+                          text-2xl md:text-4xl font-serif transition-colors duration-300
+                          ${activeService === index 
+                            ? 'bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent' 
+                            : 'text-white'}
+                        `}>
+                          {service.name}
+                        </h3>
+                      </div>
+
+                      {/* Animated Arrow */}
+                      <div className={`
+                        w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/10 flex items-center justify-center
+                        transition-all duration-500
+                        ${activeService === index ? 'rotate-90 md:rotate-[-45deg] border-amber-400/50 bg-amber-400/10 text-amber-200' : 'text-white/30'}
+                      `}>
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
                     </div>
-                    <ArrowRight className={`w-6 h-6 transition-transform ${activeService === index ? '-rotate-45' : ''}`} />
+
+                    {/* EXPANDABLE CONTENT (Description + Mobile Image) */}
+                    {/* Increased max-h to accommodate mobile image */}
+                    <div className={`
+                      overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+                      ${activeService === index ? 'max-h-[600px] opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'}
+                    `}>
+                      <p className="text-white/70 font-light leading-relaxed max-w-md md:pl-12 text-sm md:text-base">
+                        {service.description}
+                      </p>
+
+                      {/* --- MOBILE ONLY IMAGE --- */}
+                      <div className="lg:hidden mt-6 w-full rounded-2xl overflow-hidden relative aspect-video">
+                        <img 
+                          src={service.image} 
+                          alt={service.name}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white text-xs font-bold tracking-widest uppercase">
+                          Explore Service <ArrowUpRight className="w-3 h-3 text-amber-400" />
+                        </div>
+                      </div>
+
+                      {/* Desktop Link (Text only) */}
+                      <div className="hidden lg:flex pl-12 mt-4 items-center gap-2 text-amber-400 text-xs tracking-widest uppercase hover:underline">
+                        View Details <ArrowUpRight className="w-3 h-3" />
+                      </div>
+                    </div>
+
+                    {/* Active Indicator Line (Left Side - Desktop Only) */}
+                    <div className={`
+                      hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-[2px] bg-gradient-to-b from-amber-200 to-amber-600 transition-all duration-500
+                      ${activeService === index ? 'h-16' : 'h-0'}
+                    `}></div>
+
                   </div>
-                  <p className={`mt-4 text-sm relative z-10 opacity-80 ${activeService === index ? 'font-medium' : 'font-light'}`}>
-                    {service.description}
-                  </p>
                 </div>
               ))}
             </div>
 
-            <div className="lg:w-1/2 relative h-[400px] lg:h-auto hidden md:block">
-              <div className="sticky top-12 w-full aspect-square rounded-[2rem] overflow-hidden">
+            {/* --- RIGHT: STICKY IMAGE DISPLAY (Desktop Only) --- */}
+            <div className="hidden lg:block lg:w-1/2 relative">
+              <div className="sticky top-24 w-full h-[600px] rounded-[2rem] overflow-hidden bg-neutral-900 border border-white/5">
+                
                 {services.map((service, index) => (
-                  <img
+                  <div
                     key={index}
-                    src={service.image}
-                    alt={service.name}
                     className={`
-                             absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out
-                             ${activeService === index ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}
-                          `}
-                  />
-                ))}
-                <div className="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none bg-gradient-to-t from-black/80 via-transparent to-transparent">
-                  <div className="self-end p-4 bg-white/20 backdrop-blur-md rounded-full border border-white/20">
-                    <Scissors className="text-white w-6 h-6" />
+                      absolute inset-0 w-full h-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+                      ${activeService === index 
+                        ? 'opacity-100 scale-100 visible' 
+                        : 'opacity-0 scale-110 invisible delay-100'}
+                    `}
+                  >
+                    <img
+                      src={service.image}
+                      alt={service.name}
+                      className="w-full h-full object-cover grayscale-[20%] contrast-110"
+                    />
+                    
+                    {/* Aesthetic Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+                    
+                    {/* Floating Caption */}
+                    <div className="absolute bottom-8 left-8">
+                       <p className="text-white/80 font-mono text-xs uppercase tracking-widest backdrop-blur-md bg-white/5 px-4 py-2 rounded-full border border-white/10 inline-block">
+                        {service.name} — Experience
+                       </p>
+                    </div>
                   </div>
-                  <h4 className="text-4xl font-serif text-white">{services[activeService].name}</h4>
-                </div>
+                ))}
+
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* --- VIDEO SECTION --- */}
       <section className="py-32 relative">
