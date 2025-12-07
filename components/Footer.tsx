@@ -10,21 +10,21 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="relative z-10 container mx-auto px-6 pt-24 pb-12 max-w-7xl">
-        
+
         {/* Top Section: Logo & Layout */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-16 lg:gap-8 mb-20">
-          
+
           {/* Brand Column */}
           <div className="lg:w-1/3 space-y-8">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <img 
-                src="/logo2.png" 
-                alt="The Glow Up London" 
-                className="h-12 w-auto object-contain brightness-0 invert opacity-90" 
+              <img
+                src="/logo2.png"
+                alt="The Glow Up London"
+                className="h-12 w-auto object-contain brightness-0 invert opacity-90"
               />
             </div>
-            
+
             <p className="text-neutral-500 font-light leading-relaxed max-w-sm text-sm">
               Confidence starts with self-care. Experience luxury treatments in a calm, welcoming atmosphere designed for your restoration.
             </p>
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
 
           {/* Info Columns Wrapper */}
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-8">
-            
+
             {/* Contact Section */}
             <div>
               <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-neutral-200 mb-8">
@@ -85,7 +85,7 @@ const Footer: React.FC = () => {
         {/* Footer Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-neutral-600 font-light tracking-wide">
           <p>&copy; {new Date().getFullYear()} The Glow Up London. All rights reserved.</p>
-          
+
           <div className="flex items-center gap-8">
             <a href="#" className="hover:text-neutral-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-neutral-400 transition-colors">Terms & Conditions</a>
@@ -106,9 +106,9 @@ const HourRow = ({ day, time }: { day: string; time: string }) => (
 
 // Helper Component for Social Links
 const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => (
-  <a 
-    href={href} 
-    target="_blank" 
+  <a
+    href={href}
+    target="_blank"
     rel="noreferrer"
     className="w-10 h-10 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-neutral-800 hover:text-white hover:border-neutral-700 transition-all duration-300"
   >
