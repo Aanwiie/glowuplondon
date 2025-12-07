@@ -192,7 +192,9 @@ const Home: React.FC = () => {
                 <h2 className="text-white leading-[0.8]">
 
                   <span className="font-serif italic text-6xl md:text-8xl bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent">
-                    The Menu
+                    The
+                  </span> <span className="font-serif italic text-6xl md:text-8xl bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent">
+                    Menu
                   </span>
                 </h2>
               </div>
@@ -384,26 +386,21 @@ const Home: React.FC = () => {
 
               <Link
                 to="/booking"
-                className="relative flex flex-col items-center justify-center w-40 h-40 md:w-64 md:h-64 bg-[#1a1a1a] rounded-full text-[#E8DCC4] transition-all duration-500 hover:scale-105 hover:bg-black shadow-2xl"
+                className="group relative inline-flex items-center gap-4 px-8 py-4 bg-[#1a1a1a] text-[#E8DCC4] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 hover:bg-black shadow-2xl border border-white/5"
               >
-                <div className="flex flex-col items-center gap-2 z-10 overflow-hidden">
-                  <span className="uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold">
-                    Book Now
-                  </span>
+                {/* Hover Fill Effect (Amber Glow) */}
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-200/20 to-amber-600/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
 
-                  {/* Animated Arrow Wrapper */}
-                  <div className="relative w-8 h-8 md:w-10 md:h-10 overflow-hidden">
-                    {/* Arrow 1 (Slide out) */}
-                    <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full" />
-                    {/* Arrow 2 (Slide in) */}
-                    <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0 text-amber-200" />
-                  </div>
+                {/* Text */}
+                <span className="relative z-10 uppercase tracking-[0.2em] text-xs font-bold">
+                  Book Now
+                </span>
+
+                {/* Animated Arrow Icon (Small & Sharp) */}
+                <div className="relative z-10 w-5 h-5 overflow-hidden">
+                  <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 transition-transform duration-500 ease-out group-hover:translate-x-full group-hover:-translate-y-full" />
+                  <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 -translate-x-full translate-y-full transition-transform duration-500 ease-out group-hover:translate-x-0 group-hover:translate-y-0 text-amber-400" />
                 </div>
-
-                {/* Aesthetic Border Spin */}
-                <svg className="absolute inset-0 w-full h-full rotate-[-90deg]" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="300" strokeDashoffset="300" className="text-white/20 group-hover:stroke-dashoffset-0 transition-all duration-1000 ease-in-out" />
-                </svg>
               </Link>
             </div>
 
