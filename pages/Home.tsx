@@ -167,7 +167,7 @@ const Home: React.FC = () => {
         </div>
       </section>
       {/* --- SCROLLING TICKER (Gradient Background) --- */}
-      <div className="py-8 bg-gradient-to-r from-amber-200 to-amber-600 -rotate-1 scale-110 origin-left border-y-4 border-black relative z-20 shadow-xl overflow-hidden flex">
+      <div className="py-2 bg-gradient-to-r from-amber-200 to-amber-600 -rotate-1 scale-110 origin-left border-y-4 border-black relative z-20 shadow-xl overflow-hidden flex">
         {/* Set 1 */}
         <div className="ticker-slide flex-shrink-0 flex gap-12 items-center text-black font-black text-4xl md:text-6xl uppercase italic tracking-tighter pr-12">
           <TickerText />
@@ -191,9 +191,9 @@ const Home: React.FC = () => {
                 {/* UPDATED TYPOGRAPHY */}
                 <h2 className="text-white leading-[0.8]">
 
-                  <span className="font-serif italic text-6xl md:text-8xl bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent">
+                  <span className="font-serif italic text-4xl md:text-6xl bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent">
                     The
-                  </span> <span className="font-serif italic text-6xl md:text-8xl bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent">
+                  </span> <span className="font-serif italic text-4xl md:text-6xl bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent">
                     Menu
                   </span>
                 </h2>
@@ -321,7 +321,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-      <section className="py-4 md:py-4 w-full flex justify-center bg-[#0a0a0a]">
+      <section className="py-24 md:py-24 w-full flex justify-center bg-[#0a0a0a]">
         <VideoSection />
       </section>
 
@@ -351,7 +351,7 @@ const Home: React.FC = () => {
           </div>
 
           {/* --- 2. CONTENT CONTAINER --- */}
-          <div className="relative z-10 container mx-auto px-6 py-10 md:py-20 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
+          <div className="relative z-10 container mx-auto px-6 py-2 md:py-8 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
 
             {/* Left: Typography */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
@@ -372,10 +372,10 @@ const Home: React.FC = () => {
                   Glow Up?
                 </span>
               </h2>
-
+{/* 
               <p className="mt-8 text-black/70 max-w-md font-medium text-lg md:text-xl leading-relaxed">
                 The mirror is waiting. Slots for this month are filling rapidly—secure your transformation today.
-              </p>
+              </p> */}
             </div>
 
             {/* Right: Magnetic Button */}
