@@ -7,7 +7,6 @@ import {
   Instagram,
   Facebook,
   ArrowRight,
-  Send,
   MoveRight
 } from 'lucide-react';
 
@@ -24,19 +23,17 @@ const Contact: React.FC = () => {
     <div className="bg-[#050505] min-h-screen pt-28 pb-20 relative overflow-hidden text-white/90 font-sans selection:bg-amber-500/30 selection:text-white">
 
       {/* --- BACKGROUND FX --- */}
-      {/* 1. Grain Texture Overlay (Simulates high-end print) */}
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-overlay"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E")` }}>
       </div>
 
-      {/* 2. Ambient Light Orbs */}
       <div className="absolute top-0 right-[-10%] w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1400px] relative z-10">
 
         {/* --- HEADER --- */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 lg:mb-24 gap-8 animate-fade-in-up">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 lg:mb-24 gap-8">
           <div className="max-w-2xl">
             <span className="inline-block py-1 px-3 border border-amber-500/30 rounded-full bg-amber-900/10 text-amber-500 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-6 backdrop-blur-md">
               Concierge
@@ -57,15 +54,22 @@ const Contact: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
 
-          {/* --- LEFT: INTERACTIVE FORM --- */}
+          {/* --- LEFT: INTERACTIVE FORM (Updated Card Style) --- */}
           <div className="lg:col-span-7 order-2 lg:order-1">
-            <div className="relative group rounded-3xl bg-neutral-900/40 border border-white/5 p-6 md:p-10 lg:p-14 backdrop-blur-xl overflow-hidden">
+            <div className="
+              relative group rounded-3xl 
+              bg-white/[0.08]                 /* CHANGED: 8% white opacity creates a distinct grey on black */
+              border border-white/10          /* CHANGED: Slightly stronger border */
+              p-6 md:p-10 lg:p-14 
+              backdrop-blur-xl shadow-2xl     /* ADDED: Shadow for pop */
+              overflow-hidden
+            ">
 
               {/* Glossy Border Gradient on Top */}
               <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
-              <h3 className="text-2xl md:text-3xl font-serif mb-2">Send an Enquiry</h3>
-              <p className="text-neutral-500 text-sm mb-10">We usually respond within 24 hours.</p>
+              <h3 className="text-2xl md:text-3xl font-serif mb-2 text-white">Send an Enquiry</h3>
+              <p className="text-neutral-400 text-sm mb-10">We usually respond within 24 hours.</p>
 
               <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10 relative z-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
@@ -84,7 +88,7 @@ const Contact: React.FC = () => {
                   ></textarea>
                   <label
                     htmlFor="message"
-                    className="absolute left-0 -top-3.5 text-neutral-500 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-amber-500 peer-focus:text-xs pointer-events-none"
+                    className="absolute left-0 -top-3.5 text-neutral-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-amber-500 peer-focus:text-xs pointer-events-none"
                   >
                     How can we help you?
                   </label>
@@ -105,9 +109,8 @@ const Contact: React.FC = () => {
                     </span>
                   </button>
 
-                  {/* Decorative arrow for desktop aesthetic */}
-                  <span className="hidden md:flex text-neutral-600">
-                    <MoveRight className="w-16 h-4 opacity-20" />
+                  <span className="hidden md:flex text-neutral-500">
+                    <MoveRight className="w-16 h-4 opacity-30" />
                   </span>
                 </div>
               </form>
@@ -115,7 +118,7 @@ const Contact: React.FC = () => {
           </div>
 
 
-          {/* --- RIGHT: CONTACT DETAILS (Sticky) --- */}
+          {/* --- RIGHT: CONTACT DETAILS --- */}
           <div className="lg:col-span-5 order-1 lg:order-2 space-y-12">
 
             {/* Quick Contact */}
@@ -183,7 +186,7 @@ const Contact: React.FC = () => {
   );
 };
 
-// -- REUSABLE COMPONENTS FOR CLEANER CODE --
+// -- REUSABLE COMPONENTS --
 
 const FloatingInput = ({ label, id, type }: { label: string, id: string, type: string }) => (
   <div className="relative">
@@ -196,7 +199,7 @@ const FloatingInput = ({ label, id, type }: { label: string, id: string, type: s
     />
     <label
       htmlFor={id}
-      className="absolute left-0 -top-3.5 text-neutral-500 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-amber-500 peer-focus:text-xs pointer-events-none"
+      className="absolute left-0 -top-3.5 text-neutral-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-amber-500 peer-focus:text-xs pointer-events-none"
     >
       {label}
     </label>
