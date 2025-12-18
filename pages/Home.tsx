@@ -2,17 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, Star, ArrowDown, Scissors, Play, ArrowUpRight,
-  Pause, Volume2, VolumeX,
-  Quote
 } from 'lucide-react';
 import VideoSection from '@/components/VideoSection';
 import Testimonials from '@/components/Testimonials';
 
-const services = [
-  { id: 1, name: "Hair Artistry", description: "Precision Cutting & Balayage", image: "https://images.unsplash.com/photo-1560869713-7d0a29430803?q=80&w=800&auto=format&fit=crop" },
-  { id: 2, name: "Skin Therapy", description: "Hydrafacials & Peels", image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format&fit=crop" },
-  { id: 3, name: "Nail Architecture", description: "Biab & Gel Sculpting", image: "/nail.jpeg" }
-];
 const testimonials = [
   {
     id: 1,
@@ -59,23 +52,14 @@ const testimonials = [
 ];
 
 
-// Reusable Ticker Text Component
-const TickerText = () => (
-  <>
-    <span>THE   GLOW   UP</span> <span className="text-white text-2xl">✦</span>
-    <span>HAIR CARE</span> <span className="text-white text-2xl">✦</span>
-    <span>SKIN THERAPY</span> <span className="text-white text-2xl">✦</span>
-    <span>London Studio</span> <span className="text-white text-2xl">✦</span>
-    <span>Artsy Nails</span> <span className="text-white text-2xl">✦</span>
-  </>
-);
+
 
 const Home: React.FC = () => {
   const [activeService, setActiveService] = useState(0);
 
   return (
     // Updated selection color to a solid amber that matches the gradient (gradients don't work in selection)
-    <div className="w-full bg-[#0a0a0a] text-[#e5e5e5] font-sans selection:bg-amber-400/30 overflow-x-hidden">
+    <div className="w-full bg-[#0a0a0a] text-[#e5e5e5] font-sans selection:bg-[#D7BD9A]/30 overflow-x-hidden">
 
       {/* --- INJECT CSS ANIMATION DIRECTLY --- */}
       <style>{`
@@ -109,34 +93,35 @@ const Home: React.FC = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-serif italic text-white mix-blend-difference leading-[0.85] tracking-tighter flex flex-col items-center lg:items-start w-full">
+          <h1 className="font-serif italic text-white leading-[0.9] tracking-tighter flex flex-col w-full items-center gap-2 lg:gap-1">
 
             {/* Line 1: True */}
-            <span className="text-[17vw] md:text-[14vw] lg:text-[9vw] self-start lg:self-auto pl-4 lg:pl-0">
+            <span className="text-[9vw] md:text-[7vw] lg:text-[4.5vw]">
               True
             </span>
 
-            {/* Line 2: Unfiltered (Gradient) */}
-            {/* Added 'self-end' on mobile to create visual rhythm/stagger */}
-            <span className="block font-light bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent 
-                             text-[17vw] md:text-[14vw] lg:text-[9vw] 
-                             pr-4 lg:pr-0 pl-0 lg:pl-24 
-                             self-end lg:self-auto">
+            {/* Line 2: Unfiltered */}
+            <span className="block font-light text-[9vw] md:text-[7vw] lg:text-[4.5vw]" style={{ color: '#D7BD9A' }}>
               Unfiltered
             </span>
 
             {/* Line 3: Glow Up */}
-            <span className="text-[17vw] md:text-[14vw] lg:text-[9vw] self-start lg:self-auto pl-4 lg:pl-0">
-              Glow Up<span className="text-amber-500 italic">.</span>
+            <span className="text-[9vw] md:text-[7vw] lg:text-[4.5vw]">
+              Glow Up<span style={{ color: '#D7BD9A' }}>.</span>
             </span>
 
           </h1>
 
+          {/* Subheading Description */}
+          <p className="mt-8 md:mt-10 lg:mt-8 text-center text-sm md:text-base font-light text-[#e5e5e5] max-w-2xl">
+            From sleek hair styling to expertly finished nails, we offer luxury services for women and men with precision and attention to every detail.
+          </p>
+
           {/* CTA Area */}
           <div className="mt-10 lg:mt-12 w-full flex justify-center lg:justify-start lg:pl-24 mb-8 lg:mb-0">
-            <Link to="/booking" className="group relative px-8 py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-sm lg:bg-transparent">
+            <Link to="/booking" className="group relative px-8 py-4 rounded-full border border-white/20 hover:border-[#D7BD9A]/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-sm lg:bg-transparent">
               {/* Gradient BG */}
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A] to-[#D7BD9A] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
               {/* Content */}
               <span className="relative z-10 flex items-center gap-3 font-medium tracking-widest text-xs uppercase text-white group-hover:text-black transition-colors duration-300">
                 Book Experience
@@ -151,7 +136,7 @@ const Home: React.FC = () => {
         <div className="w-full flex-grow lg:flex-grow-0 lg:w-[45%] h-[50vh] lg:h-full relative flex items-end justify-center lg:pr-12 overflow-hidden mt-auto">
 
           {/* Ambient Gradient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] lg:w-[300px] h-[250px] lg:h-[300px] bg-gradient-to-tr from-amber-200/20 to-amber-600/10 rounded-full blur-[90px] -z-10"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] lg:w-[300px] h-[250px] lg:h-[300px] bg-gradient-to-tr from-[#D7BD9A]/20 to-[#D7BD9A]/10 rounded-full blur-[90px] -z-10"></div>
 
           {/* The Model */}
           <img
@@ -167,160 +152,61 @@ const Home: React.FC = () => {
         </div>
       </section>
       {/* --- SCROLLING TICKER (Gradient Background) --- */}
-      <div className="py-2 bg-gradient-to-r from-amber-200 to-amber-600 -rotate-1 scale-110 origin-left border-y-4 border-black relative z-20 shadow-xl overflow-hidden flex">
-        {/* Set 1 */}
-        <div className="ticker-slide flex-shrink-0 flex gap-12 items-center text-black font-black text-4xl md:text-6xl uppercase italic tracking-tighter pr-12">
-          <TickerText />
+ 
+
+
+      {/* --- ABOUT/DESCRIPTION SECTION --- */}
+      <section className="relative py-24 md:py-32 px-4 md:px-12 lg:px-24 bg-[#0a0a0a] border-b border-white/5">
+        
+        {/* Background Grid Pattern */}
+        <div className="absolute inset-0 z-0 opacity-[0.02]"
+          style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
         </div>
-        {/* Set 2 (Duplicate for Loop) */}
-        <div className="ticker-slide flex-shrink-0 flex gap-12 items-center text-black font-black text-4xl md:text-6xl uppercase italic tracking-tighter pr-12">
-          <TickerText />
-        </div>
-      </div>
 
-      <section className="py-4 md:py-4 px-2 md:px-6">
-
-        {/* Main Container */}
-        <div className="bg-[#0a0a0a] rounded-[2rem] md:rounded-[4rem] overflow-hidden border border-white/5 shadow-2xl">
-          <div className="container mx-auto px-6 md:px-16 py-12 md:py-24">
-
-            {/* Header */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-              <div>
-
-                {/* UPDATED TYPOGRAPHY */}
-                <h2 className="text-white leading-[0.8]">
-
-                  <span className="font-serif italic text-4xl md:text-6xl bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent">
-                    The
-                  </span> <span className="font-serif italic text-4xl md:text-6xl bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent">
-                    Menu
-                  </span>
-                </h2>
-              </div>
-
-
-            </div>
-
-            <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
-
-              {/* --- LEFT: SERVICE LIST --- */}
-              <div className="lg:w-1/2 flex flex-col">
-                {services.map((service, index) => (
-                  <div
-                    key={index}
-                    onMouseEnter={() => setActiveService(index)}
-                    onClick={() => setActiveService(index)}
-                    className="group relative border-b border-white/10 last:border-0"
-                  >
-                    <div className={`
-                    cursor-pointer py-8 md:py-10 transition-all duration-500 ease-out flex flex-col
-                    ${activeService === index ? 'lg:pl-8 opacity-100' : 'opacity-60 hover:opacity-100'}
-                  `}>
-
-                      {/* Top Row: ID + Title + Arrow */}
-                      <div className="flex justify-between items-center w-full">
-                        <div className="flex items-baseline gap-4 md:gap-8">
-                          <span className="font-mono text-xs text-white/40">0{service.id}</span>
-
-                          <h3 className={`
-                          text-2xl md:text-4xl font-serif transition-colors duration-300
-                          ${activeService === index
-                              ? 'bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent'
-                              : 'text-white'}
-                        `}>
-                            {service.name}
-                          </h3>
-                        </div>
-
-                        {/* Animated Arrow */}
-                        <div className={`
-                        w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/10 flex items-center justify-center
-                        transition-all duration-500
-                        ${activeService === index ? 'rotate-90 md:rotate-[-45deg] border-amber-400/50 bg-amber-400/10 text-amber-200' : 'text-white/30'}
-                      `}>
-                          <ArrowRight className="w-4 h-4" />
-                        </div>
-                      </div>
-
-                      {/* EXPANDABLE CONTENT (Description + Mobile Image) */}
-                      {/* Increased max-h to accommodate mobile image */}
-                      <div className={`
-                      overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
-                      ${activeService === index ? 'max-h-[600px] opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'}
-                    `}>
-                        <p className="text-white/70 font-light leading-relaxed max-w-md md:pl-12 text-sm md:text-base">
-                          {service.description}
-                        </p>
-
-                        {/* --- MOBILE ONLY IMAGE --- */}
-                        <div className="lg:hidden mt-6 w-full rounded-2xl overflow-hidden relative aspect-video">
-                          <img
-                            src={service.image}
-                            alt={service.name}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                          <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white text-xs font-bold tracking-widest uppercase">
-                            Explore Service <ArrowUpRight className="w-3 h-3 text-amber-400" />
-                          </div>
-                        </div>
-
-                        {/* Desktop Link (Text only) */}
-                        <div className="hidden lg:flex pl-12 mt-4 items-center gap-2 text-amber-400 text-xs tracking-widest uppercase hover:underline">
-                          View Details <ArrowUpRight className="w-3 h-3" />
-                        </div>
-                      </div>
-
-                      {/* Active Indicator Line (Left Side - Desktop Only) */}
-                      <div className={`
-                      hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-[2px] bg-gradient-to-b from-amber-200 to-amber-600 transition-all duration-500
-                      ${activeService === index ? 'h-16' : 'h-0'}
-                    `}></div>
-
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* --- RIGHT: STICKY IMAGE DISPLAY (Desktop Only) --- */}
-              <div className="hidden lg:block lg:w-1/2 relative">
-                <div className="sticky top-24 w-full h-[600px] rounded-[2rem] overflow-hidden bg-neutral-900 border border-white/5">
-
-                  {services.map((service, index) => (
-                    <div
-                      key={index}
-                      className={`
-                      absolute inset-0 w-full h-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
-                      ${activeService === index
-                          ? 'opacity-100 scale-100 visible'
-                          : 'opacity-0 scale-110 invisible delay-100'}
-                    `}
-                    >
-                      <img
-                        src={service.image}
-                        alt={service.name}
-                        className="w-full h-full object-cover grayscale-[20%] contrast-110"
-                      />
-
-                      {/* Aesthetic Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
-
-                      {/* Floating Caption */}
-                      <div className="absolute bottom-8 left-8">
-                        <p className="text-white/80 font-mono text-xs uppercase tracking-widest backdrop-blur-md bg-white/5 px-4 py-2 rounded-full border border-white/10 inline-block">
-                          {service.name} — Experience
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-
-                </div>
-              </div>
-            </div>
+        <div className="relative z-10 max-w-5xl mx-auto">
+          
+          {/* Decorative Top Accent */}
+          <div className="mb-12 flex items-center gap-3">
+            <div className="w-8 h-[2px] bg-gradient-to-r from-[#D7BD9A] to-transparent"></div>
+            <span className="font-mono text-xs font-bold tracking-[0.3em] uppercase opacity-60 text-[#D7BD9A]">
+              Our Studio
+            </span>
           </div>
+
+          {/* About Us Heading */}
+          <h2 className="text-5xl md:text-3xl lg:text-5xl font-serif italic font-light mb-12" style={{ color: 'white' }}>
+            About <span className="text-white/40 italic">Us</span>
+          </h2>
+
+          {/* Main Description */}
+          <div className="space-y-8 md:space-y-12">
+            
+            {/* First Paragraph */}
+            <p className="font-light text-md md:text-lg leading-relaxed text-[#e5e5e5] max-w-3xl">
+              At The Glow Up London, we offer a full range of premium hair services for men and women from precision cuts and stylish colouring to expert styling, alongside luxurious nail treatments for women, including manicures and nail art. Every service is designed to enhance your confidence, leaving you feeling polished, pampered, and ready to shine.
+            </p>
+
+            {/* Decorative Divider */}
+            <div className="flex items-center gap-3 py-4">
+              <div className="flex-grow h-[1px] bg-gradient-to-r from-white/20 to-transparent"></div>
+              
+              <div className="flex-grow h-[1px] bg-gradient-to-l from-white/20 to-transparent"></div>
+            </div>
+
+            {/* Second Paragraph */}
+            <p className="font-light text-md md:text-lg leading-relaxed text-[#e5e5e5] max-w-3xl">
+              With a calm, welcoming atmosphere, every detail is thoughtfully designed to enhance your confidence and leave you feeling polished, pampered, and radiant.
+            </p>
+
+          </div>
+
+          {/* Decorative Bottom Accent */}
+          <div className="mt-12 w-8 h-[2px] bg-gradient-to-r from-[#D7BD9A] to-transparent"></div>
+
         </div>
+
       </section>
+
       <section className="py-24 md:py-24 w-full flex justify-center bg-[#0a0a0a]">
         <VideoSection />
       </section>
@@ -330,7 +216,7 @@ const Home: React.FC = () => {
         <Testimonials />
       </section>
 
-      <section className="relative mt-24 mx-2 md:mx-4 mb-4">
+  <section className="relative mt-24 mx-2 md:mx-4 mb-4">
 
         <div className="relative w-full overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-[#E8DCC4] text-[#1a1a1a]">
 
@@ -406,20 +292,10 @@ const Home: React.FC = () => {
 
           </div>
 
-          {/* --- 3. BOTTOM SCROLLING MARQUEE (Aesthetic Touch) --- */}
-          <div className="absolute bottom-0 left-0 w-full py-3 bg-black/5 border-t border-black/5 backdrop-blur-sm overflow-hidden flex">
-            <div className="animate-marquee whitespace-nowrap flex gap-8 text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest opacity-40 text-black">
-              {[...Array(10)].map((_, i) => (
-                <span key={i} className="flex items-center gap-8">
-                  London Studio • Hair • Skin • Nails <span className="text-amber-600">✦</span>
-                </span>
-              ))}
-            </div>
-          </div>
+
 
         </div>
       </section>
-
       {/* --- INJECT ANIMATIONS --- */}
       <style>{`
         @keyframes blob {

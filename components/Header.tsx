@@ -38,8 +38,8 @@ const Header: React.FC = () => {
               to={link.path}
               className={`text-xs xl:text-sm uppercase tracking-widest transition-all duration-300 
                 ${isActive(link.path)
-                  ? 'bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent font-bold'
-                  : 'text-gray-300 hover:text-amber-400' // Hover uses the solid lighter amber for smoothness
+                  ? 'bg-gradient-to-r from-[#D7BD9A] to-[#D7BD9A] bg-clip-text text-transparent font-bold'
+                  : 'text-gray-300 hover:text-[#D7BD9A]'
                 }`}
             >
               {link.name}
@@ -51,7 +51,7 @@ const Header: React.FC = () => {
         <div className="flex items-center gap-4">
           <Link
             to="/booking"
-            className="hidden sm:block bg-gradient-to-r from-amber-200 to-amber-600 text-black px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-none hover:bg-white transition-all duration-300"
+            className="hidden sm:block bg-gradient-to-r from-[#D7BD9A] to-[#D7BD9A] text-black px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-none hover:bg-white transition-all duration-300"
           >
             Book Now
           </Link>
@@ -59,7 +59,7 @@ const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-white hover:text-amber-400 transition-colors"
+            className="lg:hidden text-white hover:text-[#D7BD9A] transition-colors"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -67,7 +67,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Nav Dropdown */}
         {isOpen && (
-          <div className="absolute top-full left-0 right-0 mt-2 mx-0 p-6 glass-nav rounded-2xl flex flex-col items-center gap-6 lg:hidden animate-fade-in-down bg-neutral-900/95 backdrop-blur-xl border border-amber-500/20">
+          <div className="absolute top-full left-0 right-0 mt-2 mx-0 p-6 glass-nav rounded-2xl flex flex-col items-center gap-6 lg:hidden animate-fade-in-down bg-neutral-900/95 backdrop-blur-xl border border-[#D7BD9A]/20">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -75,8 +75,8 @@ const Header: React.FC = () => {
                 onClick={() => setIsOpen(false)}
                 className={`text-lg uppercase tracking-wider 
                   ${isActive(link.path)
-                    ? 'bg-gradient-to-r from-amber-200 to-amber-600 bg-clip-text text-transparent font-bold'
-                    : 'text-white hover:text-amber-400'
+                    ? 'bg-gradient-to-r from-[#D7BD9A] to-[#D7BD9A] bg-clip-text text-transparent font-bold'
+                    : 'text-white hover:text-[#D7BD9A]'
                   }`}
               >
                 {link.name}
@@ -85,7 +85,7 @@ const Header: React.FC = () => {
             <Link
               to="/booking"
               onClick={() => setIsOpen(false)}
-              className="bg-gradient-to-r from-amber-200 to-amber-600 text-black px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-none hover:bg-white transition-all duration-300 w-full text-center"
+              className="bg-gradient-to-r from-[#D7BD9A] to-[#D7BD9A] text-black px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-none hover:bg-white transition-all duration-300 w-full text-center"
             >
               Book Now
             </Link>

@@ -23,9 +23,9 @@ const Footer: React.FC = () => {
             {/* Left: Heading & Input */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 w-full md:w-auto text-center md:text-left">
               <h3 className="text-3xl md:text-5xl font-serif italic whitespace-nowrap">
-                Join the <span className="text-amber-500/80">Circle.</span>
+                Join the <span style={{ color: '#D7BD9A' }}>Circle.</span>
               </h3>
-              <div className="flex items-center gap-4 w-full md:w-96 border-b border-white/20 pb-2 group focus-within:border-amber-400 transition-colors">
+              <div className="flex items-center gap-4 w-full md:w-96 border-b border-white/20 pb-2 group focus-within:border-[#D7BD9A] transition-colors">
                 <input
                   type="email"
                   placeholder="Email Address"
@@ -69,15 +69,15 @@ const Footer: React.FC = () => {
                 Refining Beauty <br /> Standards since 2024
               </p>
               <div className="flex gap-6">
-                <a href="#" className="hover:text-amber-400 transition-colors"><Instagram size={22} /></a>
-                <a href="#" className="hover:text-amber-400 transition-colors"><Facebook size={22} /></a>
+                <a href="#" className="hover:text-[#D7BD9A] transition-colors"><Instagram size={22} /></a>
+                <a href="#" className="hover:text-[#D7BD9A] transition-colors"><Facebook size={22} /></a>
               </div>
             </div>
           </div>
 
           {/* COL 2: ADDRESS */}
           <div className="md:col-span-1 border-r border-b border-white/10 p-10 hover:bg-white/[0.02] transition-colors group flex flex-col justify-center items-start gap-8 min-h-[350px]">
-            <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-amber-600/70 flex items-center gap-3">
+            <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-[#D7BD9A]/70 flex items-center gap-3">
               <MapPin size={16} /> The Studio
             </h4>
 
@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
                 114 High Street<br />
                 Brentford, TW8 8AF
               </address>
-              <a href="https://maps.google.com" className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-amber-400 transition-colors">
+              <a href="https://maps.google.com" className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors">
                 Get Directions <ArrowRight size={12} />
               </a>
             </div>
@@ -95,14 +95,14 @@ const Footer: React.FC = () => {
 
           {/* COL 3: CONTACT */}
           <div className="md:col-span-1 border-r border-b border-white/10 p-10 hover:bg-white/[0.02] transition-colors group flex flex-col justify-center items-start gap-8 min-h-[350px]">
-            <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-amber-600/70 flex items-center gap-3">
+            <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-[#D7BD9A]/70 flex items-center gap-3">
               <Phone size={16} /> Connect
             </h4>
 
             <div className="flex flex-col gap-8 w-full">
               <div>
                 <span className="block text-[10px] text-neutral-600 uppercase tracking-widest mb-2">Bookings</span>
-                <a href="tel:07494452332" className="block text-xl font-medium text-white hover:text-amber-400 transition-colors">07494 452332</a>
+                <a href="tel:07494452332" className="block text-xl font-medium text-white hover:text-[#D7BD9A] transition-colors">07494 452332</a>
               </div>
               <div>
                 <span className="block text-[10px] text-neutral-600 uppercase tracking-widest mb-2">Enquiries</span>
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
 
           {/* COL 4: HOURS */}
           <div className="md:col-span-1 border-r border-b border-white/10 p-10 hover:bg-white/[0.02] transition-colors flex flex-col justify-center items-start gap-8 min-h-[350px]">
-            <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-amber-600/70 flex items-center gap-3">
+            <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-[#D7BD9A]/70 flex items-center gap-3">
               <Clock size={16} /> Opening Hours
             </h4>
             <ul className="space-y-4 w-full">

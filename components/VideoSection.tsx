@@ -58,7 +58,7 @@ const VideoSection: React.FC = () => {
         {/* --- FLOATING HEADER --- */}
         <div className="absolute top-0 left-0 z-20 p-6 md:p-12 w-full flex justify-between items-start pointer-events-none">
           <div className="flex flex-col">
-            <span className="font-mono text-xs text-amber-400 tracking-[0.3em] uppercase mb-2">
+            <span className="font-mono text-xs text-[#D7BD9A] tracking-[0.3em] uppercase mb-2">
               The Process
             </span>
             <h2 className="text-white font-serif italic text-3xl md:text-5xl opacity-0 animate-fade-in-up"
@@ -126,7 +126,7 @@ const VideoSection: React.FC = () => {
               </div>
 
               {/* Play Icon Circle */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-500 group-hover/btn:bg-amber-400 group-hover/btn:border-amber-400 group-hover/btn:shadow-[0_0_30px_rgba(251,191,36,0.4)]">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-500 group-hover/btn:bg-[#D7BD9A] group-hover/btn:border-[#D7BD9A] group-hover/btn:shadow-[0_0_30px_rgba(215,189,154,0.4)]">
                 <Play className="w-6 h-6 md:w-8 md:h-8 text-white group-hover/btn:text-black fill-current ml-1" />
               </div>
             </button>
