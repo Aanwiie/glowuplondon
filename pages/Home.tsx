@@ -179,19 +179,12 @@ const Home: React.FC = () => {
           </h2>
 
           {/* Main Description */}
-          <div className="space-y-8 md:space-y-12">
+          <div className="space-y-2 md:space-y-2">
             
             {/* First Paragraph */}
             <p className="font-light text-md md:text-lg leading-relaxed text-[#e5e5e5] max-w-3xl">
               At The Glow Up London, we offer a full range of premium hair services for men and women from precision cuts and stylish colouring to expert styling, alongside luxurious nail treatments for women, including manicures and nail art. Every service is designed to enhance your confidence, leaving you feeling polished, pampered, and ready to shine.
             </p>
-
-            {/* Decorative Divider */}
-            <div className="flex items-center gap-3 py-4">
-              <div className="flex-grow h-[1px] bg-gradient-to-r from-white/20 to-transparent"></div>
-              
-              <div className="flex-grow h-[1px] bg-gradient-to-l from-white/20 to-transparent"></div>
-            </div>
 
             {/* Second Paragraph */}
             <p className="font-light text-md md:text-lg leading-relaxed text-[#e5e5e5] max-w-3xl">
