@@ -59,7 +59,7 @@ const Home: React.FC = () => {
 
   return (
     // Updated selection color to a solid amber that matches the gradient (gradients don't work in selection)
-    <div className="w-full bg-[#0a0a0a] text-[#e5e5e5] font-sans selection:bg-[#D7BD9A]/30 overflow-x-hidden">
+    <div className="w-full bg-[#0a0a0a] text-[#e5e5e5] font-sans selection:bg-amber-400/30 overflow-x-hidden">
 
       {/* --- INJECT CSS ANIMATION DIRECTLY --- */}
       <style>{`
@@ -118,10 +118,10 @@ const Home: React.FC = () => {
           </p>
 
           {/* CTA Area */}
-          <div className="mt-10 lg:mt-12 w-full flex justify-center lg:justify-start lg:pl-24 mb-8 lg:mb-0">
-            <Link to="/booking" className="group relative px-8 py-4 rounded-full border border-white/20 hover:border-[#D7BD9A]/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-sm lg:bg-transparent">
+          <div className="mt-10 lg:mt-12 w-full flex justify-center lg:justify-start lg:pl-40 mb-8 lg:mb-0">
+            <Link to="/booking" className="group relative px-8 py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-sm lg:bg-transparent">
               {/* Gradient BG */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A] to-[#D7BD9A] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A] to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
               {/* Content */}
               <span className="relative z-10 flex items-center gap-3 font-medium tracking-widest text-xs uppercase text-white group-hover:text-black transition-colors duration-300">
                 Book Experience
@@ -136,7 +136,7 @@ const Home: React.FC = () => {
         <div className="w-full flex-grow lg:flex-grow-0 lg:w-[45%] h-[50vh] lg:h-full relative flex items-end justify-center lg:pr-12 overflow-hidden mt-auto">
 
           {/* Ambient Gradient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] lg:w-[300px] h-[250px] lg:h-[300px] bg-gradient-to-tr from-[#D7BD9A]/20 to-[#D7BD9A]/10 rounded-full blur-[90px] -z-10"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] lg:w-[300px] h-[250px] lg:h-[300px] bg-gradient-to-tr from-amber-200/20 to-amber-600/10 rounded-full blur-[90px] -z-10"></div>
 
           {/* The Model */}
           <img
@@ -216,7 +216,7 @@ const Home: React.FC = () => {
         <Testimonials />
       </section>
 
-  <section className="relative mt-24 mx-2 md:mx-4 mb-4">
+      <section className="relative mt-16 mx-2 md:mx-4 mb-4">
 
         <div className="relative w-full overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-[#E8DCC4] text-[#1a1a1a]">
 
@@ -226,9 +226,9 @@ const Home: React.FC = () => {
             <div className="absolute inset-0 bg-[#E8DCC4]"></div>
 
             {/* Moving Gradient Orbs */}
-            <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-amber-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob"></div>
-            <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] bg-amber-400 rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob animation-delay-2000"></div>
-            <div className="absolute top-[20%] right-[20%] w-[50%] h-[50%] bg-orange-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-50 animate-blob animation-delay-4000"></div>
+            <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-[#D7BD9A] rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob"></div>
+            <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] bg-[#D7BD9A] rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob animation-delay-2000"></div>
+            <div className="absolute top-[20%] right-[20%] w-[50%] h-[50%] bg-[#D7BD9A] rounded-full mix-blend-multiply filter blur-[80px] opacity-50 animate-blob animation-delay-4000"></div>
 
             {/* Grain Texture (Crucial for the 'Unfiltered' look) */}
             <div className="absolute inset-0 opacity-30 mix-blend-overlay"
@@ -237,13 +237,13 @@ const Home: React.FC = () => {
           </div>
 
           {/* --- 2. CONTENT CONTAINER --- */}
-          <div className="relative z-10 container mx-auto px-6 py-2 md:py-8 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
+          <div className="relative z-10 mx-auto px-4 md:px-6 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 max-w-2xl">
 
             {/* Left: Typography */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
 
               {/* Decorative Tag */}
-              <div className="mb-6 flex items-center gap-2">
+              <div className="mb-4 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-black animate-pulse"></div>
                 <span className="font-mono text-xs font-bold tracking-[0.3em] uppercase opacity-60">
                   Limited Availability
@@ -251,17 +251,13 @@ const Home: React.FC = () => {
               </div>
 
               <h2 className="font-serif leading-[0.9]">
-                <span className="block text-5xl md:text-7xl lg:text-8xl italic opacity-80 mb-2">
+                <span className="block text-2xl md:text-3xl lg:text-4xl italic opacity-80 mb-1">
                   Ready to
                 </span>
-                <span className="block text-7xl md:text-9xl lg:text-[10rem] font-black tracking-tighter uppercase mix-blend-darken">
+                <span className="block text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter uppercase mix-blend-darken">
                   Glow Up?
                 </span>
               </h2>
-{/* 
-              <p className="mt-8 text-black/70 max-w-md font-medium text-lg md:text-xl leading-relaxed">
-                The mirror is waiting. Slots for this month are filling rapidly—secure your transformation today.
-              </p> */}
             </div>
 
             {/* Right: Magnetic Button */}
@@ -274,8 +270,8 @@ const Home: React.FC = () => {
                 to="/booking"
                 className="group relative inline-flex items-center gap-4 px-8 py-4 bg-[#1a1a1a] text-[#E8DCC4] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 hover:bg-black shadow-2xl border border-white/5"
               >
-                {/* Hover Fill Effect (Amber Glow) */}
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-200/20 to-amber-600/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+                {/* Hover Fill Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A]/20 to-[#D7BD9A]/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
 
                 {/* Text */}
                 <span className="relative z-10 uppercase tracking-[0.2em] text-xs font-bold">
@@ -285,17 +281,16 @@ const Home: React.FC = () => {
                 {/* Animated Arrow Icon (Small & Sharp) */}
                 <div className="relative z-10 w-5 h-5 overflow-hidden">
                   <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 transition-transform duration-500 ease-out group-hover:translate-x-full group-hover:-translate-y-full" />
-                  <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 -translate-x-full translate-y-full transition-transform duration-500 ease-out group-hover:translate-x-0 group-hover:translate-y-0 text-amber-400" />
+                  <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 -translate-x-full translate-y-full transition-transform duration-500 ease-out group-hover:translate-x-0 group-hover:translate-y-0" style={{ color: '#D7BD9A' }} />
                 </div>
               </Link>
             </div>
 
           </div>
 
-
-
         </div>
       </section>
+
       {/* --- INJECT ANIMATIONS --- */}
       <style>{`
         @keyframes blob {

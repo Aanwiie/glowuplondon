@@ -172,7 +172,7 @@ const VideoSection: React.FC = () => {
               </Link>
 
               {/* Mobile CTA */}
-              <Link to="/gallery" className="md:hidden text-amber-400 text-xs font-bold uppercase tracking-widest flex items-center gap-2 bg-black/40 px-3 py-2 rounded-lg backdrop-blur-sm">
+              <Link to="/gallery" className="md:hidden text-[#D7BD9A] text-xs font-bold uppercase tracking-widest flex items-center gap-2 bg-black/40 px-3 py-2 rounded-lg backdrop-blur-sm">
                 View Gallery <ArrowRight className="w-4 h-4" />
               </Link>
 
