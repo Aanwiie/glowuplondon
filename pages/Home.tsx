@@ -80,11 +80,11 @@ const Home: React.FC = () => {
         </div>
 
         {/* --- LEFT: TYPOGRAPHY & CTA --- */}
-        {/* Mobile: pt-24 (space for header) | Desktop: centered vertically */}
-        <div className="w-full lg:w-[55%] flex-shrink-0 flex flex-col justify-center px-4 md:px-12 lg:pl-24 pt-20 lg:pt-0 relative z-10 lg:h-full lg:border-r border-white/5">
+        {/* Adjusted padding and alignment for "Proper" positioning */}
+        <div className="w-full lg:w-[55%] flex-shrink-0 flex flex-col justify-center px-6 md:px-16 lg:pl-24 pt-24 lg:pt-0 relative z-10 lg:h-full lg:border-r border-white/5">
 
           {/* --- NEW LOGO (Mobile Only) --- */}
-          <div className="lg:hidden w-full flex justify-center mb-6">
+          <div className="lg:hidden w-full flex justify-center mb-8">
             <img
               src="/logo2.png"
               alt="Brand Logo"
@@ -93,32 +93,38 @@ const Home: React.FC = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-serif italic text-white leading-[0.9] tracking-tighter flex flex-col w-full items-center gap-2 lg:gap-1">
+          {/* UPDATES: 
+              1. Removed 'gap-6', added negative margin for tighter stacking 
+              2. Changed 'items-center' to 'lg:items-start' for desktop alignment
+          */}
+          <h1 className="font-serif italic text-white leading-[1.2] md:leading-[1.0] tracking-tighter flex flex-col w-full items-center lg:items-start text-center lg:text-left">
 
-            {/* Line 1: True */}
-            <span className="text-[9vw] md:text-[7vw] lg:text-[4.5vw]">
+            {/* Line 1 */}
+            <span className="text-[14vw] md:text-[9vw] lg:text-[5.5vw] relative z-10">
               True
             </span>
 
-            {/* Line 2: Unfiltered */}
-            <span className="block font-light text-[9vw] md:text-[7vw] lg:text-[4.5vw]" style={{ color: '#D7BD9A' }}>
+            {/* Line 2 - Slightly indented on desktop for 'Editorial' look */}
+            <span className="block font-light text-[14vw] md:text-[9vw] lg:text-[5.5vw] lg:ml-16 -mt-2 md:-mt-4 relative z-20" style={{ color: '#D7BD9A' }}>
               Unfiltered
             </span>
 
-            {/* Line 3: Glow Up */}
-            <span className="text-[9vw] md:text-[7vw] lg:text-[4.5vw]">
+            {/* Line 3 */}
+            <span className="text-[14vw] md:text-[9vw] lg:text-[5.5vw] -mt-2 md:-mt-4 relative z-10">
               Glow Up<span style={{ color: '#D7BD9A' }}>.</span>
             </span>
 
           </h1>
 
           {/* Subheading Description */}
-          <p className="mt-8 md:mt-10 lg:mt-8 text-center text-sm md:text-base font-light text-[#e5e5e5] max-w-2xl">
+          {/* Aligned left on desktop, centered on mobile */}
+          <p className="mt-8 md:mt-10 lg:mt-8 text-center lg:text-left text-sm md:text-lg font-light text-[#e5e5e5] max-w-xl mx-auto lg:mx-0 leading-relaxed opacity-80">
             From sleek hair styling to expertly finished nails, we offer luxury services for women and men with precision and attention to every detail.
           </p>
 
           {/* CTA Area */}
-          <div className="mt-10 lg:mt-12 w-full flex justify-center lg:justify-start lg:pl-40 mb-8 lg:mb-0">
+          {/* Aligned left on desktop, centered on mobile */}
+          <div className="mt-10 lg:mt-12 w-full flex justify-center lg:justify-start mb-8 lg:mb-0">
             <Link to="/booking" className="group relative px-8 py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-sm lg:bg-transparent">
               {/* Gradient BG */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A] to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
@@ -132,7 +138,6 @@ const Home: React.FC = () => {
         </div>
 
         {/* --- RIGHT: AESTHETIC VISUAL --- */}
-        {/* Mobile: Grows to fill remaining space, minimum height ensures visibility */}
         <div className="w-full flex-grow lg:flex-grow-0 lg:w-[45%] h-[50vh] lg:h-full relative flex items-end justify-center lg:pr-12 overflow-hidden mt-auto">
 
           {/* Ambient Gradient Glow */}
@@ -152,19 +157,19 @@ const Home: React.FC = () => {
         </div>
       </section>
       {/* --- SCROLLING TICKER (Gradient Background) --- */}
- 
+
 
 
       {/* --- ABOUT/DESCRIPTION SECTION --- */}
       <section className="relative py-24 md:py-32 px-4 md:px-12 lg:px-24 bg-[#0a0a0a] border-b border-white/5">
-        
+
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 z-0 opacity-[0.02]"
           style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto">
-          
+
           {/* Decorative Top Accent */}
           <div className="mb-12 flex items-center gap-3">
             <div className="w-8 h-[2px] bg-gradient-to-r from-[#D7BD9A] to-transparent"></div>
@@ -180,7 +185,7 @@ const Home: React.FC = () => {
 
           {/* Main Description */}
           <div className="space-y-2 md:space-y-2">
-            
+
             {/* First Paragraph */}
             <p className="font-light text-md md:text-lg leading-relaxed text-[#e5e5e5] max-w-3xl">
               At The Glow Up London, we offer a full range of premium hair services for men and women from precision cuts and stylish colouring to expert styling, alongside luxurious nail treatments for women, including manicures and nail art. Every service is designed to enhance your confidence, leaving you feeling polished, pampered, and ready to shine.

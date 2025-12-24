@@ -173,13 +173,13 @@ const Gallery: React.FC = () => {
   }, [selectedIndex, nextProject, prevProject]);
 
   return (
-    <div className="bg-neutral-950 min-h-screen pt-28 pb-24 text-white font-sans selection:bg-amber-500/30">
+    <div className="bg-neutral-950 min-h-screen pt-28 pb-24 text-white font-sans selection:bg-[#D7BD9A]/30">
 
       {/* HEADER SECTION */}
       <div className="container mx-auto px-6 lg:px-12 max-w-[1600px] mb-20">
         <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-8 gap-6">
           <div>
-            <p className="text-amber-500 font-bold tracking-[0.3em] text-xs uppercase mb-3 pl-1">
+            <p className="text-[#D7BD9A] font-bold tracking-[0.3em] text-xs uppercase mb-3 pl-1">
               Portfolio 2024
             </p>
             <h1 className="text-5xl md:text-7xl font-serif tracking-tight text-white">
@@ -210,7 +210,7 @@ const Gallery: React.FC = () => {
               className="group cursor-pointer flex flex-col gap-4"
             >
               {/* Image Card - FORCED ASPECT RATIO 3:4 for perfect evenness */}
-              <div className="relative w-full aspect-[3/4] overflow-hidden rounded-md bg-neutral-900 shadow-2xl transition-all duration-500 group-hover:shadow-amber-900/10">
+              <div className="relative w-full aspect-[3/4] overflow-hidden rounded-md bg-neutral-900 shadow-2xl transition-all duration-500 group-hover:shadow-[#D7BD9A]/10">
                 {/* Image */}
                 <img
                   src={item.src}
@@ -234,7 +234,7 @@ const Gallery: React.FC = () => {
               {/* Metadata (Below Image) - Kept Visible for clean layout */}
               <div className="flex justify-between items-start pt-1 border-t border-transparent group-hover:border-white/10 transition-colors duration-500">
                 <div>
-                  <h3 className="text-xl font-serif text-white group-hover:text-amber-500 transition-colors duration-300">
+                  <h3 className="text-xl font-serif text-white group-hover:text-[#D7BD9A] transition-colors duration-300">
                     {item.title}
                   </h3>
                   <p className="text-sm text-neutral-500 mt-1 line-clamp-1 group-hover:text-neutral-400 transition-colors">
@@ -266,14 +266,14 @@ const Gallery: React.FC = () => {
             {/* --- NAVIGATION BUTTONS (FLOATING) --- */}
             <button
               onClick={prevProject}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-black/50 text-white/70 hover:text-amber-400 hover:bg-black/80 transition-all backdrop-blur-sm border border-white/10 group"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-black/50 text-white/70 hover:text-[#D7BD9A] hover:bg-black/80 transition-all backdrop-blur-sm border border-white/10 group"
             >
               <ChevronLeft size={32} strokeWidth={1} className="group-hover:-translate-x-1 transition-transform" />
             </button>
 
             <button
               onClick={nextProject}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-black/50 text-white/70 hover:text-amber-400 hover:bg-black/80 transition-all backdrop-blur-sm border border-white/10 group"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-black/50 text-white/70 hover:text-[#D7BD9A] hover:bg-black/80 transition-all backdrop-blur-sm border border-white/10 group"
             >
               <ChevronRight size={32} strokeWidth={1} className="group-hover:translate-x-1 transition-transform" />
             </button>
@@ -301,13 +301,13 @@ const Gallery: React.FC = () => {
               {/* Internal Image Navigation (Hover Only) */}
               {allImages.length > 1 && (
                 <div className="absolute bottom-8 flex gap-4 opacity-0 group-hover/stage:opacity-100 transition-opacity duration-300">
-                  <button onClick={prevInternalImage} className="p-3 rounded-full bg-white/5 hover:bg-amber-600 hover:text-white text-white/70 backdrop-blur-sm transition-colors border border-white/10">
+                  <button onClick={prevInternalImage} className="p-3 rounded-full bg-white/5 hover:bg-[#D7BD9A] hover:text-white text-white/70 backdrop-blur-sm transition-colors border border-white/10">
                     <ChevronLeft size={20} />
                   </button>
                   <div className="px-4 py-3 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 text-xs tracking-widest text-white/80 font-mono">
                     {internalImageIndex + 1} / {allImages.length}
                   </div>
-                  <button onClick={nextInternalImage} className="p-3 rounded-full bg-white/5 hover:bg-amber-600 hover:text-white text-white/70 backdrop-blur-sm transition-colors border border-white/10">
+                  <button onClick={nextInternalImage} className="p-3 rounded-full bg-white/5 hover:bg-[#D7BD9A] hover:text-white text-white/70 backdrop-blur-sm transition-colors border border-white/10">
                     <ChevronRight size={20} />
                   </button>
                 </div>
@@ -321,8 +321,8 @@ const Gallery: React.FC = () => {
               {/* Top Info */}
               <div className="flex-1 p-8 lg:p-12 overflow-y-auto">
                 <div className="flex items-center gap-3 mb-8">
-                  <span className="h-px w-6 bg-amber-500"></span>
-                  <span className="text-amber-500 text-[10px] font-bold uppercase tracking-[0.3em]">
+                  <span className="h-px w-6 bg-[#D7BD9A]"></span>
+                  <span className="text-[#D7BD9A] text-[10px] font-bold uppercase tracking-[0.3em]">
                     Project Details
                   </span>
                 </div>
@@ -361,7 +361,7 @@ const Gallery: React.FC = () => {
                       onClick={() => setInternalImageIndex(idx)}
                       className={`
                                         flex-none w-16 h-16 lg:w-20 lg:h-20 cursor-pointer overflow-hidden rounded border border-transparent transition-all
-                                        ${internalImageIndex === idx ? 'border-amber-500 opacity-100' : 'hover:border-white/20 opacity-50 hover:opacity-100'}
+                                        ${internalImageIndex === idx ? 'border-[#D7BD9A] opacity-100' : 'hover:border-white/20 opacity-50 hover:opacity-100'}
                                     `}
                     >
                       <img src={img.src} className="w-full h-full object-cover" alt="thumb" />

@@ -20,14 +20,14 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#050505] min-h-screen pt-28 pb-20 relative overflow-hidden text-white/90 font-sans selection:bg-amber-500/30 selection:text-white">
+    <div className="bg-[#050505] min-h-screen pt-28 pb-20 relative overflow-hidden text-white/90 font-sans selection:bg-[#D7BD9A]/30 selection:text-white">
 
       {/* --- BACKGROUND FX --- */}
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-overlay"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E")` }}>
       </div>
 
-      <div className="absolute top-0 right-[-10%] w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-[-10%] w-[600px] h-[600px] bg-[#D7BD9A]/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1400px] relative z-10">
@@ -35,11 +35,11 @@ const Contact: React.FC = () => {
         {/* --- HEADER --- */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 lg:mb-24 gap-8">
           <div className="max-w-2xl">
-            <span className="inline-block py-1 px-3 border border-amber-500/30 rounded-full bg-amber-900/10 text-amber-500 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-6 backdrop-blur-md">
+            <span className="inline-block py-1 px-3 border border-[#D7BD9A]/30 rounded-full bg-[#D7BD9A]/10 text-[#D7BD9A] text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-6 backdrop-blur-md">
               Concierge
             </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.9] tracking-tight">
-              Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-500 to-amber-700 italic">Touch.</span>
+              Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D7BD9A] via-[#D7BD9A] to-[#D7BD9A] italic">Touch.</span>
             </h1>
           </div>
 
@@ -83,12 +83,12 @@ const Contact: React.FC = () => {
                   <textarea
                     id="message"
                     rows={4}
-                    className="block w-full bg-transparent border-b border-white/20 py-4 text-white text-lg focus:outline-none focus:border-amber-500 transition-colors peer placeholder-transparent resize-none"
+                    className="block w-full bg-transparent border-b border-white/20 py-4 text-white text-lg focus:outline-none focus:border-[#D7BD9A] transition-colors peer placeholder-transparent resize-none"
                     placeholder="Message"
                   ></textarea>
                   <label
                     htmlFor="message"
-                    className="absolute left-0 -top-3.5 text-neutral-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-amber-500 peer-focus:text-xs pointer-events-none"
+                    className="absolute left-0 -top-3.5 text-neutral-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-[#D7BD9A] peer-focus:text-xs pointer-events-none"
                   >
                     How can we help you?
                   </label>
@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
                   <button
                     disabled={formStatus === 'sending' || formStatus === 'sent'}
                     className={`
-                          group relative overflow-hidden bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-none md:rounded-full font-bold uppercase tracking-[0.2em] text-xs transition-all duration-500 hover:bg-amber-400
+                          group relative overflow-hidden bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-none md:rounded-full font-bold uppercase tracking-[0.2em] text-xs transition-all duration-500 hover:bg-[#D7BD9A]
                           ${formStatus === 'sent' ? 'bg-green-500 hover:bg-green-500 text-white' : ''}
                         `}
                   >
@@ -147,7 +147,7 @@ const Contact: React.FC = () => {
             {/* Hours Card */}
             <div className="p-8 border border-white/10 rounded-2xl bg-gradient-to-br from-neutral-900/80 to-neutral-900/20 backdrop-blur-md">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-amber-500/10 rounded-full text-amber-500">
+                <div className="p-2 bg-[#D7BD9A]/10 rounded-full text-[#D7BD9A]">
                   <Clock size={18} />
                 </div>
                 <span className="text-white font-serif text-lg">Opening Hours</span>
@@ -193,13 +193,13 @@ const FloatingInput = ({ label, id, type }: { label: string, id: string, type: s
     <input
       type={type}
       id={id}
-      className="block w-full bg-transparent border-b border-white/20 py-4 text-white text-lg focus:outline-none focus:border-amber-500 transition-colors peer placeholder-transparent"
+      className="block w-full bg-transparent border-b border-white/20 py-4 text-white text-lg focus:outline-none focus:border-[#D7BD9A] transition-colors peer placeholder-transparent"
       placeholder={label}
       required
     />
     <label
       htmlFor={id}
-      className="absolute left-0 -top-3.5 text-neutral-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-amber-500 peer-focus:text-xs pointer-events-none"
+      className="absolute left-0 -top-3.5 text-neutral-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-[#D7BD9A] peer-focus:text-xs pointer-events-none"
     >
       {label}
     </label>
@@ -208,11 +208,11 @@ const FloatingInput = ({ label, id, type }: { label: string, id: string, type: s
 
 const ContactItem = ({ icon, label, value, subValue, href }: { icon: any, label: string, value: string, subValue?: string, href: string }) => (
   <a href={href} className="flex items-start gap-6 group hover:translate-x-2 transition-transform duration-300">
-    <div className="shrink-0 p-4 rounded-full border border-white/5 bg-white/5 text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-colors">
+    <div className="shrink-0 p-4 rounded-full border border-white/5 bg-white/5 text-[#D7BD9A] group-hover:bg-[#D7BD9A] group-hover:text-black transition-colors">
       {icon}
     </div>
     <div className="pt-1">
-      <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1 group-hover:text-amber-500 transition-colors">{label}</p>
+      <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1 group-hover:text-[#D7BD9A] transition-colors">{label}</p>
       <p className="text-xl md:text-2xl font-serif text-white">{value}</p>
       {subValue && <p className="text-neutral-400 text-sm mt-1 font-light">{subValue}</p>}
     </div>
@@ -220,7 +220,7 @@ const ContactItem = ({ icon, label, value, subValue, href }: { icon: any, label:
 );
 
 const SocialButton = ({ icon, label }: { icon: any, label: string }) => (
-  <button className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-500 transition-all group">
+  <button className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 hover:border-[#D7BD9A]/50 hover:bg-[#D7BD9A]/10 hover:text-[#D7BD9A] transition-all group">
     {icon}
     <span className="text-xs uppercase tracking-widest hidden sm:block">{label}</span>
   </button>
