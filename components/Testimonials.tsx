@@ -116,10 +116,7 @@ const Testimonials: React.FC = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#D7BD9A]/5 rounded-full blur-[80px] md:blur-[120px] -z-10"></div>
 
             {/* --- HEADER --- */}
-            <div className="container mx-auto px-6 mb-10 text-center md:text-left">
-                <span className="text-[#D7BD9A] font-mono text-xs tracking-[0.3em] uppercase mb-3 block">
-                    The Verdict
-                </span>
+            <div className="container mx-auto px-6 mb-32 text-center md:text-center">
                 <h2 className="text-3xl md:text-5xl font-serif text-white italic">
                     Client <span className="text-white/40 not-italic">Stories</span>
                 </h2>
