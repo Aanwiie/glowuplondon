@@ -5,22 +5,12 @@ const team = [
   {
     name: "Sheetal",
     role: "Expert Stylist",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
+    image: "/gallery/13.jpeg"
   },
   {
     name: "Tush",
     role: "Creative Director",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    name: "Niki",
-    role: "Nail Artist",
-    image: "https://images.unsplash.com/photo-1595854341646-a49824d69c8b?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    name: "Naz",
-    role: "Skincare Specialist",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop"
+    image: "/gallery/12.jpeg"
   },
 ];
 
@@ -42,10 +32,7 @@ const About: React.FC = () => {
       {/* --- HEADER --- */}
       <section className="pt-32 pb-20 container mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-8 backdrop-blur-sm animate-fade-in">
-            <Sparkles size={14} className="text-[#D7BD9A]" />
-            <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-400">Our Story</span>
-          </div>
+
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.9] mb-8">
             The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D7BD9A] via-[#D7BD9A] to-[#D7BD9A] italic pr-2">Soul</span>
             of the Salon.
@@ -65,7 +52,7 @@ const About: React.FC = () => {
             {/* Main Image */}
             <div className="w-[90%] aspect-[3/4] relative z-10 rounded-tr-[5rem] overflow-hidden border border-white/10 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
               <img
-                src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?q=80&w=1200&auto=format&fit=crop"
+                src="/gallery/2.jpeg"
                 alt="Interior"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
               />
@@ -80,7 +67,7 @@ const About: React.FC = () => {
             {/* Floating Detail Image */}
             <div className="absolute -bottom-12 -right-4 lg:-right-12 w-[45%] aspect-square border-4 border-[#050505] rounded-bl-[3rem] overflow-hidden z-20 shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=600&auto=format&fit=crop"
+                src="/gallery/14.jpeg"
                 alt="Detail"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
               />
@@ -129,17 +116,20 @@ const About: React.FC = () => {
       {/* --- THE COLLECTIVE (Team Section) --- */}
       <section className="py-24 bg-neutral-900/30 border-t border-white/5 relative z-10 backdrop-blur-sm">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-end mb-16">
-            <div>
-              <p className="text-[#D7BD9A] font-bold uppercase tracking-[0.2em] text-xs mb-3">The Collective</p>
-              <h2 className="text-4xl md:text-6xl font-serif text-white">Meet the Experts</h2>
-            </div>
-            <div className="hidden md:block w-32 h-[1px] bg-white/20"></div>
+          <div className="flex flex-col items-center mb-16 text-center">
+            <p className="text-[#D7BD9A] font-bold uppercase tracking-[0.2em] text-xs mb-3">The Collective</p>
+            <h2 className="text-4xl md:text-6xl font-serif text-white">Meet the Experts</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* 
+              GRID CHANGED TO FLEX CENTER
+              This ensures 2 items are perfectly centered, 
+              but they keep their original size logic (w-full max-w-xs)
+          */}
+          <div className="flex flex-wrap justify-center gap-10">
             {team.map((member, idx) => (
-              <div key={idx} className="group relative">
+              <div key={idx} className="group relative w-full sm:max-w-xs">
+                
                 {/* Card Container */}
                 <div className="relative overflow-hidden aspect-[3/4] rounded-sm bg-neutral-800 border border-white/5">
 

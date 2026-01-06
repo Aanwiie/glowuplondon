@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Facebook, ArrowUp, MapPin, Phone, Mail, ArrowRight, Clock } from 'lucide-react';
+import { Instagram, Facebook, ArrowUp, MapPin, Phone, ArrowRight, Clock } from 'lucide-react';
 
 const Footer: React.FC = () => {
 
@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
                 114 High Street<br />
                 Brentford, TW8 8AF
               </address>
-              <a href="https://maps.google.com" className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors">
+              <a href="https://maps.app.goo.gl/1bBJSB4SUuUkkN8u9" className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors">
                 Get Directions <ArrowRight size={10} />
               </a>
             </div>
@@ -106,12 +106,12 @@ const Footer: React.FC = () => {
               </div>
               <div>
                 <span className="block text-[9px] text-neutral-600 uppercase tracking-widest mb-1">Enquiries</span>
-                <a href="mailto:hello@glowup.london" className="block text-sm text-neutral-400 hover:text-white transition-colors">hello@glowup.london</a>
+                <a href="mailto:theglowuplondon@gmail.com" className="block text-sm text-neutral-400 hover:text-white transition-colors">theglowuplondon@gmail.com</a>
               </div>
             </div>
           </div>
 
-          {/* COL 4: HOURS */}
+          {/* COL 4: HOURS (UPDATED) */}
           <div className="md:col-span-1 border-r border-b border-white/10 p-6 md:p-8 hover:bg-white/[0.02] transition-colors flex flex-col justify-center items-start gap-6 min-h-[280px]">
             <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-[#D7BD9A]/70 flex items-center gap-2">
               <Clock size={14} /> Opening Hours
@@ -119,15 +119,15 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 w-full">
               <li className="flex justify-between text-sm font-light border-b border-white/5 pb-2">
                 <span className="text-neutral-500">Mon - Fri</span>
-                <span className="text-white font-mono text-xs">09 — 20</span>
+                <span className="text-white font-mono text-xs uppercase">9 am — 8 pm</span>
               </li>
               <li className="flex justify-between text-sm font-light border-b border-white/5 pb-2">
                 <span className="text-neutral-500">Saturday</span>
-                <span className="text-white font-mono text-xs">09 — 19</span>
+                <span className="text-white font-mono text-xs uppercase">9 am — 7 pm</span>
               </li>
               <li className="flex justify-between text-sm font-light border-b border-white/5 pb-2">
                 <span className="text-neutral-500">Sunday</span>
-                <span className="text-white font-mono text-xs">10 — 17</span>
+                <span className="text-white font-mono text-xs uppercase">10 am — 5 pm</span>
               </li>
             </ul>
           </div>

@@ -108,9 +108,7 @@ const Home: React.FC = () => {
               </span>
             </Link>
 
-            <div className="absolute -bottom-8 md:-bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-70 hidden md:block">
-              <ArrowDown className="w-4 h-4 text-white" />
-            </div>
+
           </div>
           
         </div>

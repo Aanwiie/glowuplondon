@@ -3,17 +3,10 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Maximize2,
-  Camera,
-  Layers
+  Maximize2
 } from 'lucide-react';
 
 // -- TYPE DEFINITIONS --
-interface RelatedImage {
-  src: string;
-  alt: string;
-}
-
 interface GalleryItem {
   id: number;
   category: string;
@@ -21,10 +14,9 @@ interface GalleryItem {
   year: string;
   description: string;
   src: string;
-  relatedImages: RelatedImage[];
 }
 
-// -- DATA CONFIGURATION (Uniform Data) --
+// -- DATA CONFIGURATION (Local Images 1-8) --
 const galleryData: GalleryItem[] = [
   {
     id: 1,
@@ -32,12 +24,7 @@ const galleryData: GalleryItem[] = [
     title: "The Golden Hour",
     year: "2024",
     description: "A complete transformation focusing on warm tones and natural lighting. This session involved a 3-stage lighting setup to capture the natural glow.",
-    src: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&q=80&w=1200",
-    relatedImages: [
-      { src: "https://images.unsplash.com/photo-1616766098956-c81f12114571?auto=format&fit=crop&w=800&q=80", alt: "Detail 1" },
-      { src: "https://images.unsplash.com/photo-1552699611-e2c208d5d9cf?auto=format&fit=crop&w=800&q=80", alt: "Detail 2" },
-      { src: "https://images.unsplash.com/photo-1534030347209-467a5b0dd909?auto=format&fit=crop&w=800&q=80", alt: "Detail 3" },
-    ]
+    src: "/gallery/1.jpeg",
   },
   {
     id: 2,
@@ -45,11 +32,7 @@ const galleryData: GalleryItem[] = [
     title: "City Minimalist",
     year: "2024",
     description: "Capturing the essence of city life with a minimalist approach. Sharp focus with blurred architectural backgrounds.",
-    src: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=800",
-    relatedImages: [
-      { src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80", alt: "Urban 1" },
-      { src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80", alt: "Urban 2" },
-    ]
+    src: "/gallery/2.jpeg",
   },
   {
     id: 3,
@@ -57,10 +40,7 @@ const galleryData: GalleryItem[] = [
     title: "Vintage Revival",
     year: "2023",
     description: "A throwback style edit bringing 90s aesthetics into modern clarity. Heavy grain usage and film simulation.",
-    src: "https://images.unsplash.com/photo-1595854341646-a49824d69c8b?auto=format&fit=crop&q=80&w=800",
-    relatedImages: [
-      { src: "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=800&q=80", alt: "Vintage 1" },
-    ]
+    src: "/gallery/3.jpeg",
   },
   {
     id: 4,
@@ -68,11 +48,7 @@ const galleryData: GalleryItem[] = [
     title: "Bold & Blue",
     year: "2024",
     description: "High contrast fashion shoot. We utilized distinct color blocking to make the subject pop against the studio backdrop.",
-    src: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=800",
-    relatedImages: [
-      { src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80", alt: "Fashion 1" },
-      { src: "https://images.unsplash.com/photo-1502323777036-f29e3972d82f?auto=format&fit=crop&w=800&q=80", alt: "Fashion 2" },
-    ]
+    src: "/gallery/4.jpeg",
   },
   {
     id: 5,
@@ -80,11 +56,7 @@ const galleryData: GalleryItem[] = [
     title: "Monochrome Study",
     year: "2023",
     description: "Exploring texture and shadow without color. A study in absolute contrast.",
-    src: "https://images.unsplash.com/photo-1632922267756-9b71242b1592?auto=format&fit=crop&q=80&w=1200",
-    relatedImages: [
-      { src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80", alt: "Mono 1" },
-      { src: "https://images.unsplash.com/photo-1503104834685-7205e8607eb9?auto=format&fit=crop&w=800&q=80", alt: "Mono 2" },
-    ]
+    src: "/gallery/5.jpeg",
   },
   {
     id: 6,
@@ -92,11 +64,7 @@ const galleryData: GalleryItem[] = [
     title: "Weekend Vibes",
     year: "2024",
     description: "Candid moments captured in natural environments. The focus is on unposed, authentic emotion.",
-    src: "https://images.unsplash.com/photo-1519014816548-bf5fe059e98b?auto=format&fit=crop&q=80&w=800",
-    relatedImages: [
-      { src: "https://images.unsplash.com/photo-1554151228-14d9def656ec?auto=format&fit=crop&w=800&q=80", alt: "Lifestyle 1" },
-      { src: "https://images.unsplash.com/photo-1542206391-7f94900247f9?auto=format&fit=crop&w=800&q=80", alt: "Lifestyle 2" },
-    ]
+    src: "/gallery/6.jpeg",
   },
   {
     id: 7,
@@ -104,10 +72,7 @@ const galleryData: GalleryItem[] = [
     title: "Fabric Texture",
     year: "2024",
     description: "Close ups focusing on material and fabric.",
-    src: "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&q=80&w=800",
-    relatedImages: [
-      { src: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=800&q=80", alt: "Tex 1" },
-    ]
+    src: "/gallery/7.jpeg",
   },
   {
     id: 8,
@@ -115,50 +80,30 @@ const galleryData: GalleryItem[] = [
     title: "Desert Winds",
     year: "2023",
     description: "Shooting in challenging environments.",
-    src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800",
-    relatedImages: []
+    src: "/gallery/8.jpeg",
   },
 ];
 
 const Gallery: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [internalImageIndex, setInternalImageIndex] = useState<number>(0);
 
   const selectedItem = selectedIndex !== null ? galleryData[selectedIndex] : null;
 
-  // Flatten images for internal slider
-  const allImages = selectedItem
-    ? [{ src: selectedItem.src, alt: 'Main Shot' }, ...selectedItem.relatedImages]
-    : [];
-
-  const currentImage = allImages[internalImageIndex];
-
   // -- LOGIC --
+  // Go to next project in the main list
   const nextProject = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (selectedIndex === null) return;
     setSelectedIndex((prev) => (prev! + 1) % galleryData.length);
-    setInternalImageIndex(0);
   }, [selectedIndex]);
 
+  // Go to previous project in the main list
   const prevProject = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (selectedIndex === null) return;
     setSelectedIndex((prev) => (prev! - 1 + galleryData.length) % galleryData.length);
-    setInternalImageIndex(0);
   }, [selectedIndex]);
 
-  const nextInternalImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (allImages.length <= 1) return;
-    setInternalImageIndex((prev) => (prev + 1) % allImages.length);
-  };
-
-  const prevInternalImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (allImages.length <= 1) return;
-    setInternalImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
-  };
 
   // Keyboard Shortcuts
   useEffect(() => {
@@ -200,16 +145,16 @@ const Gallery: React.FC = () => {
         </div>
       </div>
 
-      {/* -- EDITORIAL GRID (The Even Layout) -- */}
+      {/* -- EDITORIAL GRID -- */}
       <div className="container mx-auto px-6 lg:px-12 max-w-[1600px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-12 gap-x-8">
           {galleryData.map((item, index) => (
             <div
               key={item.id}
-              onClick={() => { setSelectedIndex(index); setInternalImageIndex(0); }}
+              onClick={() => setSelectedIndex(index)}
               className="group cursor-pointer flex flex-col gap-4"
             >
-              {/* Image Card - FORCED ASPECT RATIO 3:4 for perfect evenness */}
+              {/* Image Card - FORCED ASPECT RATIO 3:4 */}
               <div className="relative w-full aspect-[3/4] overflow-hidden rounded-md bg-neutral-900 shadow-2xl transition-all duration-500 group-hover:shadow-[#D7BD9A]/10">
                 {/* Image */}
                 <img
@@ -225,13 +170,13 @@ const Gallery: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Category Tag (Top Right) */}
+                {/* Category Tag */}
                 <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1 rounded text-[10px] tracking-widest uppercase font-medium text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-y-2 group-hover:translate-y-0">
                   {item.category}
                 </div>
               </div>
 
-              {/* Metadata (Below Image) - Kept Visible for clean layout */}
+              {/* Metadata */}
               <div className="flex justify-between items-start pt-1 border-t border-transparent group-hover:border-white/10 transition-colors duration-500">
                 <div>
                   <h3 className="text-xl font-serif text-white group-hover:text-[#D7BD9A] transition-colors duration-300">
@@ -261,114 +206,76 @@ const Gallery: React.FC = () => {
           />
 
           {/* Main Modal Box */}
-          <div className="relative w-full h-full max-w-[1800px] max-h-[95vh] bg-black border border-white/5 shadow-2xl rounded-xl overflow-hidden flex flex-col lg:flex-row animate-scale-in">
+          <div className="relative w-full h-full max-w-[1600px] max-h-[90vh] bg-black border border-white/5 shadow-2xl rounded-xl overflow-hidden flex flex-col lg:flex-row animate-scale-in">
 
-            {/* --- NAVIGATION BUTTONS (FLOATING) --- */}
-            <button
-              onClick={prevProject}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-black/50 text-white/70 hover:text-[#D7BD9A] hover:bg-black/80 transition-all backdrop-blur-sm border border-white/10 group"
-            >
-              <ChevronLeft size={32} strokeWidth={1} className="group-hover:-translate-x-1 transition-transform" />
-            </button>
-
-            <button
-              onClick={nextProject}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-black/50 text-white/70 hover:text-[#D7BD9A] hover:bg-black/80 transition-all backdrop-blur-sm border border-white/10 group"
-            >
-              <ChevronRight size={32} strokeWidth={1} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-
+            {/* Close Button */}
             <button
               onClick={() => setSelectedIndex(null)}
-              className="absolute top-6 right-6 z-50 p-2 text-white/50 hover:text-white transition-colors"
+              className="absolute top-4 right-4 z-50 p-2 text-white/50 hover:text-white transition-colors bg-black/40 rounded-full"
             >
               <X size={24} />
             </button>
 
 
             {/* --- LEFT: IMAGE STAGE (75%) --- */}
-            <div className="w-full lg:w-3/4 h-[50%] lg:h-full relative bg-neutral-900/50 flex items-center justify-center group/stage">
-              {/* Main Image Display */}
+            <div className="w-full lg:w-3/4 h-[55%] lg:h-full relative bg-neutral-900/50 flex items-center justify-center">
+
+              {/* Prev Project Button */}
+              <button
+                onClick={prevProject}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-black/50 text-white/70 hover:text-[#D7BD9A] hover:bg-black/80 transition-all backdrop-blur-sm border border-white/10"
+              >
+                <ChevronLeft size={24} />
+              </button>
+
+              {/* Main Image */}
               <div className="relative w-full h-full flex items-center justify-center p-4 lg:p-12">
                 <img
-                  key={currentImage?.src}
-                  src={currentImage?.src}
-                  alt="Gallery"
-                  className="max-w-full max-h-full object-contain shadow-2xl animate-fade-in"
+                  src={selectedItem.src}
+                  alt={selectedItem.title}
+                  className="max-w-full max-h-full object-contain shadow-2xl"
                 />
               </div>
 
-              {/* Internal Image Navigation (Hover Only) */}
-              {allImages.length > 1 && (
-                <div className="absolute bottom-8 flex gap-4 opacity-0 group-hover/stage:opacity-100 transition-opacity duration-300">
-                  <button onClick={prevInternalImage} className="p-3 rounded-full bg-white/5 hover:bg-[#D7BD9A] hover:text-white text-white/70 backdrop-blur-sm transition-colors border border-white/10">
-                    <ChevronLeft size={20} />
-                  </button>
-                  <div className="px-4 py-3 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 text-xs tracking-widest text-white/80 font-mono">
-                    {internalImageIndex + 1} / {allImages.length}
-                  </div>
-                  <button onClick={nextInternalImage} className="p-3 rounded-full bg-white/5 hover:bg-[#D7BD9A] hover:text-white text-white/70 backdrop-blur-sm transition-colors border border-white/10">
-                    <ChevronRight size={20} />
-                  </button>
-                </div>
-              )}
+              {/* Next Project Button */}
+              <button
+                onClick={nextProject}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-black/50 text-white/70 hover:text-[#D7BD9A] hover:bg-black/80 transition-all backdrop-blur-sm border border-white/10"
+              >
+                <ChevronRight size={24} />
+              </button>
+
             </div>
 
 
             {/* --- RIGHT: SIDEBAR (25%) --- */}
-            <div className="w-full lg:w-1/4 h-[50%] lg:h-full bg-neutral-950 border-l border-white/5 flex flex-col">
+            <div className="w-full lg:w-1/4 h-[45%] lg:h-full bg-neutral-950 border-l border-white/5 flex flex-col p-8 lg:p-12 overflow-y-auto">
 
-              {/* Top Info */}
-              <div className="flex-1 p-8 lg:p-12 overflow-y-auto">
-                <div className="flex items-center gap-3 mb-8">
-                  <span className="h-px w-6 bg-[#D7BD9A]"></span>
-                  <span className="text-[#D7BD9A] text-[10px] font-bold uppercase tracking-[0.3em]">
-                    Project Details
-                  </span>
-                </div>
-
-                <h2 className="text-4xl lg:text-5xl font-serif text-white mb-6 leading-[1.1]">
-                  {selectedItem.title}
-                </h2>
-
-                <div className="grid grid-cols-2 gap-6 mb-8 border-b border-white/10 pb-8">
-                  <div>
-                    <span className="block text-xs text-neutral-500 uppercase tracking-wider mb-1">Category</span>
-                    <span className="text-white text-sm">{selectedItem.category}</span>
-                  </div>
-                  <div>
-                    <span className="block text-xs text-neutral-500 uppercase tracking-wider mb-1">Year</span>
-                    <span className="text-white text-sm">{selectedItem.year}</span>
-                  </div>
-                </div>
-
-                <p className="text-neutral-400 font-light leading-relaxed text-sm lg:text-base">
-                  {selectedItem.description}
-                </p>
+              <div className="flex items-center gap-3 mb-8">
+                <span className="h-px w-6 bg-[#D7BD9A]"></span>
+                <span className="text-[#D7BD9A] text-[10px] font-bold uppercase tracking-[0.3em]">
+                  Details
+                </span>
               </div>
 
-              {/* Footer / Thumbs */}
-              <div className="p-8 bg-neutral-900/30 border-t border-white/5">
-                <div className="flex items-center gap-2 mb-4 text-white/50">
-                  <Layers size={14} />
-                  <span className="text-xs uppercase tracking-widest font-medium">Related Shots</span>
-                </div>
+              <h2 className="text-3xl lg:text-4xl font-serif text-white mb-6 leading-[1.1]">
+                {selectedItem.title}
+              </h2>
 
-                <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                  {allImages.map((img, idx) => (
-                    <div
-                      key={idx}
-                      onClick={() => setInternalImageIndex(idx)}
-                      className={`
-                                        flex-none w-16 h-16 lg:w-20 lg:h-20 cursor-pointer overflow-hidden rounded border border-transparent transition-all
-                                        ${internalImageIndex === idx ? 'border-[#D7BD9A] opacity-100' : 'hover:border-white/20 opacity-50 hover:opacity-100'}
-                                    `}
-                    >
-                      <img src={img.src} className="w-full h-full object-cover" alt="thumb" />
-                    </div>
-                  ))}
+              <div className="grid grid-cols-2 gap-6 mb-8 border-b border-white/10 pb-8">
+                <div>
+                  <span className="block text-xs text-neutral-500 uppercase tracking-wider mb-1">Category</span>
+                  <span className="text-white text-sm">{selectedItem.category}</span>
+                </div>
+                <div>
+                  <span className="block text-xs text-neutral-500 uppercase tracking-wider mb-1">Year</span>
+                  <span className="text-white text-sm">{selectedItem.year}</span>
                 </div>
               </div>
+
+              <p className="text-neutral-400 font-light leading-relaxed text-sm">
+                {selectedItem.description}
+              </p>
 
             </div>
 
