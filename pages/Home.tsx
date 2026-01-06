@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, Star, ArrowDown, Scissors, Play, ArrowUpRight, Pause, Volume2, VolumeX,
 } from 'lucide-react';
+// 1. Import Framer Motion
+import { motion } from 'framer-motion';
+
 import VideoSection from '@/components/VideoSection';
 import Testimonials from '@/components/Testimonials';
 
@@ -61,15 +64,23 @@ const products = [
 ];
 
 const Home: React.FC = () => {
+  // Video & Hero State
   const [activeService, setActiveService] = useState(0);
-  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
-  const [isDraggingProducts, setIsDraggingProducts] = useState(false);
-  const [dragStart, setDragStart] = useState(0);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [animationOffset, setAnimationOffset] = useState(0);
-  const productsRef = React.useRef<HTMLDivElement>(null);
+
+  // 2. Framer Motion Dragging State
+  const [width, setWidth] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // 3. Measure carousel width for drag constraints
+  useEffect(() => {
+    if (carouselRef.current) {
+      // scrollWidth = total content width, offsetWidth = visible window width
+      setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+    }
+  }, []);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -99,35 +110,10 @@ const Home: React.FC = () => {
     }
   };
 
-  const handleProductsMouseDown = (e: React.MouseEvent) => {
-    setIsDraggingProducts(true);
-    setDragStart(e.clientX);
-  };
-
-  const handleProductsMouseMove = (e: React.MouseEvent) => {
-    if (!isDraggingProducts) return;
-    const diff = e.clientX - dragStart;
-    setDragOffset(diff);
-  };
-
-  const handleProductsMouseUp = () => {
-    setIsDraggingProducts(false);
-    // Smooth reset to animation
-    setDragOffset(0);
-  };
-
-  const handleProductsMouseLeave = () => {
-    if (isDraggingProducts) {
-      setIsDraggingProducts(false);
-      setDragOffset(0);
-    }
-  };
-
   return (
-    // Updated selection color to a solid amber that matches the gradient (gradients don't work in selection)
     <div className="w-full bg-[#0a0a0a] text-[#e5e5e5] font-sans selection:bg-amber-400/30 overflow-x-hidden">
 
-      {/* --- INJECT CSS ANIMATION DIRECTLY --- */}
+      {/* --- INJECT CSS ANIMATION DIRECTLY (Kept Blob & Ticker, Removed manual product scroll) --- */}
       <style>{`
         @keyframes scrollLeft {
           0% { transform: translateX(0); }
@@ -135,14 +121,6 @@ const Home: React.FC = () => {
         }
         .ticker-slide {
           animation: scrollLeft 25s linear infinite;
-        }
-        @keyframes productScroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-33.333% - 0px)); }
-        }
-        .animate-product-scroll {
-          animation: productScroll 40s linear infinite;
-          will-change: transform;
         }
         @keyframes blob {
           0% { transform: translate(0px, 0px) scale(1); }
@@ -173,25 +151,19 @@ const Home: React.FC = () => {
 
           {/* Main Headline */}
           <h1 className="font-serif italic text-white leading-[1.2] md:leading-[1.0] tracking-tighter flex flex-col w-full items-center lg:items-start text-center lg:text-left">
-
             {/* Line 1 */}
             <span className="text-[14vw] md:text-[9vw] lg:text-[5.5vw] relative z-10">
               True
             </span>
-
             {/* Line 2 */}
             <span className="block font-light text-[14vw] md:text-[9vw] lg:text-[5.5vw] lg:ml-16 -mt-2 md:-mt-4 relative z-20" style={{ color: '#D7BD9A' }}>
               Unfiltered
             </span>
-
             {/* Line 3 */}
             <span className="text-[14vw] md:text-[9vw] lg:text-[5.5vw] -mt-2 md:-mt-4 relative z-10">
               Glow Up<span style={{ color: '#D7BD9A' }}>.</span>
             </span>
-
           </h1>
-
-
 
           {/* CTA Area */}
           <div className="mt-10 lg:mt-12 w-full flex justify-center lg:justify-start mb-8 lg:mb-0">
@@ -320,10 +292,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-
-
-
-
       {/* --- READY TO GLOW UP SECTION --- */}
       <section className="relative mt-16 mx-2 md:mx-4 mb-4 lg:mt-0 lg:mx-0 lg:mb-0">
         <div className="relative w-full overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-[#E8DCC4] text-[#1a1a1a]">
@@ -338,7 +306,7 @@ const Home: React.FC = () => {
             <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] bg-[#D7BD9A] rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob animation-delay-2000"></div>
             <div className="absolute top-[20%] right-[20%] w-[50%] h-[50%] bg-[#D7BD9A] rounded-full mix-blend-multiply filter blur-[80px] opacity-50 animate-blob animation-delay-4000"></div>
 
-            {/* Grain Texture (Crucial for the 'Unfiltered' look) */}
+            {/* Grain Texture */}
             <div className="absolute inset-0 opacity-30 mix-blend-overlay"
               style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/noise.png")` }}>
             </div>
@@ -371,7 +339,7 @@ const Home: React.FC = () => {
             {/* Right: Magnetic Button */}
             <div className="relative group shrink-0">
 
-              {/* Outer Glow Ring (Animates on hover) */}
+              {/* Outer Glow Ring */}
               <div className="absolute inset-0 bg-white/40 rounded-full blur-xl scale-0 group-hover:scale-110 transition-transform duration-700 ease-out"></div>
 
               <Link
@@ -386,7 +354,7 @@ const Home: React.FC = () => {
                   Book Now
                 </span>
 
-                {/* Animated Arrow Icon (Small & Sharp) */}
+                {/* Animated Arrow Icon */}
                 <div className="relative z-10 w-5 h-5 overflow-hidden">
                   <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 transition-transform duration-500 ease-out group-hover:translate-x-full group-hover:-translate-y-full" />
                   <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 -translate-x-full translate-y-full transition-transform duration-500 ease-out group-hover:translate-x-0 group-hover:translate-y-0" style={{ color: '#D7BD9A' }} />
@@ -399,7 +367,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* --- PRODUCTS SECTION --- */}
+      {/* --- UPDATED PRODUCTS SECTION WITH FRAMER MOTION --- */}
       <section className="relative py-8 md:py-12 px-4 md:px-12 lg:px-24 bg-[#0a0a0a] border-b border-white/5 overflow-hidden">
         
         {/* Background Grid Pattern */}
@@ -422,41 +390,42 @@ const Home: React.FC = () => {
             Professional Products
           </h2>
 
-          {/* Scrolling Products Banner - Images Only */}
-          <div className="relative w-full overflow-hidden flex justify-center">
+          {/* 4. Framer Motion Carousel Container */}
+          <motion.div 
+            ref={carouselRef} 
+            className="cursor-grab active:cursor-grabbing overflow-hidden relative"
+            whileTap={{ cursor: "grabbing" }}
+          >
             
-            {/* Fade overlays */}
-            <div className="absolute left-0 top-0 w-20 md:w-32 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-20 pointer-events-none"></div>
-            <div className="absolute right-0 top-0 w-20 md:w-32 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-20 pointer-events-none"></div>
+            {/* Fade overlays to smooth edges */}
+            <div className="absolute left-0 top-0 w-16 md:w-32 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-20 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 w-16 md:w-32 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-20 pointer-events-none"></div>
 
-            {/* Products Container - Just Images */}
-            <div 
-              ref={productsRef}
-              className={`flex gap-6 md:gap-10 py-6 items-center ${isDraggingProducts ? '' : 'animate-product-scroll'} cursor-grab active:cursor-grabbing select-none`}
-              style={{
-                transform: isDraggingProducts ? `translateX(${dragOffset}px)` : 'none',
-                transition: isDraggingProducts ? 'none' : 'transform 0.1s linear',
-              }}
-              onMouseDown={handleProductsMouseDown}
-              onMouseMove={handleProductsMouseMove}
-              onMouseUp={handleProductsMouseUp}
-              onMouseLeave={handleProductsMouseLeave}
+            {/* 5. The Draggable Inner Track */}
+            <motion.div 
+              drag="x" 
+              dragFree={true} // Enables Momentum/Physics
+              dragConstraints={{ right: 0, left: -width }} // "Rubber band" edges
+              className="flex gap-10 md:gap-20 py-4 w-max"
             >
-              {[...products, ...products, ...products].map((product, idx) => (
-                <div 
+              {/* Repeated items to create a long scrollable strip */}
+              {[...products, ...products, ...products, ...products].map((product, idx) => (
+                <motion.div 
                   key={idx}
-                  className="flex-shrink-0 group cursor-inherit transition-all duration-500 hover:scale-105 flex items-center justify-center h-full"
+                  className="relative group flex items-center justify-center shrink-0"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <img 
                     src={product.image} 
                     alt={product.name}
-                    className="w-28 md:w-40 h-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none select-none"
+                    className="w-28 md:w-40 h-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none select-none grayscale group-hover:grayscale-0"
                     draggable={false}
                   />
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Decorative Bottom Accent */}
           <div className="mt-12 w-8 h-[2px] bg-gradient-to-r from-[#D7BD9A] to-transparent"></div>
@@ -469,8 +438,6 @@ const Home: React.FC = () => {
         <Testimonials />
       </section>
 
-      {/* --- ABOUT/DESCRIPTION SECTION --- */}
-      
     </div>
   );
 };
