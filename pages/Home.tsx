@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowRight, Star, ArrowDown, Scissors, Play, ArrowUpRight,
+  ArrowRight, Star, ArrowDown, Scissors, Play, ArrowUpRight, Pause, Volume2, VolumeX,
 } from 'lucide-react';
 import VideoSection from '@/components/VideoSection';
 import Testimonials from '@/components/Testimonials';
@@ -51,11 +51,77 @@ const testimonials = [
   }
 ];
 
-
-
+const products = [
+  { id: 1, name: "Brillbird", image: "/products/brillbird.png" },
+  { id: 2, name: "CNDC", image: "/products/cndc.png" },
+  { id: 3, name: "K18", image: "/products/k18.png" },
+  { id: 4, name: "L'Oreal", image: "/products/loreal.png" },
+  { id: 5, name: "Olaplex", image: "/products/olaplex.png" },
+  { id: 6, name: "OPI", image: "/products/opi.png" },
+];
 
 const Home: React.FC = () => {
   const [activeService, setActiveService] = useState(0);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isDraggingProducts, setIsDraggingProducts] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [animationOffset, setAnimationOffset] = useState(0);
+  const productsRef = React.useRef<HTMLDivElement>(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const handleStartInteraction = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = false;
+      setIsMuted(false);
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const handleProductsMouseDown = (e: React.MouseEvent) => {
+    setIsDraggingProducts(true);
+    setDragStart(e.clientX);
+  };
+
+  const handleProductsMouseMove = (e: React.MouseEvent) => {
+    if (!isDraggingProducts) return;
+    const diff = e.clientX - dragStart;
+    setDragOffset(diff);
+  };
+
+  const handleProductsMouseUp = () => {
+    setIsDraggingProducts(false);
+    // Smooth reset to animation
+    setDragOffset(0);
+  };
+
+  const handleProductsMouseLeave = () => {
+    if (isDraggingProducts) {
+      setIsDraggingProducts(false);
+      setDragOffset(0);
+    }
+  };
 
   return (
     // Updated selection color to a solid amber that matches the gradient (gradients don't work in selection)
@@ -70,6 +136,29 @@ const Home: React.FC = () => {
         .ticker-slide {
           animation: scrollLeft 25s linear infinite;
         }
+        @keyframes productScroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(calc(-33.333% - 0px)); }
+        }
+        .animate-product-scroll {
+          animation: productScroll 40s linear infinite;
+          will-change: transform;
+        }
+        @keyframes blob {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
       `}</style>
 
       <section className="relative w-full min-h-[100dvh] lg:h-screen flex flex-col lg:flex-row items-center border-b border-white/5 mt-12 overflow-hidden">
@@ -80,23 +169,9 @@ const Home: React.FC = () => {
         </div>
 
         {/* --- LEFT: TYPOGRAPHY & CTA --- */}
-        {/* Adjusted padding and alignment for "Proper" positioning */}
-        <div className="w-full lg:w-[55%] flex-shrink-0 flex flex-col justify-center px-6 md:px-16 lg:pl-24 pt-24 lg:pt-0 relative z-10 lg:h-full lg:border-r border-white/5">
-
-          {/* --- NEW LOGO (Mobile Only) --- */}
-          <div className="lg:hidden w-full flex justify-center mb-8">
-            <img
-              src="/logo2.png"
-              alt="Brand Logo"
-              className="w-28 h-auto object-contain brightness-0 invert opacity-90"
-            />
-          </div>
+        <div className="w-full lg:w-[48%] flex-shrink-0 flex flex-col justify-center px-6 md:px-16 lg:pl-24 pt-24 lg:pt-0 relative z-10 lg:h-full lg:border-r border-white/5">
 
           {/* Main Headline */}
-          {/* UPDATES: 
-              1. Removed 'gap-6', added negative margin for tighter stacking 
-              2. Changed 'items-center' to 'lg:items-start' for desktop alignment
-          */}
           <h1 className="font-serif italic text-white leading-[1.2] md:leading-[1.0] tracking-tighter flex flex-col w-full items-center lg:items-start text-center lg:text-left">
 
             {/* Line 1 */}
@@ -104,7 +179,7 @@ const Home: React.FC = () => {
               True
             </span>
 
-            {/* Line 2 - Slightly indented on desktop for 'Editorial' look */}
+            {/* Line 2 */}
             <span className="block font-light text-[14vw] md:text-[9vw] lg:text-[5.5vw] lg:ml-16 -mt-2 md:-mt-4 relative z-20" style={{ color: '#D7BD9A' }}>
               Unfiltered
             </span>
@@ -116,14 +191,9 @@ const Home: React.FC = () => {
 
           </h1>
 
-          {/* Subheading Description */}
-          {/* Aligned left on desktop, centered on mobile */}
-          <p className="mt-8 md:mt-10 lg:mt-8 text-center lg:text-left text-sm md:text-lg font-light text-[#e5e5e5] max-w-xl mx-auto lg:mx-0 leading-relaxed opacity-80">
-            From sleek hair styling to expertly finished nails, we offer luxury services for women and men with precision and attention to every detail.
-          </p>
+
 
           {/* CTA Area */}
-          {/* Aligned left on desktop, centered on mobile */}
           <div className="mt-10 lg:mt-12 w-full flex justify-center lg:justify-start mb-8 lg:mb-0">
             <Link to="/booking" className="group relative px-8 py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-sm lg:bg-transparent">
               {/* Gradient BG */}
@@ -137,85 +207,125 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* --- RIGHT: AESTHETIC VISUAL --- */}
-        <div className="w-full flex-grow lg:flex-grow-0 lg:w-[45%] h-[50vh] lg:h-full relative flex items-end justify-center lg:pr-12 overflow-hidden mt-auto">
+        {/* --- RIGHT: VIDEO WITH CONTROLS & OVERLAY TEXT --- */}
+        <div className="w-full flex-grow lg:flex-grow-0 lg:w-[52%] h-[50vh] lg:h-full relative flex items-center justify-center lg:pr-6 overflow-hidden mt-auto lg:mt-0">
+          {/* Video Container */}
+          <div 
+            className="w-[95%] h-[95%] lg:h-[75%] lg:w-[90%] relative rounded-2xl lg:rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-neutral-900 group cursor-pointer flex items-center justify-center"
+            onClick={togglePlay}
+          >
+            
+            {/* Video */}
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover opacity-95"
+              src="/beauty-video.mp4"
+            />
+            
+            {/* Gradient Overlay - Top */}
+            <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black/40 via-black/10 to-transparent opacity-60 z-10 pointer-events-none"></div>
+            
+            {/* Gradient Overlay - Bottom for text readability */}
+            <div className="absolute bottom-0 inset-x-0 h-64 lg:h-80 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90 z-10 pointer-events-none"></div>
+            
+            {/* Texture overlay */}
+            <div className="absolute inset-0 opacity-5 pointer-events-none mix-blend-overlay"
+              style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/noise.png")` }}>
+            </div>
 
-          {/* Ambient Gradient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] lg:w-[300px] h-[250px] lg:h-[300px] bg-gradient-to-tr from-amber-200/20 to-amber-600/10 rounded-full blur-[90px] -z-10"></div>
+            {/* Center Play Button */}
+            <div
+              className={`absolute inset-0 flex items-center justify-center z-30 transition-all duration-500 ease-in-out
+                ${isPlaying && !isMuted ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'}
+              `}
+            >
+              <button
+                onClick={(e) => { e.stopPropagation(); handleStartInteraction(); }}
+                className="relative group/btn flex items-center justify-center w-28 h-28 md:w-40 md:h-40"
+              >
+                {/* Spinning Text Ring */}
+                <div className="absolute inset-0 w-full h-full animate-[spin_10s_linear_infinite]">
+                  <svg className="w-full h-full" viewBox="0 0 100 100">
+                    <defs>
+                      <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+                    </defs>
+                    <text className="fill-white/90 text-[8px] md:text-[10px] uppercase font-bold tracking-widest">
+                      <textPath href="#circlePath" startOffset="0%">
+                        • Play With Sound • Beauty Unfiltered •
+                      </textPath>
+                    </text>
+                  </svg>
+                </div>
 
-          {/* The Model */}
-          <img
-            src="/woman-new2.png"
-            alt="Editorial Beauty"
-            className="relative z-10 h-full w-auto max-w-none lg:max-w-full lg:h-[90%] object-contain object-bottom drop-shadow-2xl grayscale contrast-125 hover:grayscale-0 transition-all duration-1000 ease-out"
-            style={{
-              maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
-            }}
-          />
+                {/* Play Icon Circle */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 md:w-20 md:h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-500 group-hover/btn:bg-[#D7BD9A] group-hover/btn:border-[#D7BD9A] group-hover/btn:shadow-[0_0_30px_rgba(215,189,154,0.4)]">
+                  <Play className="w-5 h-5 md:w-8 md:h-8 text-white group-hover/btn:text-black fill-current ml-1" />
+                </div>
+              </button>
+            </div>
 
-        </div>
-      </section>
-      {/* --- SCROLLING TICKER (Gradient Background) --- */}
+            {/* Hover Pause Indicator */}
+            {isPlaying && (
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center border border-white/10">
+                  <Pause className="w-5 h-5 md:w-6 md:h-6 text-white fill-current" />
+                </div>
+              </div>
+            )}
 
+            {/* Top Left Text Overlay */}
+            <div className="absolute top-0 left-0 p-4 md:p-6 lg:p-8 z-20 pointer-events-none">
+              <p className="text-white font-light text-xs md:text-sm leading-relaxed max-w-xs">
+                From sleek hair styling to expertly finished nails, we offer luxury services for women and men with precision and attention to every detail.
+              </p>
+            </div>
 
+            {/* Bottom Controls */}
+            <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 lg:p-8 z-30 flex flex-col items-center justify-end pointer-events-none">
+              {/* Decorative line */}
+              <div className="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#D7BD9A] to-transparent mb-4"></div>
 
-      {/* --- ABOUT/DESCRIPTION SECTION --- */}
-      <section className="relative py-24 md:py-32 px-4 md:px-12 lg:px-24 bg-[#0a0a0a] border-b border-white/5">
+              {/* Controls */}
+              <div className="flex items-center gap-3 md:gap-4 pointer-events-auto">
+                {/* Mute Toggle */}
+                <button
+                  onClick={toggleMute}
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group/mute"
+                  title={isMuted ? "Unmute" : "Mute"}
+                >
+                  {isMuted
+                    ? <VolumeX className="w-4 h-4 md:w-5 md:h-5 group-hover/mute:scale-110 transition-transform" />
+                    : <Volume2 className="w-4 h-4 md:w-5 md:h-5 group-hover/mute:scale-110 transition-transform" />
+                  }
+                </button>
 
-        {/* Background Grid Pattern */}
-        <div className="absolute inset-0 z-0 opacity-[0.02]"
-          style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
-        </div>
-
-        <div className="relative z-10 max-w-5xl mx-auto">
-
-          {/* Decorative Top Accent */}
-          <div className="mb-12 flex items-center gap-3">
-            <div className="w-8 h-[2px] bg-gradient-to-r from-[#D7BD9A] to-transparent"></div>
-            <span className="font-mono text-xs font-bold tracking-[0.3em] uppercase opacity-60 text-[#D7BD9A]">
-              Our Studio
-            </span>
+                {/* Play/Pause Toggle */}
+                <button
+                  onClick={(e) => { e.stopPropagation(); togglePlay(); }}
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#D7BD9A] hover:text-black hover:border-[#D7BD9A] transition-all duration-300 group/play"
+                  title={isPlaying ? "Pause" : "Play"}
+                >
+                  {isPlaying
+                    ? <Pause className="w-4 h-4 md:w-5 md:h-5 fill-current group-hover/play:scale-110 transition-transform" />
+                    : <Play className="w-4 h-4 md:w-5 md:h-5 fill-current ml-1 group-hover/play:scale-110 transition-transform" />
+                  }
+                </button>
+              </div>
+            </div>
           </div>
-
-          {/* About Us Heading */}
-          <h2 className="text-5xl md:text-3xl lg:text-5xl font-serif italic font-light mb-12" style={{ color: 'white' }}>
-            About <span className="text-white/40 italic">Us</span>
-          </h2>
-
-          {/* Main Description */}
-          <div className="space-y-2 md:space-y-2">
-
-            {/* First Paragraph */}
-            <p className="font-light text-md md:text-lg leading-relaxed text-[#e5e5e5] max-w-3xl">
-              At The Glow Up London, we offer a full range of premium hair services for men and women from precision cuts and stylish colouring to expert styling, alongside luxurious nail treatments for women, including manicures and nail art. Every service is designed to enhance your confidence, leaving you feeling polished, pampered, and ready to shine.
-            </p>
-
-            {/* Second Paragraph */}
-            <p className="font-light text-md md:text-lg leading-relaxed text-[#e5e5e5] max-w-3xl">
-              With a calm, welcoming atmosphere, every detail is thoughtfully designed to enhance your confidence and leave you feeling polished, pampered, and radiant.
-            </p>
-
-          </div>
-
-          {/* Decorative Bottom Accent */}
-          <div className="mt-12 w-8 h-[2px] bg-gradient-to-r from-[#D7BD9A] to-transparent"></div>
-
         </div>
-
       </section>
 
-      <section className="py-24 md:py-24 w-full flex justify-center bg-[#0a0a0a]">
-        <VideoSection />
-      </section>
 
-      {/* --- TESTIMONIAL --- */}
-      <section className="py-4 relative overflow-hidden bg-[#0a0a0a] border-b border-white/5">
-        <Testimonials />
-      </section>
 
-      <section className="relative mt-16 mx-2 md:mx-4 mb-4">
 
+
+      {/* --- READY TO GLOW UP SECTION --- */}
+      <section className="relative mt-16 mx-2 md:mx-4 mb-4 lg:mt-0 lg:mx-0 lg:mb-0">
         <div className="relative w-full overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-[#E8DCC4] text-[#1a1a1a]">
 
           {/* --- 1. DYNAMIC LIQUID BACKGROUND --- */}
@@ -289,32 +399,78 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* --- INJECT ANIMATIONS --- */}
-      <style>{`
-        @keyframes blob {
-          0% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-          100% { transform: translate(0px, 0px) scale(1); }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
-        }
-      `}</style>
+      {/* --- PRODUCTS SECTION --- */}
+      <section className="relative py-8 md:py-12 px-4 md:px-12 lg:px-24 bg-[#0a0a0a] border-b border-white/5 overflow-hidden">
+        
+        {/* Background Grid Pattern */}
+        <div className="absolute inset-0 z-0 opacity-[0.02]"
+          style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+        </div>
 
+        <div className="relative z-10">
+
+          {/* Decorative Top Accent */}
+          <div className="mb-12 flex items-center gap-3">
+            <div className="w-8 h-[2px] bg-gradient-to-r from-[#D7BD9A] to-transparent"></div>
+            <span className="font-mono text-xs font-bold tracking-[0.3em] uppercase opacity-60 text-[#D7BD9A]">
+              Premium Brands
+            </span>
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic font-light mb-16 text-white">
+            Professional Products
+          </h2>
+
+          {/* Scrolling Products Banner - Images Only */}
+          <div className="relative w-full overflow-hidden flex justify-center">
+            
+            {/* Fade overlays */}
+            <div className="absolute left-0 top-0 w-20 md:w-32 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-20 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 w-20 md:w-32 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-20 pointer-events-none"></div>
+
+            {/* Products Container - Just Images */}
+            <div 
+              ref={productsRef}
+              className={`flex gap-6 md:gap-10 py-6 items-center ${isDraggingProducts ? '' : 'animate-product-scroll'} cursor-grab active:cursor-grabbing select-none`}
+              style={{
+                transform: isDraggingProducts ? `translateX(${dragOffset}px)` : 'none',
+                transition: isDraggingProducts ? 'none' : 'transform 0.1s linear',
+              }}
+              onMouseDown={handleProductsMouseDown}
+              onMouseMove={handleProductsMouseMove}
+              onMouseUp={handleProductsMouseUp}
+              onMouseLeave={handleProductsMouseLeave}
+            >
+              {[...products, ...products, ...products].map((product, idx) => (
+                <div 
+                  key={idx}
+                  className="flex-shrink-0 group cursor-inherit transition-all duration-500 hover:scale-105 flex items-center justify-center h-full"
+                >
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-28 md:w-40 h-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none select-none"
+                    draggable={false}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Decorative Bottom Accent */}
+          <div className="mt-12 w-8 h-[2px] bg-gradient-to-r from-[#D7BD9A] to-transparent"></div>
+
+        </div>
+      </section>
+
+      {/* --- TESTIMONIALS SECTION --- */}
+      <section className="py-4 relative overflow-hidden bg-[#0a0a0a] border-b border-white/5">
+        <Testimonials />
+      </section>
+
+      {/* --- ABOUT/DESCRIPTION SECTION --- */}
+      
     </div>
   );
 };
