@@ -366,7 +366,7 @@ const Home: React.FC = () => {
 
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic font-light mb-16 text-white">
-            Professional Products
+            Professional <span className="text-white/40 not-italic">Products</span>
           </h2>
 
           {/* 4. Framer Motion Carousel Container */}
