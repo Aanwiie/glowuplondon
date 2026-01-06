@@ -263,29 +263,8 @@ const Home: React.FC = () => {
 
               {/* Controls */}
               <div className="flex items-center gap-3 md:gap-4 pointer-events-auto">
-                {/* Mute Toggle */}
-                <button
-                  onClick={toggleMute}
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 group/mute"
-                  title={isMuted ? "Unmute" : "Mute"}
-                >
-                  {isMuted
-                    ? <VolumeX className="w-4 h-4 md:w-5 md:h-5 group-hover/mute:scale-110 transition-transform" />
-                    : <Volume2 className="w-4 h-4 md:w-5 md:h-5 group-hover/mute:scale-110 transition-transform" />
-                  }
-                </button>
 
-                {/* Play/Pause Toggle */}
-                <button
-                  onClick={(e) => { e.stopPropagation(); togglePlay(); }}
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#D7BD9A] hover:text-black hover:border-[#D7BD9A] transition-all duration-300 group/play"
-                  title={isPlaying ? "Pause" : "Play"}
-                >
-                  {isPlaying
-                    ? <Pause className="w-4 h-4 md:w-5 md:h-5 fill-current group-hover/play:scale-110 transition-transform" />
-                    : <Play className="w-4 h-4 md:w-5 md:h-5 fill-current ml-1 group-hover/play:scale-110 transition-transform" />
-                  }
-                </button>
+                
               </div>
             </div>
           </div>
