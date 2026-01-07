@@ -69,12 +69,22 @@ const Footer: React.FC = () => {
                 Refining Beauty <br /> Standards since 2024
               </p>
               <div className="flex gap-4">
-                <a href="https://www.instagram.com/theglowuplondon?igsh=Ym1sc2p4azNhamwx" className="hover:text-[#D7BD9A] transition-colors">
+                <a 
+                  href="https://www.instagram.com/theglowuplondon?igsh=Ym1sc2p4azNhamwx" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-[#D7BD9A] transition-colors"
+                >
                   <Instagram size={18} />
                 </a>
 
                 {/* Replaced Facebook with Custom TikTok SVG */}
-                <a href="https://www.tiktok.com/@theglowuplondon?_r=1&_t=ZS-92s77AZLEgR" className="hover:text-[#D7BD9A] transition-colors">
+                <a 
+                  href="https://www.tiktok.com/@theglowuplondon?_r=1&_t=ZS-92s77AZLEgR" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-[#D7BD9A] transition-colors"
+                >
                   <svg
                     width="18"
                     height="18"
@@ -102,10 +112,20 @@ const Footer: React.FC = () => {
                 114 High Street<br />
                 Brentford, TW8 8AF
               </address>
-              <a href="https://what3words.com/maps.congratulations.sugars" className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors">
+              <a 
+                href="https://what3words.com/maps.congratulations.sugars" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors"
+              >
                 Get Directions on what3words <ArrowRight size={10} />
               </a>
-              <a href="https://maps.app.goo.gl/1bBJSB4SUuUkkN8u9" className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors">
+              <a 
+                href="https://maps.app.goo.gl/1bBJSB4SUuUkkN8u9" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors"
+              >
                 Get Directions on Google Maps <ArrowRight size={10} />
               </a>
             </div>
@@ -157,9 +177,9 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6 py-6 md:py-8 flex flex-col md:flex-row justify-between items-center text-[9px] md:text-[10px] uppercase tracking-widest text-neutral-600 font-mono">
         <p>© 2024 The Glow Up London.</p>
         <div className="flex gap-6 mt-3 md:mt-0">
-          <a href="#" className="hover:text-white transition-colors">Privacy</a>
-          <a href="#" className="hover:text-white transition-colors">Terms</a>
-          <a href="#" className="hover:text-white transition-colors">Sitemap</a>
+          <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Privacy</a>
+          <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Terms</a>
+          <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Sitemap</a>
         </div>
       </div>
 
