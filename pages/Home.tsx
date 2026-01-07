@@ -179,7 +179,7 @@ const Home: React.FC = () => {
           </div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic font-light mb-16 text-white text-center px-4">
-            Professional <span className="text-white/40 not-italic">Products</span>
+            Carefully selected Professional <span className="text-white/40 not-italic">Products</span>
           </h2>
 
           <div className="relative w-full overflow-hidden">
