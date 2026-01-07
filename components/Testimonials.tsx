@@ -5,43 +5,50 @@ import { Star, Quote } from 'lucide-react';
 const testimonials = [
     {
         id: 1,
-        text: "The Glow Up has mastered the balance between ultra-modern styling and warm, personalized care.",
-        author: "Vogue UK",
-        role: "Editorial Feature",
+        text: "Lovely and welcoming service. Hadn’t had a haircut for a few years - lovely hair wash and styled beautifully. I never style my hair, so was nice to have the pamper! Thank you Naz!!",
+        author: "Hannah Wilks",
+        role: "Hair Styling Client",
         rating: 5
     },
     {
         id: 2,
-        text: "A sensory experience that transcends a typical salon visit. The interior alone is worth the trip.",
-        author: "Harper's Bazaar",
-        role: "Design Review",
+        text: "I had a great experience today at the glow up! I had really uneven hair that was a mess, and they managed to sort it all out within an hour! Nikki is a great hairdresser, I would highly recommend! 😍",
+        author: "Imene",
+        role: "Hair Restyle Client",
         rating: 5
     },
     {
         id: 3,
-        text: "Finally, a studio that understands texture. My curls have never looked this defined and healthy.",
-        author: "Sarah J.",
-        role: "Hair Artistry Client",
+        text: "i didn’t expect to have a curly haircut done this well from a local salon. She was super friendly and gave the best advice. The owner and other staff members were great too, definitely talented hairstylists! 100% coming back! Thanks guys ❤️",
+        author: "Sara Bennis",
+        role: "Curly Cut Client",
         rating: 5
     },
     {
         id: 4,
-        text: "The Hydrafacial completely reset my skin barrier. I walked out glowing—literally unfiltered.",
-        author: "Elena R.",
-        role: "Skin Therapy Client",
+        text: "Called in on the day, spoke to the owner and she was super accommodating-booked me in for a gel removal and mani. She offered me a tea and we had a lovely chat. She paid so much attention to detail while being really gentle with my weak nails!",
+        author: "Vesile T",
+        role: "Gel Manicure Client",
         rating: 5
     },
     {
         id: 5,
-        text: "Unapologetically luxurious. The attention to detail in the nail architecture is unmatched.",
-        author: "Elle Magazine",
-        role: "Beauty Edit",
+        text: "Naz did an amazing job with my hair!! Very grateful and will definitely recommend. I also had my nails done by Sheetal she gave me a beautiful French Manicure.",
+        author: "Barbara Stange",
+        role: "Hair & Nail Client",
         rating: 5
     },
     {
         id: 6,
-        text: "The precision cutting here is art. It’s not just a haircut, it’s a structural change to your look.",
-        author: "James M.",
+        text: "Lovely new salon and very welcoming team. My gel manicure is perfect and gorgeous nail art. I’ll be back soon.",
+        author: "Charlotte Moulton",
+        role: "Nail Art Client",
+        rating: 5
+    },
+    {
+        id: 7,
+        text: "Very relaxing and professional, she styled my hair just the way I like it x",
+        author: "Macy Ward",
         role: "Regular Client",
         rating: 5
     }
@@ -126,7 +133,7 @@ const Testimonials: React.FC = () => {
             <div className="w-full overflow-hidden" ref={containerRef}>
                 <div
                     ref={contentRef}
-                    className="flex gap-4 md:gap-6 cursor-grab touch-pan-y items-stretch" 
+                    className="flex gap-4 md:gap-6 cursor-grab touch-pan-y items-stretch"
                     style={{ willChange: 'transform' }}
                     onMouseDown={onMouseDown}
                     onMouseMove={onMouseMove}
