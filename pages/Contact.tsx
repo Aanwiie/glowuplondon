@@ -10,6 +10,7 @@ import {
   MoveRight
 } from 'lucide-react';
 
+
 const Contact: React.FC = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
@@ -246,8 +247,21 @@ const Contact: React.FC = () => {
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-600 mb-6">Connect With Us</p>
               <div className="flex gap-4">
-                <SocialButton icon={<Instagram size={20} />} label="Instagram" />
-                <SocialButton icon={<Facebook size={20} />} label="Facebook" />
+                <SocialButton
+                  href="https://www.instagram.com/theglowuplondon?igsh=Ym1sc2p4azNhamwx"
+                  icon={<Instagram size={20} />}
+                  label="Instagram"
+                />
+
+                <SocialButton
+                  href="https://www.tiktok.com/@theglowuplondon?_r=1&_t=ZS-92s77AZLEgR"
+                  icon={
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.183 8.183 0 0 0 4.101 1.01V6.29l-.33.044a4.792 4.792 0 0 1-1.02.043Z" />
+                    </svg>
+                  }
+                  label="TikTok"
+                />
               </div>
             </div>
 
@@ -304,11 +318,15 @@ const ContactItem = ({ icon, label, value, subValue, href }: { icon: any, label:
   </a>
 );
 
-const SocialButton = ({ icon, label }: { icon: any, label: string }) => (
-  <button className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 hover:border-[#D7BD9A]/50 hover:bg-[#D7BD9A]/10 hover:text-[#D7BD9A] transition-all group">
+const SocialButton = ({ icon, label, href }: { icon: any, label: string, href: string }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 hover:border-[#D7BD9A]/50 hover:bg-[#D7BD9A]/10 hover:text-[#D7BD9A] transition-all group"
+  >
     {icon}
     <span className="text-xs uppercase tracking-widest hidden sm:block">{label}</span>
-  </button>
+  </a>
 );
-
 export default Contact;

@@ -157,15 +157,15 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 w-full">
               <li className="flex justify-between text-sm font-light border-b border-white/5 pb-2">
                 <span className="text-neutral-500">Mon - Fri</span>
-                <span className="text-white font-mono text-xs uppercase">9 am — 8 pm</span>
+                <span className="text-white font-mono text-xs uppercase">09:00 - 20:00</span>
               </li>
               <li className="flex justify-between text-sm font-light border-b border-white/5 pb-2">
                 <span className="text-neutral-500">Saturday</span>
-                <span className="text-white font-mono text-xs uppercase">9 am — 7 pm</span>
+                <span className="text-white font-mono text-xs uppercase">09:00 - 19:00</span>
               </li>
               <li className="flex justify-between text-sm font-light border-b border-white/5 pb-2">
                 <span className="text-neutral-500">Sunday</span>
-                <span className="text-white font-mono text-xs uppercase">10 am — 5 pm</span>
+                <span className="text-white font-mono text-xs uppercase">10:00 - 17:00</span>
               </li>
             </ul>
           </div>
