@@ -11,12 +11,52 @@ import {
 } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // 1. State to hold input values
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    service: '',
+    message: ''
+  });
+
+  // 2. Handler for input changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('sending');
-    setTimeout(() => setFormStatus('sent'), 2000);
+
+    // 3. Send data to FormSubmit via AJAX
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/danwesha488@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `New Service Inquiry from ${formData.name}`, // Custom email subject
+          _template: 'table' // Makes the email look nicer
+        })
+      });
+
+      if (response.ok) {
+        setFormStatus('sent');
+        // Optional: Reset form after success
+        setFormData({ name: '', email: '', service: '', message: '' });
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      console.error("Form error:", error);
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -51,17 +91,16 @@ const Contact: React.FC = () => {
           </div>
         </div>
 
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
 
-          {/* --- LEFT: INTERACTIVE FORM (Updated Card Style) --- */}
+          {/* --- LEFT: INTERACTIVE FORM --- */}
           <div className="lg:col-span-7 order-2 lg:order-1">
             <div className="
               relative group rounded-3xl 
-              bg-white/[0.08]                 /* CHANGED: 8% white opacity creates a distinct grey on black */
-              border border-white/10          /* CHANGED: Slightly stronger border */
+              bg-white/[0.08]
+              border border-white/10
               p-6 md:p-10 lg:p-14 
-              backdrop-blur-xl shadow-2xl     /* ADDED: Shadow for pop */
+              backdrop-blur-xl shadow-2xl
               overflow-hidden
             ">
 
@@ -72,19 +111,51 @@ const Contact: React.FC = () => {
               <p className="text-neutral-400 text-sm mb-10">We usually respond within 24 hours.</p>
 
               <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10 relative z-20">
+
+                {/* Honeypot field for spam protection (hidden) */}
+                <input type="text" name="_honey" style={{ display: 'none' }} />
+
+                {/* Disable Captcha to prevent popup (optional, remove if you want captcha) */}
+                <input type="hidden" name="_captcha" value="false" />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-                  <FloatingInput label="Your Name" id="name" type="text" />
-                  <FloatingInput label="Email Address" id="email" type="email" />
+                  <FloatingInput
+                    label="Your Name"
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                  <FloatingInput
+                    label="Email Address"
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
                 </div>
 
-                <FloatingInput label="Service Interested In" id="service" type="text" />
+                <FloatingInput
+                  label="Service Interested In"
+                  id="service"
+                  name="service"
+                  type="text"
+                  value={formData.service}
+                  onChange={handleChange}
+                />
 
                 <div className="relative">
                   <textarea
                     id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows={4}
                     className="block w-full bg-transparent border-b border-white/20 py-4 text-white text-lg focus:outline-none focus:border-[#D7BD9A] transition-colors peer placeholder-transparent resize-none"
                     placeholder="Message"
+                    required
                   ></textarea>
                   <label
                     htmlFor="message"
@@ -99,13 +170,15 @@ const Contact: React.FC = () => {
                     disabled={formStatus === 'sending' || formStatus === 'sent'}
                     className={`
                           group relative overflow-hidden bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-none md:rounded-full font-bold uppercase tracking-[0.2em] text-xs transition-all duration-500 hover:bg-[#D7BD9A]
-                          ${formStatus === 'sent' ? 'bg-green-500 hover:bg-green-500 text-white' : ''}
+                          ${formStatus === 'sent' ? '!bg-green-500 text-white hover:bg-green-500' : ''}
+                          ${formStatus === 'error' ? '!bg-red-500 text-white' : ''}
                         `}
                   >
                     <span className="relative z-10 flex items-center gap-3">
                       {formStatus === 'idle' && <>Send Message <ArrowRight size={16} /></>}
                       {formStatus === 'sending' && <>Sending...</>}
                       {formStatus === 'sent' && <>Sent Successfully</>}
+                      {formStatus === 'error' && <>Failed. Try Again.</>}
                     </span>
                   </button>
 
@@ -132,8 +205,8 @@ const Contact: React.FC = () => {
               <ContactItem
                 icon={<Mail size={24} />}
                 label="Email Us"
-                value="danwesha488@gmail.com"
-                href="mailto:danwesha488@gmail.com"
+                value="theglowuplondon@gmail.com"
+                href="mailto:theglowuplondon@gmail.com"
               />
               <ContactItem
                 icon={<MapPin size={24} />}
@@ -186,13 +259,25 @@ const Contact: React.FC = () => {
   );
 };
 
-// -- REUSABLE COMPONENTS --
+// -- REUSABLE COMPONENTS (UPDATED for State Management) --
 
-const FloatingInput = ({ label, id, type }: { label: string, id: string, type: string }) => (
+interface FloatingInputProps {
+  label: string;
+  id: string;
+  name: string;
+  type: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const FloatingInput: React.FC<FloatingInputProps> = ({ label, id, name, type, value, onChange }) => (
   <div className="relative">
     <input
       type={type}
       id={id}
+      name={name}
+      value={value}
+      onChange={onChange}
       className="block w-full bg-transparent border-b border-white/20 py-4 text-white text-lg focus:outline-none focus:border-[#D7BD9A] transition-colors peer placeholder-transparent"
       placeholder={label}
       required

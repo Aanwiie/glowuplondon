@@ -74,27 +74,27 @@ const Home: React.FC = () => {
           
           {/* Bottom Gradient - Stronger on the left for text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent pointer-events-none z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/10 to-transparent pointer-events-none z-10"></div>
           
           {/* Texture Overlay */}
           <div className="absolute inset-0 opacity-[0.07] pointer-events-none mix-blend-overlay z-10"
             style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/noise.png")` }}>
           </div>
 
-          {/* --- CONTENT CONTAINER (BOTTOM LEFT) --- */}
-          <div className="absolute bottom-0 left-0 z-30 p-6 md:p-12 lg:p-16 w-full flex flex-col items-start justify-end gap-8 md:gap-10">
+          {/* --- CONTENT CONTAINER (COMPACT & LEFT) --- */}
+          <div className="absolute bottom-0 left-0 z-30 flex flex-col items-start justify-end gap-6 p-6 md:p-10 lg:p-12 max-w-[90%] md:max-w-[70%]">
             
-            {/* Description Text */}
-            <div className="max-w-md md:max-w-xl lg:max-w-2xl">
-              <p className="font-light text-white text-lg md:text-xl lg:text-3xl leading-relaxed tracking-wide drop-shadow-2xl text-left">
-                From sleek hair styling to expertly finished nails, we offer luxury services for women and men with precision and attention to every detail.
+            {/* Description Text - Constrained max-width for compactness */}
+            <div className="max-w-xs md:max-w-md">
+              <p className="font-light text-white text-base md:text-lg lg:text-xl leading-relaxed tracking-wide drop-shadow-2xl text-left">
+                From sleek hair styling to expertly finished nails, we offer luxury services with precision and attention to detail.
               </p>
             </div>
 
-            {/* Book Experience Button */}
-            <Link to="/booking" className="group relative block px-8 py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-md">
+            {/* Book Experience Button - Compact Size */}
+            <Link to="/booking" className="group relative block px-8 py-4 md:px-10 md:py-5 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-md">
               <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A] to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
-              <span className="relative z-10 flex items-center gap-3 font-medium tracking-widest text-xs uppercase text-white group-hover:text-black transition-colors duration-300">
+              <span className="relative z-10 flex items-center gap-3 font-medium tracking-widest text-xs md:text-sm uppercase text-white group-hover:text-black transition-colors duration-300">
                 Book Experience
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
