@@ -25,9 +25,7 @@ const About: React.FC = () => {
     <div className="bg-[#050505] min-h-screen text-white/90 selection:bg-[#D7BD9A]/30 overflow-x-hidden relative">
 
       {/* --- BACKGROUND FX --- */}
-      <div className="fixed inset-0 bg-[url('https://www.transparenttextures.com/patterns/noise.png')] opacity-[0.05] pointer-events-none z-0"></div>
-      <div className="fixed top-0 left-0 w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="fixed bottom-0 right-0 w-[600px] h-[600px] bg-[#D7BD9A]/10 rounded-full blur-[100px] pointer-events-none" />
+ 
 
       {/* --- HEADER --- */}
       <section className="pt-32 pb-20 container mx-auto px-6 relative z-10">
@@ -54,24 +52,16 @@ const About: React.FC = () => {
               <img
                 src="/gallery/2.jpeg"
                 alt="Interior"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                className="w-full h-full object-cover grayscale "
               />
               {/* Overlay Gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
 
-              <div className="absolute bottom-8 left-8">
-                <p className="font-serif text-3xl italic text-white">"A moment of calm."</p>
-              </div>
+
             </div>
 
             {/* Floating Detail Image */}
-            <div className="absolute -bottom-12 -right-4 lg:-right-12 w-[45%] aspect-square border-4 border-[#050505] rounded-bl-[3rem] overflow-hidden z-20 shadow-xl">
-              <img
-                src="/gallery/14.jpeg"
-                alt="Detail"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-              />
-            </div>
+
 
             {/* Decorative Outline */}
             <div className="absolute top-12 -left-8 w-full h-full border border-[#D7BD9A]/20 rounded-tr-[5rem] -z-10 hidden md:block"></div>
