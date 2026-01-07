@@ -76,9 +76,7 @@ const Contact: React.FC = () => {
         {/* --- HEADER --- */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 lg:mb-24 gap-8">
           <div className="max-w-2xl">
-            <span className="inline-block py-1 px-3 border border-[#D7BD9A]/30 rounded-full bg-[#D7BD9A]/10 text-[#D7BD9A] text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-6 backdrop-blur-md">
-              Concierge
-            </span>
+
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.9] tracking-tight">
               Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D7BD9A] via-[#D7BD9A] to-[#D7BD9A] italic">Touch.</span>
             </h1>
