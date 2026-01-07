@@ -133,6 +133,7 @@ const Testimonials: React.FC = () => {
             <div className="w-full overflow-hidden" ref={containerRef}>
                 <div
                     ref={contentRef}
+                    // 'items-stretch' ensures all wrappers in the row are the same height as the tallest one
                     className="flex gap-4 md:gap-6 cursor-grab touch-pan-y items-stretch"
                     style={{ willChange: 'transform' }}
                     onMouseDown={onMouseDown}
@@ -146,47 +147,46 @@ const Testimonials: React.FC = () => {
                     {[...testimonials, ...testimonials].map((item, index) => (
                         <div
                             key={index}
-                            // Changed Width: Kept similar, but width affects how height distributes text
                             className="relative flex-shrink-0 w-[80vw] md:w-[400px] lg:w-[450px]"
                         >
                             {/* 
-                               CHANGES HERE:
-                               1. Reduced padding: p-6 md:p-8 (was md:p-12)
-                               2. kept flex-col justify-between to align footer at bottom 
+                                1. Added 'h-full': Stretches card to fill the container height (calculated by tallest sibling).
+                                2. Added 'min-h-[280px]': Ensures a consistent base size even if text is short.
+                                3. 'flex flex-col justify-between': Pushes the author section to the bottom.
                             */}
-                            <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 md:p-6 rounded-[1.5rem] transition-all duration-300 hover:bg-white/[0.07] hover:border-[#D7BD9A]/30 group/card flex flex-col justify-between select-none">
+                            <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-[1.5rem] transition-all duration-300 hover:bg-white/[0.07] hover:border-[#D7BD9A]/30 group/card flex flex-col justify-between h-full min-h-[320px] select-none">
 
                                 <div>
-                                    {/* Top Row */}
-                                    <div className="flex justify-between items-start mb-3">
-                                        <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-black/30 flex items-center justify-center border border-white/10 group-hover/card:border-[#D7BD9A]/50 transition-colors">
+                                    {/* Top Row: Quote and Stars */}
+                                    <div className="flex justify-between items-start mb-6">
+                                        <div className="w-8 h-8 rounded-full bg-black/30 flex items-center justify-center border border-white/10 group-hover/card:border-[#D7BD9A]/50 transition-colors">
                                             <Quote className="w-3 h-3 text-white/40 group-hover/card:text-[#D7BD9A] transition-colors" />
                                         </div>
                                         <div className="flex gap-1">
                                             {[...Array(item.rating)].map((_, i) => (
-                                                <Star key={i} className="w-2.5 h-2.5 text-[#D7BD9A] fill-[#D7BD9A]" />
+                                                <Star key={i} className="w-3 h-3 text-[#D7BD9A] fill-[#D7BD9A]" />
                                             ))}
                                         </div>
                                     </div>
 
-                                    {/* Content */}
-                                    <p className="text-sm md:text-base text-white/90 font-serif leading-relaxed italic mb-4 pointer-events-none">
+                                    {/* Review Text */}
+                                    <p className="text-sm md:text-base text-white/90 font-serif leading-relaxed italic mb-8 pointer-events-none line-clamp-6">
                                         "{item.text}"
                                     </p>
                                 </div>
 
-                                {/* Footer */}
-                                <div className="flex items-center gap-2 pointer-events-none border-t border-white/5 pt-3 mt-auto">
-                                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-tr from-[#D7BD9A] to-[#D7BD9A] p-[1px]">
-                                        <div className="w-full h-full rounded-full bg-[#111] flex items-center justify-center text-white font-bold text-xs">
+                                {/* Footer: Author Info */}
+                                <div className="flex items-center gap-3 pointer-events-none border-t border-white/5 pt-4 mt-auto">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#D7BD9A] to-[#D7BD9A] p-[1px] flex-shrink-0">
+                                        <div className="w-full h-full rounded-full bg-[#111] flex items-center justify-center text-white font-bold text-sm">
                                             {item.author.charAt(0)}
                                         </div>
                                     </div>
                                     <div>
-                                        <h4 className="text-white text-xs md:text-sm font-bold uppercase tracking-wider">
+                                        <h4 className="text-white text-sm font-bold uppercase tracking-wider truncate">
                                             {item.author}
                                         </h4>
-                                        <p className="text-white/40 text-[9px] font-mono">
+                                        <p className="text-white/40 text-[10px] font-mono uppercase">
                                             {item.role}
                                         </p>
                                     </div>
