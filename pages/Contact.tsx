@@ -132,8 +132,8 @@ const Contact: React.FC = () => {
               <ContactItem
                 icon={<Mail size={24} />}
                 label="Email Us"
-                value="hello@glowup.com"
-                href="mailto:hello@glowup.com"
+                value="danwesha488@gmail.com"
+                href="mailto:danwesha488@gmail.com"
               />
               <ContactItem
                 icon={<MapPin size={24} />}
