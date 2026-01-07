@@ -69,8 +69,22 @@ const Footer: React.FC = () => {
                 Refining Beauty <br /> Standards since 2024
               </p>
               <div className="flex gap-4">
-                <a href="#" className="hover:text-[#D7BD9A] transition-colors"><Instagram size={18} /></a>
-                <a href="#" className="hover:text-[#D7BD9A] transition-colors"><Facebook size={18} /></a>
+                <a href="https://www.instagram.com/theglowuplondon?igsh=Ym1sc2p4azNhamwx" className="hover:text-[#D7BD9A] transition-colors">
+                  <Instagram size={18} />
+                </a>
+
+                {/* Replaced Facebook with Custom TikTok SVG */}
+                <a href="https://www.tiktok.com/@theglowuplondon?_r=1&_t=ZS-92s77AZLEgR" className="hover:text-[#D7BD9A] transition-colors">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.183 8.183 0 0 0 4.101 1.01V6.29l-.33.044a4.792 4.792 0 0 1-1.02.043Z" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>

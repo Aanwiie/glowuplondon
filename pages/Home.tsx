@@ -55,9 +55,9 @@ const Home: React.FC = () => {
 
       {/* --- HERO SECTION --- */}
       <section className="relative w-full pt-28 md:pt-36 px-4 md:px-8 pb-8 overflow-hidden">
-        
+
         <div className="relative w-full h-[65vh] md:h-[80vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 bg-neutral-900">
-          
+
           <video
             ref={videoRef}
             autoPlay
@@ -71,28 +71,28 @@ const Home: React.FC = () => {
           {/* --- OVERLAYS --- */}
           {/* Subtle all-over tint */}
           <div className="absolute inset-0 bg-black/20 pointer-events-none z-10"></div>
-          
+
           {/* Bottom Gradient - Stronger on the left for text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none z-10"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/10 to-transparent pointer-events-none z-10"></div>
-          
+
           {/* Texture Overlay */}
           <div className="absolute inset-0 opacity-[0.07] pointer-events-none mix-blend-overlay z-10"
             style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/noise.png")` }}>
           </div>
 
           {/* --- CONTENT CONTAINER (COMPACT & LEFT) --- */}
-          <div className="absolute bottom-0 left-0 z-30 flex flex-col items-start justify-end gap-6 p-6 md:p-10 lg:p-12 max-w-[90%] md:max-w-[70%]">
-            
+          <div className="absolute bottom-0 left-4 z-30 flex flex-col items-start justify-end gap-6 p-6 md:p-10 lg:p-12 max-w-[90%] md:max-w-[70%]">
+
             {/* Description Text - Constrained max-width for compactness */}
-            <div className="max-w-xs md:max-w-md">
+            <div className="max-w-xs md:max-w-md ">
               <p className="font-light text-white text-base md:text-lg lg:text-xl leading-relaxed tracking-wide drop-shadow-2xl text-left">
                 From sleek hair styling to expertly finished nails, we offer luxury services with precision and attention to detail.
               </p>
             </div>
 
             {/* Book Experience Button - Compact Size */}
-            <Link to="/booking" className="group relative block px-8 py-4 md:px-10 md:py-5 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-md">
+            <Link to="/booking" className="group relative block px-4 py-2 md:px-8 md:py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-md">
               <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A] to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
               <span className="relative z-10 flex items-center gap-3 font-medium tracking-widest text-xs md:text-sm uppercase text-white group-hover:text-black transition-colors duration-300">
                 Book Experience
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
             </Link>
 
           </div>
-          
+
         </div>
       </section>
 
@@ -122,7 +122,7 @@ const Home: React.FC = () => {
 
           {/* CONTENT CONTAINER */}
           <div className="relative z-10 mx-auto px-4 md:px-12 py-8 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 w-full max-w-5xl">
-            
+
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <div className="mb-4 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-black animate-pulse"></div>
@@ -139,7 +139,7 @@ const Home: React.FC = () => {
                 </span>
               </h2>
             </div>
-            
+
             <div className="relative group shrink-0">
               <div className="absolute inset-0 bg-white/40 rounded-full blur-xl scale-0 group-hover:scale-110 transition-transform duration-700 ease-out"></div>
               <Link
@@ -156,7 +156,7 @@ const Home: React.FC = () => {
                 </div>
               </Link>
             </div>
-            
+
           </div>
 
         </div>
@@ -164,13 +164,13 @@ const Home: React.FC = () => {
 
       {/* --- INFINITE SCROLL PRODUCTS SECTION --- */}
       <section className="relative py-8 md:py-12 px-0 bg-[#0a0a0a] border-b border-white/5 overflow-hidden">
-        
+
         <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none"
           style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
         </div>
 
         <div className="relative z-10 flex flex-col items-center">
-          
+
           <div className="mb-8 md:mb-12 flex items-center gap-3">
             <div className="w-8 h-[2px] bg-gradient-to-r from-[#D7BD9A] to-transparent"></div>
             <span className="font-mono text-xs font-bold tracking-[0.3em] uppercase opacity-60 text-[#D7BD9A]">
@@ -188,12 +188,12 @@ const Home: React.FC = () => {
 
             <div className="flex w-max gap-12 md:gap-24 animate-infinite-scroll hover:[animation-play-state:paused] py-4">
               {seamlessProducts.map((product, idx) => (
-                <div 
+                <div
                   key={`${product.id}-${idx}`}
                   className="flex items-center justify-center shrink-0 w-32 md:w-48 group grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100"
                 >
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.name}
                     className="w-full h-auto object-contain"
                     draggable={false}
