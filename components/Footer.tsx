@@ -97,6 +97,7 @@ const Footer: React.FC = () => {
 
             <div className="flex flex-col gap-4">
               <address className="not-italic text-sm font-light text-neutral-300 leading-relaxed group-hover:text-white transition-colors">
+                The Glow Up London <br />
                 Unit 1, Tintern House<br />
                 114 High Street<br />
                 Brentford, TW8 8AF
