@@ -174,12 +174,12 @@ const Home: React.FC = () => {
           <div className="mb-8 md:mb-12 flex items-center gap-3">
             <div className="w-8 h-[2px] bg-gradient-to-r from-[#D7BD9A] to-transparent"></div>
             <span className="font-mono text-xs font-bold tracking-[0.3em] uppercase opacity-60 text-[#D7BD9A]">
-              Premium Brands
+              Carefully selected
             </span>
           </div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic font-light mb-16 text-white text-center px-4">
-            Carefully selected Professional <span className="text-white/40 not-italic">Products</span>
+             Professional <span className="text-white/40 not-italic">Products</span>
           </h2>
 
           <div className="relative w-full overflow-hidden">
