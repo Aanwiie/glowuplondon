@@ -379,14 +379,15 @@ const Services: React.FC = () => {
       {/* Header Image */}
       <div className="relative h-[40vh] bg-neutral-900 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=2000"
+          src="/service.png"
           alt="Salon Services"
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-full p-8 text-center pb-12">
           <h1 className="text-5xl md:text-7xl font-serif text-white mb-2">Service Menu</h1>
-          <p className="text-gold-500 uppercase tracking-widest text-sm">Luxury • Care • Style</p>
+          {/* REPLACED GOLD TEXT */}
+          <p className="text-[#D7BD9A] uppercase tracking-widest text-sm">Luxury • Care • Style</p>
         </div>
       </div>
 
@@ -402,14 +403,15 @@ const Services: React.FC = () => {
         </div>
 
         {/* Footer CTA */}
-        <div className="mt-20 text-center p-8 border border-gold-500/20 rounded-lg bg-neutral-900/30">
+        {/* REPLACED GOLD BORDER AND HOVER BG */}
+        <div className="mt-20 text-center p-8 border border-[#D7BD9A]/20 rounded-lg bg-neutral-900/30">
           <h3 className="text-2xl font-serif text-white mb-4">Ready to Glow?</h3>
           <p className="text-gray-400 mb-8 max-w-md mx-auto">
             Book your appointment today. For complex color corrections or bridal services, we recommend a consultation first.
           </p>
           <Link
             to="/booking"
-            className="inline-block bg-white text-black px-10 py-3 text-sm font-bold uppercase tracking-widest hover:bg-gold-500 hover:text-white transition-all"
+            className="inline-block bg-white text-black px-10 py-3 text-sm font-bold uppercase tracking-widest hover:bg-[#D7BD9A] hover:text-white transition-all"
           >
             Book Appointment
           </Link>
@@ -422,8 +424,9 @@ const Services: React.FC = () => {
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
           onClick={() => setSelectedService(null)}
         >
+          {/* REPLACED GOLD BORDER */}
           <div
-            className="bg-neutral-900 border border-gold-500/30 w-full max-w-md rounded-lg p-8 relative shadow-2xl transform transition-all"
+            className="bg-neutral-900 border border-[#D7BD9A]/30 w-full max-w-md rounded-lg p-8 relative shadow-2xl transform transition-all"
             onClick={(e) => e.stopPropagation()} // Prevent close on clicking modal content
           >
             {/* Close Button */}
@@ -438,7 +441,8 @@ const Services: React.FC = () => {
 
             {/* Modal Content */}
             <div className="text-center">
-              <h3 className="text-2xl font-serif text-gold-400 mb-2">{selectedService.name}</h3>
+              {/* REPLACED GOLD TEXT */}
+              <h3 className="text-2xl font-serif text-[#D7BD9A] mb-2">{selectedService.name}</h3>
               <div className="flex items-center justify-center space-x-4 mb-6 text-sm uppercase tracking-wider text-gray-300">
                 <span className="font-bold">{selectedService.price}</span>
                 {selectedService.duration && (
@@ -455,9 +459,10 @@ const Services: React.FC = () => {
                 {selectedService.description || "No detailed description available for this service."}
               </p>
 
+              {/* REPLACED GOLD TEXT */}
               <button
                 onClick={() => setSelectedService(null)}
-                className="mt-8 text-gold-500 hover:text-white text-xs uppercase tracking-[0.2em] transition-colors"
+                className="mt-8 text-[#D7BD9A] hover:text-white text-xs uppercase tracking-[0.2em] transition-colors"
               >
                 Close Details
               </button>
@@ -487,12 +492,14 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category, onServiceCl
       {/* Section Header */}
       <div className="p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/5 border-b border-white/5">
         <div>
-          <h2 className="text-3xl font-serif text-gold-400 mb-1">{category.title}</h2>
+          {/* REPLACED GOLD TEXT */}
+          <h2 className="text-3xl font-serif text-[#D7BD9A] mb-1">{category.title}</h2>
           <p className="text-gray-400 text-sm tracking-wide uppercase">{category.description}</p>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-white flex items-center gap-2 hover:text-gold-400 transition-colors text-sm uppercase tracking-widest font-semibold"
+          // REPLACED HOVER GOLD TEXT
+          className="text-white flex items-center gap-2 hover:text-[#D7BD9A] transition-colors text-sm uppercase tracking-widest font-semibold"
         >
           {isOpen ? 'Close' : 'View Full Menu'}
           <svg
@@ -518,9 +525,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category, onServiceCl
                 />
               ))}
             </div>
-            <div className="mt-6 text-center">
-              <p className="text-gray-500 text-sm italic">Click "View Full Menu" to see all {category.title} services</p>
-            </div>
+           
           </div>
         ) : (
           // EXPANDED STATE
@@ -528,7 +533,8 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category, onServiceCl
             {category.subCategories.map((sub, idx) => (
               <div key={idx}>
                 <div className="flex items-center mb-8">
-                  <div className="h-px bg-gold-500/30 flex-grow max-w-[50px] mr-4"></div>
+                  {/* REPLACED GOLD BG (SEPARATOR) */}
+                  <div className="h-px bg-[#D7BD9A]/30 flex-grow max-w-[50px] mr-4"></div>
                   <h3 className="text-xl md:text-2xl font-serif text-white">{sub.title}</h3>
                   <div className="h-px bg-white/10 flex-grow ml-4"></div>
                 </div>
@@ -545,14 +551,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category, onServiceCl
               </div>
             ))}
 
-            <div className="pt-8 text-center border-t border-white/10">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-white text-sm uppercase tracking-widest transition-colors"
-              >
-                Close {category.title}
-              </button>
-            </div>
+            
           </div>
         )}
       </div>
@@ -563,18 +562,21 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category, onServiceCl
 const ServiceItemRow: React.FC<{ item: ExtendedServiceItem, onClick?: () => void }> = ({ item, onClick }) => (
   <div
     onClick={onClick}
+    // REPLACED HOVER BORDER COLOR
     className={`group flex justify-between items-baseline border-b border-dashed border-white/10 pb-2 transition-colors
-      ${item.description ? 'cursor-pointer hover:border-gold-500' : 'hover:border-gold-500/30'}
+      ${item.description ? 'cursor-pointer hover:border-[#D7BD9A]' : 'hover:border-[#D7BD9A]/30'}
     `}
   >
     <div className="flex flex-col pr-4">
       <div className="flex items-center">
-        <span className={`font-light text-base md:text-lg transition-colors ${item.description ? 'text-gray-300 group-hover:text-gold-400' : 'text-gray-300 group-hover:text-white'}`}>
+        {/* REPLACED GROUP HOVER TEXT */}
+        <span className={`font-light text-base md:text-lg transition-colors ${item.description ? 'text-gray-300 group-hover:text-[#D7BD9A]' : 'text-gray-300 group-hover:text-white'}`}>
           {item.name}
         </span>
         {/* Simple info icon indicator if description exists */}
         {item.description && (
-          <span className="ml-2 text-gray-600 group-hover:text-gold-500 transition-colors" title="View Details">
+          // REPLACED GROUP HOVER TEXT
+          <span className="ml-2 text-gray-600 group-hover:text-[#D7BD9A] transition-colors" title="View Details">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
             </svg>
@@ -585,7 +587,8 @@ const ServiceItemRow: React.FC<{ item: ExtendedServiceItem, onClick?: () => void
         <span className="text-gray-600 text-xs mt-0.5">{item.duration}</span>
       )}
     </div>
-    <span className="text-gold-200 font-medium whitespace-nowrap ml-2 text-sm md:text-base">
+    {/* REPLACED GOLD TEXT (PRICE) */}
+    <span className="text-[#D7BD9A] font-medium whitespace-nowrap ml-2 text-sm md:text-base">
       {item.price}
     </span>
   </div>
