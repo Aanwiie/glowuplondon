@@ -68,38 +68,30 @@ const Home: React.FC = () => {
             src="/beauty-video.mp4"
           />
 
-          {/* Overlays for Legibility */}
+          {/* --- OVERLAYS --- */}
           {/* Subtle all-over tint */}
           <div className="absolute inset-0 bg-black/20 pointer-events-none z-10"></div>
           
-          {/* Top-Left Gradient specific for text readability */}
-          <div className="absolute top-0 left-0 w-full md:w-3/4 h-96 bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none z-10"></div>
-          
-          {/* Bottom Gradient for Button */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-10"></div>
+          {/* Bottom Gradient - Stronger on the left for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent pointer-events-none z-10"></div>
           
           {/* Texture Overlay */}
           <div className="absolute inset-0 opacity-[0.07] pointer-events-none mix-blend-overlay z-10"
             style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/noise.png")` }}>
           </div>
 
-          {/* --- TOP LEFT DESCRIPTION TEXT (UPDATED SIZE) --- */}
-          {/* 
-              Updates:
-              1. Increased max-width: max-w-md -> max-w-2xl
-              2. Increased Font Size: text-lg (mobile) -> text-2xl (desktop)
-              3. Increased Border width: border-l-4 for better visibility
-          */}
-          <div className="absolute top-0 left-0 z-20 p-6 md:p-12 lg:p-16 w-full max-w-md md:max-w-2xl lg:max-w-3xl">
-            <div className="pl-6 md:pl-8 border-l-2 md:border-l-4 border-[#D7BD9A]/70">
-               <p className="font-light text-white text-lg md:text-xl lg:text-3xl leading-relaxed tracking-wide drop-shadow-2xl">
+          {/* --- CONTENT CONTAINER (BOTTOM LEFT) --- */}
+          <div className="absolute bottom-0 left-0 z-30 p-6 md:p-12 lg:p-16 w-full flex flex-col items-start justify-end gap-8 md:gap-10">
+            
+            {/* Description Text */}
+            <div className="max-w-md md:max-w-xl lg:max-w-2xl">
+              <p className="font-light text-white text-lg md:text-xl lg:text-3xl leading-relaxed tracking-wide drop-shadow-2xl text-left">
                 From sleek hair styling to expertly finished nails, we offer luxury services for women and men with precision and attention to every detail.
               </p>
             </div>
-          </div>
 
-          {/* Book Experience Button - Centered Bottom */}
-          <div className="absolute bottom-10 md:bottom-16 left-1/2 transform -translate-x-1/2 z-30">
+            {/* Book Experience Button */}
             <Link to="/booking" className="group relative block px-8 py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-md">
               <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A] to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
               <span className="relative z-10 flex items-center gap-3 font-medium tracking-widest text-xs uppercase text-white group-hover:text-black transition-colors duration-300">
@@ -107,7 +99,6 @@ const Home: React.FC = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </Link>
-
 
           </div>
           

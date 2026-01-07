@@ -88,7 +88,10 @@ const Footer: React.FC = () => {
                 Brentford, TW8 8AF
               </address>
               <a href="https://what3words.com/maps.congratulations.sugars" className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors">
-                Get Directions <ArrowRight size={10} />
+                Get Directions on what3words <ArrowRight size={10} />
+              </a>
+              <a href="https://maps.app.goo.gl/1bBJSB4SUuUkkN8u9" className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors">
+                Get Directions on Google Maps <ArrowRight size={10} />
               </a>
             </div>
           </div>
