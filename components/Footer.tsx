@@ -108,37 +108,41 @@ const Footer: React.FC = () => {
           </div>
 
           {/* COL 2: ADDRESS */}
-          <div className="md:col-span-1 border-r border-b border-white/10 p-6 md:p-8 hover:bg-white/[0.02] transition-colors group flex flex-col justify-center items-start gap-6 min-h-[280px]">
-            <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-[#D7BD9A]/70 flex items-center gap-2">
-              <MapPin size={14} /> The Studio
-            </h4>
+          {/* COL 2: ADDRESS */}
+<div className="md:col-span-1 border-r border-b border-white/10 p-6 md:p-8 hover:bg-white/[0.02] transition-colors group flex flex-col justify-center items-start gap-6 min-h-[280px]">
+  <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-[#D7BD9A]/70 flex items-center gap-2">
+    <MapPin size={14} /> The Studio
+  </h4>
 
-            <div className="flex flex-col gap-4">
-              <address className="not-italic text-sm font-light text-neutral-300 leading-relaxed group-hover:text-white transition-colors">
-                The Glow Up London <br />
-                Unit 1, Tintern House<br />
-                115 High Street<br />
-                Brentford, TW8 8AF
-              </address>
-              <a
-                href="https://what3words.com/maps.congratulations.sugars"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors"
-              >
-                what3words.congratulations.sugars 
-              </a>
-              <a
-                href="https://maps.app.goo.gl/1bBJSB4SUuUkkN8u9"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors"
-              >
-                Google Maps 
-              </a>
-            </div>
-          </div>
-
+  <div className="flex flex-col gap-4">
+    <address className="not-italic text-sm font-light text-neutral-300 leading-relaxed group-hover:text-white transition-colors mb-2">
+      The Glow Up London <br />
+      Unit 1, Tintern House<br />
+      115 High Street<br />
+      Brentford, TW8 8AF
+    </address>
+    
+    <div className="flex flex-col gap-3">
+      <a
+        href="https://what3words.com/maps.congratulations.sugars"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center text-[10px] uppercase tracking-widest font-medium text-neutral-500 border-b border-transparent hover:border-[#D7BD9A] hover:text-[#D7BD9A] transition-all w-fit pb-0.5"
+      >
+        What3words /// maps.congratulations.sugars
+      </a>
+      
+      <a
+        href="https://www.google.com/maps"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center text-[10px] uppercase tracking-widest font-medium text-neutral-500 border-b border-transparent hover:border-[#D7BD9A] hover:text-[#D7BD9A] transition-all w-fit pb-0.5"
+      >
+        Google Maps 
+      </a>
+    </div>
+  </div>
+</div>
           {/* COL 3: CONTACT */}
           <div className="md:col-span-1 border-r border-b border-white/10 p-6 md:p-8 hover:bg-white/[0.02] transition-colors group flex flex-col justify-center items-start gap-6 min-h-[280px]">
             <h4 className="text-xs font-bold uppercase tracking-[0.25em] text-[#D7BD9A]/70 flex items-center gap-2">
@@ -183,7 +187,9 @@ const Footer: React.FC = () => {
 
       {/* --- BOTTOM BAR --- */}
       <div className="container mx-auto px-4 md:px-6 py-6 md:py-8 flex flex-col md:flex-row justify-between items-center text-[9px] md:text-[10px] uppercase tracking-widest text-neutral-600 font-mono">
-        <p>Hashtag Hive Agency +44 7741324193</p>
+        <a href="https://hashtaghiveagency.com/" className="hover:text-white transition-colors">
+          <p>Hashtag Hive Agency +44 7741324193</p>
+          </a>
         <div className="flex gap-6 mt-3 md:mt-0">
           <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Privacy</a>
           <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Terms</a>
