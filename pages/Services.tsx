@@ -374,8 +374,8 @@ const Services: React.FC = () => {
     },
   ];
 
-  return (
-    <div className="bg-black min-h-screen">
+return (
+<div className="bg-black min-h-screen">
       {/* Header Image */}
       <div className="relative h-[40vh] bg-neutral-900 overflow-hidden">
         <img
@@ -390,86 +390,23 @@ const Services: React.FC = () => {
           <p className="text-[#D7BD9A] uppercase tracking-widest text-sm">Luxury • Care • Style</p>
         </div>
       </div>
-
       <div className="container mx-auto px-4 py-16 max-w-5xl">
         <div className="space-y-12">
           {mainCategories.map((cat) => (
-            <CategorySection
-              key={cat.id}
-              category={cat}
-              onServiceClick={setSelectedService}
-            />
+            <CategorySection key={cat.id} category={cat} />
           ))}
         </div>
 
-        {/* Footer CTA */}
-        {/* REPLACED GOLD BORDER AND HOVER BG */}
         <div className="mt-20 text-center p-8 border border-[#D7BD9A]/20 rounded-lg bg-neutral-900/30">
           <h3 className="text-2xl font-serif text-white mb-4">Ready to Glow?</h3>
           <p className="text-gray-400 mb-8 max-w-md mx-auto">
             Book your appointment today. For complex color corrections or bridal services, we recommend a consultation first.
           </p>
-          <Link
-            to="/booking"
-            className="inline-block bg-white text-black px-10 py-3 text-sm font-bold uppercase tracking-widest hover:bg-[#D7BD9A] hover:text-white transition-all"
-          >
+          <Link to="/booking" className="inline-block bg-white text-black px-10 py-3 text-sm font-bold uppercase tracking-widest hover:bg-[#D7BD9A] hover:text-white transition-all">
             Book Appointment
           </Link>
         </div>
       </div>
-
-      {/* SERVICE DESCRIPTION MODAL */}
-      {selectedService && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
-          onClick={() => setSelectedService(null)}
-        >
-          {/* REPLACED GOLD BORDER */}
-          <div
-            className="bg-neutral-900 border border-[#D7BD9A]/30 w-full max-w-md rounded-lg p-8 relative shadow-2xl transform transition-all"
-            onClick={(e) => e.stopPropagation()} // Prevent close on clicking modal content
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedService(null)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
-            >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-
-            {/* Modal Content */}
-            <div className="text-center">
-              {/* REPLACED GOLD TEXT */}
-              <h3 className="text-2xl font-serif text-[#D7BD9A] mb-2">{selectedService.name}</h3>
-              <div className="flex items-center justify-center space-x-4 mb-6 text-sm uppercase tracking-wider text-gray-300">
-                <span className="font-bold">{selectedService.price}</span>
-                {selectedService.duration && (
-                  <>
-                    <span className="text-white/20">•</span>
-                    <span>{selectedService.duration}</span>
-                  </>
-                )}
-              </div>
-
-              <div className="h-px w-20 bg-white/20 mx-auto mb-6"></div>
-
-              <p className="text-gray-300 font-light leading-relaxed text-sm md:text-base">
-                {selectedService.description || "No detailed description available for this service."}
-              </p>
-
-              {/* REPLACED GOLD TEXT */}
-              <button
-                onClick={() => setSelectedService(null)}
-                className="mt-8 text-[#D7BD9A] hover:text-white text-xs uppercase tracking-[0.2em] transition-colors"
-              >
-                Close Details
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
@@ -478,34 +415,25 @@ const Services: React.FC = () => {
 
 interface CategorySectionProps {
   category: MainCategory;
-  onServiceClick: (item: ExtendedServiceItem) => void;
 }
 
-const CategorySection: React.FC<CategorySectionProps> = ({ category, onServiceClick }) => {
+const CategorySection: React.FC<CategorySectionProps> = ({ category }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  // For preview: Show only the first 6 items of the first subcategory
-  const previewItems = category.subCategories[0]?.items.slice(0, 6) || [];
+  const previewItems = category.subCategories[0]?.items.slice(0, 4) || [];
 
   return (
-    <div className="border border-white/10 bg-neutral-900/50 rounded-xl overflow-hidden transition-all duration-300">
-      {/* Section Header */}
+    <div className="border border-white/10 bg-neutral-900/50 rounded-xl overflow-hidden">
       <div className="p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/5 border-b border-white/5">
         <div>
-          {/* REPLACED GOLD TEXT */}
           <h2 className="text-3xl font-serif text-[#D7BD9A] mb-1">{category.title}</h2>
           <p className="text-gray-400 text-sm tracking-wide uppercase">{category.description}</p>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          // REPLACED HOVER GOLD TEXT
           className="text-white flex items-center gap-2 hover:text-[#D7BD9A] transition-colors text-sm uppercase tracking-widest font-semibold"
         >
           {isOpen ? 'Close' : 'View Full Menu'}
-          <svg
-            className={`w-4 h-4 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-            fill="none" viewBox="0 0 24 24" stroke="currentColor"
-          >
+          <svg className={`w-4 h-4 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </button>
@@ -513,45 +441,27 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category, onServiceCl
 
       <div className="p-6 md:p-8">
         {!isOpen ? (
-          // PREVIEW STATE
-          <div>
-            <h3 className="text-xl font-serif text-white/80 mb-6">{category.subCategories[0]?.title} & More...</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 opacity-80">
-              {previewItems.map((item, idx) => (
-                <ServiceItemRow
-                  key={idx}
-                  item={item}
-                  onClick={() => item.description ? onServiceClick(item) : null}
-                />
-              ))}
-            </div>
-           
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+            {previewItems.map((item, idx) => (
+              <ServiceItemRow key={idx} item={item} />
+            ))}
           </div>
         ) : (
-          // EXPANDED STATE
           <div className="space-y-12 animate-fade-in">
             {category.subCategories.map((sub, idx) => (
               <div key={idx}>
                 <div className="flex items-center mb-8">
-                  {/* REPLACED GOLD BG (SEPARATOR) */}
                   <div className="h-px bg-[#D7BD9A]/30 flex-grow max-w-[50px] mr-4"></div>
                   <h3 className="text-xl md:text-2xl font-serif text-white">{sub.title}</h3>
                   <div className="h-px bg-white/10 flex-grow ml-4"></div>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
                   {sub.items.map((item, itemIdx) => (
-                    <ServiceItemRow
-                      key={itemIdx}
-                      item={item}
-                      onClick={() => item.description ? onServiceClick(item) : null}
-                    />
+                    <ServiceItemRow key={itemIdx} item={item} />
                   ))}
                 </div>
               </div>
             ))}
-
-            
           </div>
         )}
       </div>
@@ -559,38 +469,28 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category, onServiceCl
   );
 };
 
-const ServiceItemRow: React.FC<{ item: ExtendedServiceItem, onClick?: () => void }> = ({ item, onClick }) => (
-  <div
-    onClick={onClick}
-    // REPLACED HOVER BORDER COLOR
-    className={`group flex justify-between items-baseline border-b border-dashed border-white/10 pb-2 transition-colors
-      ${item.description ? 'cursor-pointer hover:border-[#D7BD9A]' : 'hover:border-[#D7BD9A]/30'}
-    `}
-  >
-    <div className="flex flex-col pr-4">
-      <div className="flex items-center">
-        {/* REPLACED GROUP HOVER TEXT */}
-        <span className={`font-light text-base md:text-lg transition-colors ${item.description ? 'text-gray-300 group-hover:text-[#D7BD9A]' : 'text-gray-300 group-hover:text-white'}`}>
-          {item.name}
-        </span>
-        {/* Simple info icon indicator if description exists */}
-        {item.description && (
-          // REPLACED GROUP HOVER TEXT
-          <span className="ml-2 text-gray-600 group-hover:text-[#D7BD9A] transition-colors" title="View Details">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-            </svg>
-          </span>
-        )}
-      </div>
+const ServiceItemRow: React.FC<{ item: ExtendedServiceItem }> = ({ item }) => (
+  <div className="flex flex-col border-b border-dashed border-white/10 pb-4 group">
+    <div className="flex justify-between items-baseline mb-1">
+      <span className="font-light text-base md:text-lg text-gray-200 group-hover:text-[#D7BD9A] transition-colors">
+        {item.name}
+      </span>
+      <span className="text-[#D7BD9A] font-medium whitespace-nowrap ml-4 text-sm md:text-base">
+        {item.price}
+      </span>
+    </div>
+    
+    {/* Metadata and Description area */}
+    <div className="space-y-1">
       {item.duration && (
-        <span className="text-gray-600 text-xs mt-0.5">{item.duration}</span>
+        <span className="text-gray-500 text-xs uppercase tracking-wider">{item.duration}</span>
+      )}
+      {item.description && (
+        <p className="text-gray-400 text-sm font-light leading-relaxed mt-1 italic">
+          {item.description}
+        </p>
       )}
     </div>
-    {/* REPLACED GOLD TEXT (PRICE) */}
-    <span className="text-[#D7BD9A] font-medium whitespace-nowrap ml-2 text-sm md:text-base">
-      {item.price}
-    </span>
   </div>
 );
 
