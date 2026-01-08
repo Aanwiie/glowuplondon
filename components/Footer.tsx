@@ -77,6 +77,14 @@ const Footer: React.FC = () => {
                 >
                   <Instagram size={18} />
                 </a>
+                <a
+                  href="https://www.facebook.com/share/1DRYxnZvDy/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#D7BD9A] transition-colors"
+                >
+                  <Facebook size={18} />
+                </a>
 
                 {/* Replaced Facebook with Custom TikTok SVG */}
                 <a
@@ -109,7 +117,7 @@ const Footer: React.FC = () => {
               <address className="not-italic text-sm font-light text-neutral-300 leading-relaxed group-hover:text-white transition-colors">
                 The Glow Up London <br />
                 Unit 1, Tintern House<br />
-                114 High Street<br />
+                115 High Street<br />
                 Brentford, TW8 8AF
               </address>
               <a

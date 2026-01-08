@@ -250,6 +250,11 @@ const Contact: React.FC = () => {
                   icon={<Instagram size={20} />}
                   label="Instagram"
                 />
+                <SocialButton
+                  href="https://www.facebook.com/share/1DRYxnZvDy/?mibextid=wwXIfr"
+                  icon={<Facebook size={20} />}
+                  label="Facebook"
+                />
 
                 <SocialButton
                   href="https://www.tiktok.com/@theglowuplondon?_r=1&_t=ZS-92s77AZLEgR"
@@ -321,7 +326,7 @@ const SocialButton = ({ icon, label, href }: { icon: any, label: string, href: s
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 hover:border-[#D7BD9A]/50 hover:bg-[#D7BD9A]/10 hover:text-[#D7BD9A] transition-all group"
+    className="flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 hover:border-[#D7BD9A]/50 hover:bg-[#D7BD9A]/10 hover:text-[#D7BD9A] transition-all group"
   >
     {icon}
     <span className="text-xs uppercase tracking-widest hidden sm:block">{label}</span>
