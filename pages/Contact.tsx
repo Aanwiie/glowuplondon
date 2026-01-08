@@ -210,7 +210,8 @@ const Contact: React.FC = () => {
               <ContactItem
                 icon={<MapPin size={24} />}
                 label="Visit Studio"
-                value="Brentford, London TW8 8AF"
+                value="115, Brentford, TW8 8AF 
+Unit 1, Tintern house"
                 href="#"
                 subValue="Unit 1, Tintern House"
               />

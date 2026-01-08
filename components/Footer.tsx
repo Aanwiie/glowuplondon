@@ -187,7 +187,8 @@ const Footer: React.FC = () => {
 
       {/* --- BOTTOM BAR --- */}
       <div className="container mx-auto px-4 md:px-6 py-6 md:py-8 flex flex-col md:flex-row justify-between items-center text-[9px] md:text-[10px] uppercase tracking-widest text-neutral-600 font-mono">
-        <a href="https://hashtaghiveagency.com/" className="hover:text-white transition-colors">
+        <a href="https://hashtaghiveagency.com/" className="hover:text-white transition-colors" target="_blank"
+                  rel="noopener noreferrer">
           <p>Hashtag Hive Agency +44 7741324193</p>
           </a>
         <div className="flex gap-6 mt-3 md:mt-0">
