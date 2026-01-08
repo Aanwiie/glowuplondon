@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
       </a>
       
       <a
-        href="https://www.google.com/maps"
+        href="https://maps.app.goo.gl/aTsejpNeQJg4MaeB9"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center text-[10px] uppercase tracking-widest font-medium text-neutral-500 border-b border-transparent hover:border-[#D7BD9A] hover:text-[#D7BD9A] transition-all w-fit pb-0.5"
