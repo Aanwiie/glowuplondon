@@ -126,7 +126,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors"
               >
-                Get Directions on what3words <ArrowRight size={10} />
+                what3words.congratulations.sugars 
               </a>
               <a
                 href="https://maps.app.goo.gl/1bBJSB4SUuUkkN8u9"
@@ -134,7 +134,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs uppercase font-bold text-neutral-500 group-hover:text-[#D7BD9A] transition-colors"
               >
-                Get Directions on Google Maps <ArrowRight size={10} />
+                Google Maps 
               </a>
             </div>
           </div>
