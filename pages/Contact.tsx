@@ -271,12 +271,30 @@ const Contact: React.FC = () => {
           </div>
 
         </div>
+
+        {/* --- MAP SECTION (RESTORED & ADDED) --- */}
+        <div className="mt-20 lg:mt-32 w-full">
+           <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative grayscale-[0.5] hover:grayscale-0 transition-all duration-700 bg-neutral-900">
+             <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.2393301031735!2d-0.3060184!3d51.4895514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760dc441315555%3A0x1d4d8c825a07530!2sBrentford%20TW8%208AF!5e0!3m2!1sen!2suk!4v1700000000000" 
+                width="100%" 
+                height="450" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Maps Location"
+                className="opacity-80 hover:opacity-100 transition-opacity duration-500"
+             ></iframe>
+           </div>
+        </div>
+
       </div>
     </div>
   );
 };
 
-// -- REUSABLE COMPONENTS (UPDATED for State Management) --
+// -- REUSABLE COMPONENTS --
 
 interface FloatingInputProps {
   label: string;
@@ -332,4 +350,5 @@ const SocialButton = ({ icon, label, href }: { icon: any, label: string, href: s
     <span className="text-xs uppercase tracking-widest hidden sm:block">{label}</span>
   </a>
 );
+
 export default Contact;

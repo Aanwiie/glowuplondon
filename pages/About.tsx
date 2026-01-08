@@ -139,12 +139,6 @@ const About: React.FC = () => {
           </div>
         </div>
       </section>
-      {/* --- FOOTER CTA STRIP --- */}
-      <div className="py-24 text-center">
-        <h2 className="font-serif text-5xl md:text-7xl opacity-10 font-bold uppercase tracking-tight select-none pointer-events-none">
-          Glow Up London
-        </h2>
-      </div>
 
     </div>
   );
