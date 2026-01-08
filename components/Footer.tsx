@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
             <img
               src="/logo2.png"
               alt="Logo"
-              className="w-32 md:w-40 h-auto brightness-0 invert opacity-90"
+              className="w-32 md:w-40 h-auto brightness-100 opacity-100"
             />
 
             <div className="space-y-4">
