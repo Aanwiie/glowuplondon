@@ -22,7 +22,6 @@ const team = [
     role: "Senior Stylist/Beautician",
     image: "/gallery/15.jpeg"
   },
-  
 ];
 
 const features = [
@@ -36,14 +35,8 @@ const About: React.FC = () => {
     <div className="bg-[#050505] min-h-screen text-white/90 selection:bg-[#D7BD9A]/30 overflow-x-hidden relative">
 
       {/* --- THE VISION (Collage Layout) --- */}
-      {/* 1. Changed py-16 to pt-32 pb-16 for Mobile. 
-             This adds space at the top so the Navbar doesn't overlap the image.
-      */}
       <section className="pt-32 pb-16 md:py-32 container mx-auto px-6 relative z-10">
 
-        {/* 2. Changed items-center to items-start.
-              This ensures the Image and the Text start at the exact same vertical level on Desktop.
-        */}
         <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-24">
 
           {/* Left: Image Composition */}
@@ -67,10 +60,6 @@ const About: React.FC = () => {
           {/* Right: Text */}
           <div className="w-full lg:w-1/2 lg:pl-12">
 
-            {/* 3. Removed 'mt-24' from the heading.
-                  Since we used 'items-start' on the parent, this heading will now naturally 
-                  align with the top edge of the image without needing extra margin.
-            */}
             <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">
               About
               <span className="text-neutral-500 italic"> Us</span>
@@ -78,7 +67,7 @@ const About: React.FC = () => {
 
             <div className="space-y-6 text-neutral-400 text-lg leading-relaxed font-light">
               <p>
-                <strong className="text-white font-serif text-xl">The Glow Up London</strong> is a luxury Brentford salon focused on confidence, self-care, and feeling your best. Our expert stylists, nail artists, and skincare specialists deliver premium treatments using modern techniques and high-quality products. With a calm, welcoming atmosphere, we blend relaxation with creativity to offer an experience that goes beyond beauty — it’s your moment to unwind, recharge, and truly glow.
+                <strong className="text-white font-serif text-xl">The Glow Up London</strong> is a luxury Brentford salon focused on confidence, self-care, and feeling your best. Our expert hair stylists, nail artists, beautician and makeup specialists deliver premium treatments using modern techniques and high-quality products. With a calm, welcoming atmosphere, we blend relaxation with creativity to offer an experience that goes beyond beauty — it’s your moment to unwind, recharge, and allow us to find your glow from within you.
               </p>
             </div>
 
@@ -101,18 +90,13 @@ const About: React.FC = () => {
       </section>
 
       {/* --- THE COLLECTIVE (Team Section) --- */}
-<section className="py-24 bg-neutral-900/30 border-t border-white/5 relative z-10 backdrop-blur-sm">
+      <section className="py-24 bg-neutral-900/30 border-t border-white/5 relative z-10 backdrop-blur-sm">
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center mb-16 text-center">
             <p className="text-[#D7BD9A] font-bold uppercase tracking-[0.2em] text-xs mb-3">The Collective</p>
             <h2 className="text-4xl md:text-6xl font-serif text-white">Meet the Experts</h2>
           </div>
 
-          {/* GRID UPDATE: 
-              - grid-cols-1: Mobile (1 per row)
-              - sm:grid-cols-2: Tablet (2 per row)
-              - lg:grid-cols-4: Desktop (4 per row)
-          */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
             {team.map((member, idx) => (
               <div key={idx} className="group relative w-full">
