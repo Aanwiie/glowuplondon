@@ -4,7 +4,7 @@ import { Heart, Star, Users, ArrowDownRight } from 'lucide-react';
 const team = [
   {
     name: "Sheetal",
-    role: "Nail Artist/Manage",
+    role: "Nail Artist/Manager",
     image: "/gallery/13.jpeg"
   },
   {
@@ -13,13 +13,13 @@ const team = [
     image: "/gallery/12.jpeg"
   },
   {
-    name: "Niki ",
-    role: "Senior Stylist/Beautician",
+    name: "Naz",
+    role: "Stylist/Beautician/MUA",
     image: "/gallery/16.jpeg"
   },
   {
-    name: "Naz",
-    role: "Stylist/Beautician",
+    name: "Niki",
+    role: "Senior Stylist/Beautician",
     image: "/gallery/15.jpeg"
   },
   

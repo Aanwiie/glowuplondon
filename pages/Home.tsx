@@ -13,6 +13,9 @@ const products = [
   { id: 4, name: "L'Oreal", image: "/products/loreal.png" },
   { id: 5, name: "Olaplex", image: "/products/olaplex.png" },
   { id: 6, name: "OPI", image: "/products/opi.png" },
+  // --- NEW PRODUCTS ADDED HERE ---
+  { id: 7, name: "Elim", image: "/products/elim.png" },
+  { id: 8, name: "Gel", image: "/products/gel.png" },
 ];
 
 const Home: React.FC = () => {
@@ -69,29 +72,21 @@ const Home: React.FC = () => {
           />
 
           {/* --- OVERLAYS --- */}
-          {/* Subtle all-over tint */}
           <div className="absolute inset-0 bg-black/20 pointer-events-none z-10"></div>
-
-          {/* Bottom Gradient - Stronger on the left for text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none z-10"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/10 to-transparent pointer-events-none z-10"></div>
 
-          {/* Texture Overlay */}
           <div className="absolute inset-0 opacity-[0.07] pointer-events-none mix-blend-overlay z-10"
             style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/noise.png")` }}>
           </div>
 
-          {/* --- CONTENT CONTAINER (COMPACT & LEFT) --- */}
           <div className="absolute bottom-0 left-4 z-30 flex flex-col items-start justify-end gap-6 p-6 md:p-10 lg:p-12 max-w-[90%] md:max-w-[70%]">
-
-            {/* Description Text - Constrained max-width for compactness */}
             <div className="max-w-xs md:max-w-md ">
               <p className="font-light text-white text-base md:text-lg lg:text-xl leading-relaxed tracking-wide drop-shadow-2xl text-left">
                 From sleek hair styling to expertly finished nails, we offer luxury services with precision and attention to detail.
               </p>
             </div>
 
-            {/* Book Experience Button - Compact Size */}
             <Link to="/booking" className="group relative block px-4 py-2 md:px-8 md:py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-md">
               <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A] to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
               <span className="relative z-10 flex items-center gap-3 font-medium tracking-widest text-xs md:text-sm uppercase text-white group-hover:text-black transition-colors duration-300">
@@ -99,7 +94,6 @@ const Home: React.FC = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </Link>
-
           </div>
 
         </div>
@@ -109,7 +103,6 @@ const Home: React.FC = () => {
       <section className="relative mx-4 md:mx-8 mb-36 mt-36">
         <div className="relative w-full overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-[#E8DCC4] text-[#1a1a1a]">
 
-          {/* DYNAMIC LIQUID BACKGROUND */}
           <div className="absolute inset-0 w-full h-full">
             <div className="absolute inset-0 bg-[#E8DCC4]"></div>
             <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-[#D7BD9A] rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob"></div>
@@ -120,9 +113,7 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* CONTENT CONTAINER */}
           <div className="relative z-10 mx-auto px-4 md:px-12 py-8 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 w-full max-w-5xl">
-
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <div className="mb-4 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-black animate-pulse"></div>
@@ -156,7 +147,6 @@ const Home: React.FC = () => {
                 </div>
               </Link>
             </div>
-
           </div>
 
         </div>
@@ -179,7 +169,7 @@ const Home: React.FC = () => {
           </div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic font-light mb-16 text-white text-center px-4">
-             Professional <span className="text-white/40 not-italic">Products</span>
+              Professional <span className="text-white/40 not-italic">Products</span>
           </h2>
 
           <div className="relative w-full overflow-hidden">
