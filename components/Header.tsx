@@ -6,6 +6,9 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
+  // Your Direct Booksy Profile Link
+  const booksyUrl = "https://booksy.com/en-gb/dl/show-business/170549";
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
@@ -49,12 +52,15 @@ const Header: React.FC = () => {
 
         {/* CTA & Mobile Toggle */}
         <div className="flex items-center gap-4">
-          <Link
-            to="/booking"
+          {/* UPDATED: Changed Link to <a> for new tab redirection */}
+          <a
+            href={booksyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden sm:block bg-gradient-to-r from-[#D7BD9A] to-[#D7BD9A] text-black px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-none hover:bg-white transition-all duration-300"
           >
             Book Now
-          </Link>
+          </a>
 
           {/* Mobile Menu Button */}
           <button
@@ -82,13 +88,17 @@ const Header: React.FC = () => {
                 {link.name}
               </Link>
             ))}
-            <Link
-              to="/booking"
+            
+            {/* UPDATED: Changed Mobile Link to <a> for new tab redirection */}
+            <a
+              href={booksyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
               className="bg-gradient-to-r from-[#D7BD9A] to-[#D7BD9A] text-black px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-none hover:bg-white transition-all duration-300 w-full text-center"
             >
               Book Now
-            </Link>
+            </a>
           </div>
         )}
       </div>

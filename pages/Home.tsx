@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 // 1. Import Framer Motion
 import { motion } from 'framer-motion';
@@ -23,6 +22,9 @@ const Home: React.FC = () => {
 
   // 4x ensures we have plenty of width even on 4k monitors before the animation resets
   const seamlessProducts = [...products, ...products, ...products, ...products];
+
+  // Your Direct Booksy Profile Link (Updated with your ID)
+  const booksyUrl = "https://booksy.com/en-gb/dl/show-business/170549";
 
   return (
     <div className="w-full bg-[#0a0a0a] text-[#e5e5e5] font-sans selection:bg-amber-400/30 overflow-x-hidden">
@@ -87,13 +89,19 @@ const Home: React.FC = () => {
               </p>
             </div>
 
-            <Link to="/booking" className="group relative block px-4 py-2 md:px-8 md:py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-md">
+            {/* UPDATED: Link changed to <a> for new tab redirection */}
+            <a 
+              href={booksyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block px-4 py-2 md:px-8 md:py-4 rounded-full border border-white/20 hover:border-amber-400/50 transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-md"
+            >
               <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A] to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
               <span className="relative z-10 flex items-center gap-3 font-medium tracking-widest text-xs md:text-sm uppercase text-white group-hover:text-black transition-colors duration-300">
                 Book Experience
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
-            </Link>
+            </a>
           </div>
 
         </div>
@@ -133,8 +141,12 @@ const Home: React.FC = () => {
 
             <div className="relative group shrink-0">
               <div className="absolute inset-0 bg-white/40 rounded-full blur-xl scale-0 group-hover:scale-110 transition-transform duration-700 ease-out"></div>
-              <Link
-                to="/booking"
+              
+              {/* UPDATED: Link changed to <a> for new tab redirection */}
+              <a
+                href={booksyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-flex items-center gap-4 px-8 py-4 bg-[#1a1a1a] text-[#E8DCC4] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 hover:bg-black shadow-2xl border border-white/5"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A]/20 to-[#D7BD9A]/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
@@ -145,7 +157,7 @@ const Home: React.FC = () => {
                   <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 transition-transform duration-500 ease-out group-hover:translate-x-full group-hover:-translate-y-full" />
                   <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 -translate-x-full translate-y-full transition-transform duration-500 ease-out group-hover:translate-x-0 group-hover:translate-y-0" style={{ color: '#D7BD9A' }} />
                 </div>
-              </Link>
+              </a>
             </div>
           </div>
 

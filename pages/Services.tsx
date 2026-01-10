@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Type interfaces
 interface ExtendedServiceItem {
@@ -22,20 +21,33 @@ interface MainCategory {
 }
 
 const Services: React.FC = () => {
-  // --- DATA DEFINITIONS ---
+  const booksyUrl = "https://booksy.com/en-gb/dl/show-business/170549";
 
+  // --- HAIR DATA ---
   const hairData: SubCategory[] = [
     {
       title: "Women Services",
       items: [
-        { name: "Wash, Haircut & Blow Dry (Short)", price: "£35+", duration: "1 hour" },
+        { name: "Wash, Haircut & Blow Dry (Short)", price: "£35", duration: "1 hour" },
         { name: "Wash, Haircut & Blow Dry (Medium)", price: "£40+", duration: "1 hour" },
         { name: "Wash, Haircut & Blow Dry (Long)", price: "£45+", duration: "1 hour" },
-        { name: "Wash & Blow Dry (Short)", price: "£25+", duration: "45 mins" },
-        { name: "Wash & Blow Dry (Medium)", price: "£30+", duration: "45 mins" },
-        { name: "Wash & Blow Dry (Long)", price: "£35+", duration: "1 hour" },
+        { name: "Wash & Blow Dry (Short)", price: "£25", duration: "45 mins" },
+        { name: "Wash & Blow Dry (Medium)", price: "£30", duration: "45 mins" },
+        { name: "Wash & Blow Dry (Long)", price: "£35", duration: "1 hour" },
         { name: "Fringe Cut", price: "£10+", duration: "15 mins" },
         { name: "Girls Cut", price: "£25+", duration: "45 mins" },
+      ]
+    },
+    {
+      title: "Styling & Up-Dos",
+      items: [
+        { name: "Hair Up", price: "£45+", duration: "1 hour" },
+        { name: "Curls", price: "£30+", duration: "45 mins" },
+        { name: "Hollywood Waves", price: "£50+", duration: "1 hr 15 mins" },
+        { name: "Finger Waves", price: "£40+", duration: "1 hour" },
+        { name: "High Hair Up", price: "£55+", duration: "1 hr 15 mins" },
+        { name: "French Braid", price: "£20+", duration: "30 mins" },
+        { name: "Bridal Hairstyle", price: "Consultation+", duration: "2 hours" },
       ]
     },
     {
@@ -55,164 +67,85 @@ const Services: React.FC = () => {
         { name: "T Section Highlights", price: "£60+", duration: "2 - 3 hours" },
         { name: "Ombre/Balayage", price: "Consultation+", duration: "3 hours" },
       ]
-    },
-    {
-      title: "Treatments",
-      items: [
-        { name: "Deep Conditioning", price: "Consultation+", duration: "" },
-        { name: "Hair Smoothening", price: "Consultation+", duration: "" },
-        { name: "Metal Detox", price: "£20+", duration: "30 mins" },
-      ]
-    },
-    {
-      title: "Men Services",
-      items: [
-        { name: "Clipper Cut", price: "£14+", duration: "30 mins" },
-        { name: "Scissor Cut", price: "£15+", duration: "30 mins" },
-        { name: "Long Hair Cut", price: "£15+", duration: "30 mins" },
-        { name: "Skin Fade", price: "£18+", duration: "30 mins" },
-        { name: "Zero Fade", price: "£18+", duration: "30 mins" },
-        { name: "Beard Shape", price: "£10+", duration: "30 mins" },
-        { name: "Wash & Cut", price: "£20+", duration: "35 mins" },
-      ]
-    },
-    {
-      title: "Men's Grooming",
-      items: [
-        { name: "Men Eyebrow Threading", price: "£8+", duration: "15 mins" },
-        { name: "Ear Wax", price: "£5+", duration: "15 mins" },
-        { name: "Nose Wax", price: "£5+", duration: "15 mins" },
-        { name: "Cheek Wax", price: "£5+", duration: "15 mins" },
-      ]
     }
   ];
 
-  const beautyData: SubCategory[] = [
-    {
-      title: "Threading",
-      items: [
-        { name: "Eyebrow Threading", price: "£8+", duration: "15 mins" },
-        { name: "Men's Eyebrows", price: "£9+", duration: "15 mins" },
-        { name: "Upper Lip", price: "£5+", duration: "15 mins" },
-        { name: "Lower Lip", price: "£3+", duration: "10 mins" },
-        { name: "Middle of Brows", price: "£3+", duration: "10 mins" },
-        { name: "Chin", price: "£5+", duration: "10 mins" },
-        { name: "Neck", price: "£5+", duration: "15 mins" },
-        { name: "Chin and Neck", price: "£8+", duration: "20 mins" },
-        { name: "Forehead", price: "£5+", duration: "15 mins" },
-        { name: "Sides Face", price: "£10+", duration: "15 mins" },
-        { name: "Full Face (Inc. Brows)", price: "£25+", duration: "30 mins" },
-      ]
-    },
-    {
-      title: "Strip Waxing (Body)",
-      items: [
-        { name: "Underarms", price: "£10+", duration: "15 mins" },
-        { name: "Full Arms", price: "£20+", duration: "30 mins" },
-        { name: "Half Arms", price: "£15+", duration: "20 mins" },
-        { name: "Full Legs", price: "£25+", duration: "30 mins" },
-        { name: "Half Legs", price: "£20+", duration: "20 mins" },
-        { name: "3/4 Legs", price: "£18+", duration: "30 mins" },
-        { name: "Bikini Line", price: "£25+", duration: "30 mins" },
-        { name: "Chest", price: "£12+", duration: "30 mins" },
-        { name: "Buttocks", price: "£15+", duration: "30 mins" },
-        { name: "Full Legs + Basic Bikini", price: "£38+", duration: "45 mins" },
-        { name: "Brazilian", price: "£35+", duration: "30 mins" },
-        { name: "Hollywood", price: "£35+", duration: "30 mins" },
-        { name: "Stomach", price: "£15+", duration: "30 mins" },
-        { name: "Back", price: "£25+", duration: "30 mins" },
-        { name: "Express Full Body", price: "£85+", duration: "1 hr 30 mins" },
-      ]
-    },
-    {
-      title: "Hot Wax (Face & Body)",
-      items: [
-        { name: "Eyebrows Hot Wax", price: "£10+", duration: "15 mins" },
-        { name: "Full Face Hot Wax", price: "£35+", duration: "30 mins" },
-        { name: "Underarms Hot Wax", price: "£12+", duration: "15 mins" },
-        { name: "Basic Bikini Line Hot Wax", price: "£25+", duration: "30 mins" },
-        { name: "Brazilian Hot Wax", price: "£35+", duration: "30 mins" },
-        { name: "Hollywood Hot Wax", price: "£35+", duration: "30 mins" },
-      ]
-    },
-    {
-      title: "Lash & Brows",
-      items: [
-        { name: "Eyebrow Tinting", price: "£10+", duration: "15 mins" },
-        { name: "Dream Lash Lift & Tint", price: "£60+", duration: "1 hr 15 mins" },
-        { name: "Brow Lamination", price: "£65+", duration: "45 mins" },
-        { name: "Eyebrow Threading & Tinting", price: "£15+", duration: "20 mins" },
-        { name: "Brow & Lash Tint", price: "£18+", duration: "30 mins" },
-      ]
-    }
-  ];
-
+  // --- NAILS DATA ---
   const nailsData: SubCategory[] = [
     {
-      title: "Manicure",
+      title: "Manicure & Additional Services",
       items: [
-        { name: "Express Manicure", price: "£20+", duration: "35 mins", description: "Natural nails cut & shaped, cuticles prepped. Choice of Gel colour or normal polish." },
-        { name: "Basic Manicure", price: "£40+", duration: "45 mins", description: "Natural nails cut & shaped, cuticles prepped/cleaned (manual tools). No polish." },
-        { name: "Normal Polish Manicure", price: "£35+", duration: "50 mins", description: "Natural nails cut & shaped, cuticles cleaned. Normal polish included." },
-        { name: "French Manicure", price: "£50+", duration: "1h 10m", description: "Natural nails cut & shaped, cuticles cleaned. Gel nude base colour with hand-painted French tip." },
-        { name: "Gel Manicure", price: "£45+", duration: "1 hour", description: "Natural nails cut & shaped, cuticles cleaned. Gel colour of choice (base & top coat)." },
-        { name: "Russian Manicure", price: "£50+", duration: "1h 30m", description: "Thorough cuticle/skin prep using Russian method. Gel colour of choice." },
-        { name: "Luxury Manicure", price: "£60+", duration: "1h 45m", description: "Thorough Russian prep. Includes hand scrub & extended hand massage." },
+        { name: "Basic Manicure", price: "£30.00", duration: "45min", description: "Suitable for women & men. This service includes where your natural nails are cut..." },
+        { name: "Express Manicure", price: "£20.00", duration: "30min", description: "This service includes where your natural nails are cut & shaped, the cuticle's are..." },
+        { name: "Normal Polish Manicure", price: "£18.00", duration: "1h", description: "This service includes where your natural nails are cut & shaped, the cuticle's are..." },
+        { name: "Gel Manicure", price: "£38.00", duration: "1hr 10 mins", description: "This service includes where your natural® nails are cut & shaped, the cuticle's are..." },
+        { name: "French Manicure", price: "£45.00", duration: "1h 15min", description: "This service includes where your natural nails are cut & shaped, the cuticle's are..." },
+        { name: "Russian Manicure", price: "£50.00", duration: "2h", description: "This service includes thorough cuticle and skin prep using a Russian manicure..." },
+        { name: "Luxury Manicure", price: "£50.00", duration: "2h 10min", description: "This service includes thorough cuticle and skin prep using a Russian manicure..." },
+        { name: "Normal Polish Manicure & Pedicure", price: "£45", duration: "2h 5 min" },
+        { name: "Gel Manicure & Pedicure", price: "£65", duration: "2h 5 min" },
       ]
     },
     {
-      title: "Pedicure",
+      title: "Pedicure & Additional Services",
       items: [
-        { name: "Express File", price: "£35+", duration: "30 mins", description: "Toe nails cut & shaped. Choice of normal polish." },
-        { name: "Basic Spa Pedicure", price: "£40+", duration: "45 mins", description: "Nails cut/shaped. Feet soaked. Cuticles cleaned. No polish." },
-        { name: "Normal Polish Spa Pedicure", price: "£45+", duration: "1h 20m", description: "Nails cut/shaped. Feet soaked. Cuticles cleaned. Normal polish included." },
-        { name: "French Spa Pedicure", price: "£55+", duration: "1h 20m", description: "Nails cut/shaped. Feet soaked. Cuticles cleaned. Gel base nude colour & french tips." },
-        { name: "Gel Spa Pedicure", price: "£50+", duration: "1 hour", description: "Nails cut/shaped. Feet soaked. Cuticles cleaned. Gel colour of choice." },
-        { name: "Luxury Pedicure", price: "£60+", duration: "1h 45m", description: "Shortened luxury Elim pedicure. Includes: Callus tonic, exfoliation, mask, cuticle removal, massage, gold spritz." },
-        { name: "Callus Remover", price: "£15+", duration: "", description: "Callus tonic treatment to remove hard skin build-up using a soft scraper." },
+        { name: "Basic Spa Pedicure", price: "£25.00", duration: "45min", description: "This service includes where your natural toe nails are cut & shaped. Your feet are..." },
+        { name: "Gel Spa Pedicure", price: "£40.00", duration: "1h 5min", description: "This service includes where your natural toe nails are cut & shaped. Your feet are..." },
+        { name: "Normal Polish Spa Pedicure", price: "£30.00", duration: "1h 10min", description: "This service includes where your natural toe nails are cut & shaped. Your feet are..." },
+        { name: "French Spa Pedicure", price: "£45.00", duration: "1h 20min", description: "This service includes where your natural toe nails are cut & shaped. Your feet are..." },
+        { name: "Luxury Pedicure", price: "£50.00", duration: "1h 30min", description: "This is a shortened version of the luxury Elim pedicure..." },
+        { name: "Extended Foot Massage", price: "£18.00", duration: "20 mins", description: "This service includes an extended foot massage with a moisturising foot balm." },
       ]
     },
     {
-      title: "Nail Art & Additional Services",
+      title: "Nail Art",
       items: [
         { name: "Bronze Nail Art Hands", price: "£8+", description: "French tips, simple designs." },
         { name: "Silver Nail Art Hands", price: "£12+", description: "Chrome, Ombre." },
         { name: "Gold Nail Art Hands", price: "£20+", description: "All fingers design." },
-        { name: "Nail Art Toes", price: "£5 - £15+", description: "Bronze: £5 (French/Simple), Silver: £10 (Chrome/Ombre), Gold: £15 (All toes)." },
-        { name: "Strengthening IBX", price: "£15+", duration: "20 mins", description: "Repair & strengthen treatment applied under polish/gel." },
-        { name: "BIAB Overlay", price: "£15+", duration: "30 mins", description: "Builder in a bottle overlay applied structurally." },
-        { name: "Hard Gel Overlay", price: "£20+", duration: "40 mins", description: "Hard gel overlay applied structurally." },
-        { name: "Russian Cuticle Work", price: "£10+", duration: "20 mins", description: "Thorough dry cuticle/skin prep using Russian method." },
-        { name: "Nail Fixes & Repairs", price: "£5+", description: "Restructuring and reshaping natural nail from breakage." },
+        { name: "Bronze Nail Art Toes", price: "£5.00", duration: "15min", description: "Nail art on toes includes french tips & 1 simple design stars, hearts & lines" },
+        { name: "Silver Nail Art Toes", price: "£10.00", duration: "20min", description: "Nail art on toes includes chrome, ombre eTc" },
+        { name: "Gold Nail Art Toes", price: "£15.00", duration: "30min", description: "Nail art on all toenails" },
+        { name: "Strengthening IBX", price: "£15+", duration: "20 mins" },
+        { name: "BIAB Overlay", price: "£15+", duration: "30 mins" },
       ]
     },
     {
       title: "Removals",
       items: [
-        { name: "Gel Removal", price: "£15+", duration: "30 mins", description: "Electric file removal of colour only." },
-        { name: "Builder Gel Removal", price: "£30+", duration: "45 mins", description: "E-file removal of top layer, then soaked off." },
-        { name: "Hard Gel/Acrylics Removal", price: "£20+", duration: "30 mins", description: "Soak off removal of work from another salon." },
-        { name: "Foreign BIAB Removal", price: "£20+", duration: "30 mins", description: "Hand filing top layer & soak off." },
-        { name: "Gel Extensions Removal", price: "£30+", duration: "1h 15m", description: "Removal of extensions from another salon." },
+        { name: "Gel Removal", price: "£15+", duration: "30 mins" },
+        { name: "Builder Gel Removal", price: "£30+", duration: "45 mins" },
+        { name: "Foreign BIAB Removal", price: "£20.00", duration: "30min", description: "This service includes removal of builder gel only using an electric file to remove..." },
+        { name: "Soak off Removal", price: "£20.00", duration: "30min", description: "This service includes hand filing method to remove top layer of gel or builder gel..." },
+        { name: "Hard Gel/Acrylics Removal", price: "£30.00", duration: "45min", description: "This services includes of hard gel and acrylics from another salon not our work...." },
+        { name: "Gel Extensions Removal", price: "£30+", duration: "1h 15m" },
+      ]
+    }
+  ];
+
+  // --- BEAUTY DATA ---
+  const beautyData: SubCategory[] = [
+    {
+      title: "Threading & Waxing",
+      items: [
+        { name: "Eyebrow Threading", price: "£8+", duration: "15 mins" },
+        { name: "Full Face (Inc. Brows)", price: "£25+", duration: "30 mins" },
+        { name: "Hollywood Hot Wax", price: "£35+", duration: "30 mins" },
+        { name: "Express Full Body", price: "£85+", duration: "1 hr 30 mins" },
       ]
     }
   ];
 
   const mainCategories: MainCategory[] = [
     { id: 'hair', title: 'Hair Services', description: 'Cutting • Colour • Styling', subCategories: hairData },
-    { id: 'beauty', title: 'Beauty & Waxing', description: 'Brows • Lashes • Waxing', subCategories: beautyData },
     { id: 'nails', title: 'Nails', description: 'Manicure • Pedicure • Art', subCategories: nailsData },
+    { id: 'beauty', title: 'Beauty & Waxing', description: 'Brows • Lashes • Waxing', subCategories: beautyData },
   ];
 
   return (
     <div className="bg-black min-h-screen">
-      {/* Header Image */}
       <div className="relative h-[40vh] bg-neutral-900 overflow-hidden">
-        <img
-          src="/service.png"
-          alt="Salon Services"
-          className="w-full h-full object-cover opacity-60"
-        />
+        <img src="/service.png" alt="Salon Services" className="w-full h-full object-cover opacity-60" />
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-full p-8 text-center pb-12">
           <h1 className="text-5xl md:text-7xl font-serif text-white mb-2">Service Menu</h1>
@@ -237,8 +170,6 @@ const Services: React.FC = () => {
                       <h3 className="text-xl md:text-2xl font-serif text-white">{sub.title}</h3>
                       <div className="h-px bg-white/10 flex-grow ml-4"></div>
                     </div>
-                    
-                    {/* Vertical sequence ensured by grid-cols-1 */}
                     <div className="grid grid-cols-1 gap-y-8">
                       {sub.items.map((item, itemIdx) => (
                         <ServiceItemRow key={itemIdx} item={item} />
@@ -251,22 +182,24 @@ const Services: React.FC = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
         <div className="mt-20 text-center p-8 border border-[#D7BD9A]/20 rounded-lg bg-neutral-900/30">
           <h3 className="text-2xl font-serif text-white mb-4">Ready to Glow?</h3>
           <p className="text-gray-400 mb-8 max-w-md mx-auto">
             Book your appointment today. For complex color corrections or bridal services, we recommend a consultation first.
           </p>
-          <Link to="/booking" className="inline-block bg-white text-black px-10 py-3 text-sm font-bold uppercase tracking-widest hover:bg-[#D7BD9A] hover:text-white transition-all">
+          <a 
+            href={booksyUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-block bg-white text-black px-10 py-3 text-sm font-bold uppercase tracking-widest hover:bg-[#D7BD9A] hover:text-white transition-all"
+          >
             Book Appointment
-          </Link>
+          </a>
         </div>
       </div>
     </div>
   );
 };
-
-// --- SUB-COMPONENTS ---
 
 const ServiceItemRow: React.FC<{ item: ExtendedServiceItem }> = ({ item }) => (
   <div className="flex flex-col border-b border-dashed border-white/10 pb-4 group">
@@ -278,16 +211,9 @@ const ServiceItemRow: React.FC<{ item: ExtendedServiceItem }> = ({ item }) => (
         {item.price}
       </span>
     </div>
-    
     <div className="space-y-1">
-      {item.duration && (
-        <span className="text-gray-500 text-xs uppercase tracking-wider">{item.duration}</span>
-      )}
-      {item.description && (
-        <p className="text-gray-400 text-sm font-light leading-relaxed mt-1 italic">
-          {item.description}
-        </p>
-      )}
+      {item.duration && <span className="text-gray-500 text-xs uppercase tracking-wider">{item.duration}</span>}
+      {item.description && <p className="text-gray-400 text-sm font-light leading-relaxed mt-1 italic">{item.description}</p>}
     </div>
   </div>
 );
