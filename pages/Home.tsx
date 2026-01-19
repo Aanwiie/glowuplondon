@@ -107,60 +107,24 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* --- READY TO GLOW UP SECTION --- */}
+      {/* --- READY TO GLOW UP SECTION (REPLACED WITH IMAGE) --- */}
       <section className="relative mx-4 md:mx-8 mb-36 mt-36">
-        <div className="relative w-full overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-[#E8DCC4] text-[#1a1a1a]">
-
-          <div className="absolute inset-0 w-full h-full">
-            <div className="absolute inset-0 bg-[#E8DCC4]"></div>
-            <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-[#D7BD9A] rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob"></div>
-            <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] bg-[#D7BD9A] rounded-full mix-blend-multiply filter blur-[80px] opacity-60 animate-blob animation-delay-2000"></div>
-            <div className="absolute top-[20%] right-[20%] w-[50%] h-[50%] bg-[#D7BD9A] rounded-full mix-blend-multiply filter blur-[80px] opacity-50 animate-blob animation-delay-4000"></div>
-            <div className="absolute inset-0 opacity-30 mix-blend-overlay"
-              style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/noise.png")` }}>
-            </div>
-          </div>
-
-          <div className="relative z-10 mx-auto px-4 md:px-12 py-8 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 w-full max-w-5xl">
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <div className="mb-4 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-black animate-pulse"></div>
-                <span className="font-mono text-xs font-bold tracking-[0.3em] uppercase opacity-60">
-                  Limited Availability
-                </span>
-              </div>
-              <h2 className="font-serif leading-[0.9]">
-                <span className="block text-2xl md:text-3xl lg:text-4xl italic opacity-80 mb-1">
-                  Ready to
-                </span>
-                <span className="block text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter uppercase mix-blend-darken">
-                  Glow Up?
-                </span>
-              </h2>
-            </div>
-
-            <div className="relative group shrink-0">
-              <div className="absolute inset-0 bg-white/40 rounded-full blur-xl scale-0 group-hover:scale-110 transition-transform duration-700 ease-out"></div>
-              
-              {/* UPDATED: Link changed to <a> for new tab redirection */}
-              <a
-                href={booksyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-flex items-center gap-4 px-8 py-4 bg-[#1a1a1a] text-[#E8DCC4] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 hover:bg-black shadow-2xl border border-white/5"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#D7BD9A]/20 to-[#D7BD9A]/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
-                <span className="relative z-10 uppercase tracking-[0.2em] text-xs font-bold">
-                  Book Now
-                </span>
-                <div className="relative z-10 w-5 h-5 overflow-hidden">
-                  <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 transition-transform duration-500 ease-out group-hover:translate-x-full group-hover:-translate-y-full" />
-                  <ArrowRight className="absolute inset-0 w-full h-full -rotate-45 -translate-x-full translate-y-full transition-transform duration-500 ease-out group-hover:translate-x-0 group-hover:translate-y-0" style={{ color: '#D7BD9A' }} />
-                </div>
-              </a>
-            </div>
-          </div>
-
+        <div className="relative w-full shadow-2xl border border-white/5 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden group">
+          {/* Wraps image in link to ensure booking functionality remains */}
+          <a
+             href={booksyUrl}
+             target="_blank"
+             rel="noopener noreferrer"
+             className="block w-full h-full relative"
+          >
+            <img
+              src="/image.png"
+              alt="New Year Offer - Ready to Glow Up"
+              className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+            />
+             {/* Subtle hover overlay effect */}
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-white/5 transition-colors duration-300 pointer-events-none"></div>
+          </a>
         </div>
       </section>
 
