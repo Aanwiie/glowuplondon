@@ -151,9 +151,9 @@ const Contact: React.FC = () => {
               <ContactItem
                 icon={<MapPin size={24} />}
                 label="Visit Studio"
-                value="115 High Street, Brentford, TW8 8AF"
+                value="115 Brentford High Street"
                 href="#"
-                subValue="Unit 1, Tintern House"
+                subValue="Unit 1, Tintern House, TW8 8AF"
                 forceOneLine={true} 
               />
             </div>
@@ -199,8 +199,8 @@ const Contact: React.FC = () => {
         <div className="mt-20 lg:mt-32 w-full">
            <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative grayscale-[0.5] hover:grayscale-0 transition-all duration-700 bg-neutral-900">
              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.595167732047!2d-0.3060596!3d51.4839556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760dc264585555%3A0x696874989679634b!2s115%20High%20St%2C%20Brentford%20TW8%208AF!5e0!3m2!1sen!2suk!4v1715854890000!5m2!1sen!2suk" 
-                width="100%" height="450" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Google Maps Location" className="opacity-80 hover:opacity-100 transition-opacity duration-500"
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.556277641753!2d-0.3108742233939988!3d51.48450197180775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760df5033a16f3%3A0xf84dd2c243f12e7f!2sThe%20Glow%20Up%20London!5e0!3m2!1sen!2suk!4v1709420000000!5m2!1sen!2suk"
+               width="100%" height="450" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Google Maps Location" className="opacity-80 hover:opacity-100 transition-opacity duration-500"
              ></iframe>
            </div>
         </div>
