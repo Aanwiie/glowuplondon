@@ -13,11 +13,11 @@ const Forms: React.FC = () => {
       desc: "For detailed nail art requests.",
       link: "https://docs.google.com/forms/d/e/1FAIpQLSfgdDRrHiBhDUA_AnmCXsBTq6NIaOUnOcDLe-7_MH_IsKAXHw/viewform?usp=sharing&ouid=108059913434843684745"
     },
-    { 
-      title: "Beauty Consultation", 
-      desc: "Discuss your beauty goals with us.",
-      link: "https://docs.google.com/forms/d/e/1FAIpQLSffmp_3ZJ705V6n-hmW5rcwPfBoFqpiXJBecu1MGwJ5BOgOIQ/viewform?usp=sharing&ouid=108059913434843684745"
-    },
+    // { 
+    //   title: "Beauty Consultation", 
+    //   desc: "Discuss your beauty goals with us.",
+    //   link: "https://docs.google.com/forms/d/e/1FAIpQLSffmp_3ZJ705V6n-hmW5rcwPfBoFqpiXJBecu1MGwJ5BOgOIQ/viewform?usp=sharing&ouid=108059913434843684745"
+    // },
   ];
 
   return (
