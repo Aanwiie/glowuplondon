@@ -19,7 +19,7 @@ const team = [
   },
   {
     name: "Niki",
-    role: "Senior Stylist/Beautician",
+    role: "Stylist/Beautician",
     image: "/gallery/15.jpeg"
   },
 ];
