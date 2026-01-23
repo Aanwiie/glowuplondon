@@ -24,7 +24,7 @@ const Services: React.FC = () => {
       id: 'nails',
       title: 'Nail Services',
       services: [
-        { name: "Basic Manicure", price: "£30.00", duration: "45min", description: "Suitable for women & men. This service includes where your natural..." },
+        { name: "Basic Manicure", price: "£30.00", duration: "45min", description: "Suitable for women & men. This service includes where your natural nails are cut & shaped, the cuticle's are prepped and cleaned thoroughly. Manual tools used to clean up dead skin around the fingers carefully. No nail polish or gel polish is included in this treatment, optional Shiney/Matte Finish. This service is finished with hydrating cuticle oil." },
         { name: "Express Manicure", price: "£20.00", duration: "30min", description: "This service includes where your natural nails are cut & shaped, the..." },
         { name: "Normal Polish Manicure", price: "£18.00", duration: "1h", description: "This service includes where your natural nails are cut & shaped, the..." },
         { name: "Gel Manicure", price: "£38.00", duration: "1h 10 min", description: "This service includes where your natural nails are cut & shaped, the..." },

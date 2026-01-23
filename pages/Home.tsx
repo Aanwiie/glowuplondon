@@ -107,24 +107,22 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* --- READY TO GLOW UP SECTION (REPLACED WITH IMAGE) --- */}
+      {/* --- IMAGE BANNER SECTION (Text removed) --- */}
       <section className="relative mx-4 md:mx-8 mb-36 mt-36">
-        <div className="relative w-full shadow-2xl border border-white/5 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden group">
-          {/* Wraps image in link to ensure booking functionality remains */}
-          <a
-             href={booksyUrl}
-             target="_blank"
-             rel="noopener noreferrer"
-             className="block w-full h-full relative"
-          >
-            <img
-              src="/image.png"
-              alt="New Year Offer - Ready to Glow Up"
-              className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
-            />
-             {/* Subtle hover overlay effect */}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-white/5 transition-colors duration-300 pointer-events-none"></div>
-          </a>
+        {/* Added height to the container so the image displays properly without content */}
+        <div className="relative w-full h-[40vh] md:h-[50vh] overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-neutral-900 shadow-2xl border border-white/5">
+
+          <img 
+            src="/image.png" 
+            alt="Glow Up Banner" 
+            className="w-full h-full object-cover pointer-events-none"
+          />
+          
+          {/* Subtle noise texture for consistency */}
+          <div className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none"
+            style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/noise.png")` }}>
+          </div>
+
         </div>
       </section>
 
