@@ -23,7 +23,7 @@ const Home: React.FC = () => {
   // 4x ensures we have plenty of width even on 4k monitors before the animation resets
   const seamlessProducts = [...products, ...products, ...products, ...products];
 
-  // Your Direct Booksy Profile Link (Updated with your ID)
+  // Your Direct Booksy Profile Link
   const booksyUrl = "https://booksy.com/en-gb/dl/show-business/170549";
 
   return (
@@ -89,7 +89,6 @@ const Home: React.FC = () => {
               </p>
             </div>
 
-            {/* UPDATED: Link changed to <a> for new tab redirection */}
             <a 
               href={booksyUrl}
               target="_blank"
@@ -107,18 +106,32 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* --- IMAGE BANNER SECTION (Text removed) --- */}
-      <section className="relative mx-4 md:mx-8 mb-36 mt-36">
-        {/* Added height to the container so the image displays properly without content */}
-        <div className="relative w-full h-[40vh] md:h-[50vh] overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-neutral-900 shadow-2xl border border-white/5">
-
+      {/* --- IMAGE BANNER SECTION (UPDATED) --- */}
+      <section className="relative mx-4 md:mx-8 mb-36 mt-20 md:mt-36">
+        <div className="relative w-full h-[40vh] md:h-[55vh] overflow-hidden rounded-[2.5rem] md:rounded-[4rem] bg-neutral-900 shadow-2xl border border-white/5 group">
+          
+          {/* Desktop Image: Hidden on mobile (block on md+)
+            This uses /image.png
+          */}
           <img 
             src="/image.png" 
-            alt="Glow Up Banner" 
-            className="w-full h-full object-cover pointer-events-none"
+            alt="Salon Experience Desktop" 
+            className="hidden md:block w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+
+          {/* Mobile Image: Visible ONLY on mobile (hidden on md+)
+            This uses /image1.png
+          */}
+          <img 
+            src="/image1.png" 
+            alt="Salon Experience Mobile" 
+            className="block md:hidden w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
           
-          {/* Subtle noise texture for consistency */}
+          {/* Subtle overlay for consistent premium feel */}
+          <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
+
+          {/* Noise texture for cohesion with Hero section */}
           <div className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none"
             style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/noise.png")` }}>
           </div>

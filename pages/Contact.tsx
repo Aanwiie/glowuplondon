@@ -10,7 +10,6 @@ import {
   MoveRight
 } from 'lucide-react';
 
-
 const Contact: React.FC = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
@@ -31,7 +30,8 @@ const Contact: React.FC = () => {
     setFormStatus('sending');
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/danwesha488@gmail.com", {
+      // UPDATED: Email address changed to theglowuplondon@gmail.com
+      const response = await fetch("https://formsubmit.co/ajax/theglowuplondon@gmail.com", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
